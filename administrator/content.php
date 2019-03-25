@@ -55,6 +55,14 @@ switch ($current_page) {
 	require_once('edit-userlist.php');
 	break;
 	
+	case 'change-password':
+	require_once('change-password.php');
+	break;
+	
+	case 'profile':
+	require_once('profile.php');
+	break;
+	
 	default:
 	require_once('home.php');
 }
