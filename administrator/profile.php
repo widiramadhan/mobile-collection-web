@@ -40,7 +40,7 @@ $dataProfile = sqlsrv_fetch_array($exec);
 				<h6 class="m-0 font-weight-bold text-primary">Ubah data profile</h6>
 			</div>
 			<div class="card-body">
-				<form method="post" action="">
+				<form method="post" action="update-user.php?action=update">
 					<div class="form-group">
 						<label>NIK</label>
 						<input type="text" class="form-control" name="emp_no" disabled value="<?php echo $dataProfile['EMP_NO'];?>">
@@ -48,6 +48,7 @@ $dataProfile = sqlsrv_fetch_array($exec);
 					<div class="form-group">
 						<label>Username</label>
 						<input type="text" class="form-control" name="username" disabled value="<?php echo $dataProfile['USERNAME'];?>">
+						<input type="text" class="form-control" name="username_hiden" hidden value="<?php echo $dataProfile['USERNAME'];?>">
 					</div>
 					<div class="form-group">
 						<label>Branch</label>
@@ -59,7 +60,7 @@ $dataProfile = sqlsrv_fetch_array($exec);
 					</div>
 					<div class="form-group">
 						<label>Nama Lengkap</label>
-						<input type="text" class="form-control" name="nama" value="<?php echo $dataProfile['EMP_NAME'];?>">
+						<input type="text" class="form-control" name="nama_lengkap" value="<?php echo $dataProfile['EMP_NAME'];?>">
 					</div>
 					
 					<input type="submit" name="submit" value="Update" class="btn btn-primary" style="width:100%;">
