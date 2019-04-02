@@ -44,15 +44,15 @@ $dataProfile = sqlsrv_fetch_array($exec);
 				<form action="change-password-action.php?action=change" method="post" enctype="multipart/form-data" id="form">
 					<div class="form-group">
 						<label>Password Lama</label>
-						<input type="text" class="form-control" name="password_lama" >
+						<input type="password" class="form-control" name="password_lama" >
 					</div>
 					<div class="form-group">
 						<label>Password Baru</label>
-						<input type="text" class="form-control" name="password_baru">
+						<input type="password" class="form-control" name="password_baru">
 					</div>
 					<div class="form-group">
 						<label>Konfrimasi Password</label>
-						<input type="text" class="form-control" name="konfrimasi_password">
+						<input type="password" class="form-control" name="konfrimasi_password">
 						<input type="hidden" class="form-control" name="newid" value="<?php echo $sid?>">
 					</div>
 					
