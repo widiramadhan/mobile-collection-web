@@ -41,18 +41,19 @@ $dataProfile = sqlsrv_fetch_array($exec);
 			</div>
 			<div class="card-body">
 			
-				<form action="change-password.php?action=change" method="post" enctype="multipart/form-data" id="form">
+				<form action="change-password-action.php?action=change" method="post" enctype="multipart/form-data" id="form">
 					<div class="form-group">
 						<label>Password Lama</label>
 						<input type="text" class="form-control" name="password_lama" >
 					</div>
 					<div class="form-group">
-						<label>Konfrimasi Password</label>
-						<input type="text" class="form-control" name="konfrimasi_password" >
-					</div>
-					<div class="form-group">
 						<label>Password Baru</label>
 						<input type="text" class="form-control" name="password_baru">
+					</div>
+					<div class="form-group">
+						<label>Konfrimasi Password</label>
+						<input type="text" class="form-control" name="konfrimasi_password">
+						<input type="hidden" class="form-control" name="newid" value="<?php echo $sid?>">
 					</div>
 					
 					<input type="submit" name="submit" value="Change Password" class="btn btn-primary" style="width:100%;">
@@ -79,3 +80,4 @@ $('#selectAll').click(function(e){
     $('td input:checkbox',table).prop('checked',this.checked);
 });
 </script>
+
