@@ -63,6 +63,10 @@ switch ($current_page) {
 	require_once('profile.php');
 	break;
 	
+	case 'aro-priority':
+	require_once('aro-priority.php');
+	break;
+	
 	default:
 	require_once('home.php');
 }

@@ -84,6 +84,13 @@ $data = sqlsrv_fetch_array( $execGetLogin, SQLSRV_FETCH_ASSOC);
 					<span>Tasklist ARO</span>
 				</a>
 			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="index.php?page=aro-priority">
+					<i class="fa fa-edit"></i>
+					<span>Setting ARO Mapping Priority</span>
+				</a>
+			</li>
+		
 			<hr class="sidebar-divider">
 			<div class="sidebar-heading">
 				Customer
