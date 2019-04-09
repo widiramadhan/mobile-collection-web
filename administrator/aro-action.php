@@ -4,31 +4,17 @@
 <?php
 require_once("../config/connection.php");
 $action = $_GET['action'];
-if($action == 'insert'){
-	$office_name = $_POST['office_name'];
-	$address = $_POST['address'];
-	$kota = $_POST['kota'];
-	$nama_kota = $_POST['nama_kota'];
-	$kecamatan = $_POST['kecamatan'];
-	$nama_kecamatan = $_POST['nama_kecamatan'];
-	$kelurahan = $_POST['kelurahan'];
-	$tag = $_POST['tag'];
-	$lat = $_POST['lat'];
-	$lng = $_POST['lng'];
+if($action == 'save'){
+	$branch = $_POST['branch'];
+	$coll_id = $_POST['coll_id'];
+	$days = $_POST['days'];
 	
 	
-	$queryInsert = "{call SP_INSERT_BRANCH(?,?,?,?,?,?,?,?,?,?)}"; 
+	$queryInsert = "{call SP_INSERT_ARO_PRIORITY(?,?,?)}"; 
 	$parameterInsert = array(
-					array($office_name, SQLSRV_PARAM_IN),
-					array($address, SQLSRV_PARAM_IN),
-					array($kota, SQLSRV_PARAM_IN),
-					array($nama_kota, SQLSRV_PARAM_IN),
-					array($kecamatan, SQLSRV_PARAM_IN),
-					array($nama_kecamatan, SQLSRV_PARAM_IN),
-					array($kelurahan, SQLSRV_PARAM_IN),
-					array($tag, SQLSRV_PARAM_IN),
-					array($lat, SQLSRV_PARAM_IN),
-					array($lng, SQLSRV_PARAM_IN)
+					array($branch, SQLSRV_PARAM_IN),
+					array($coll_id, SQLSRV_PARAM_IN),
+					array($days, SQLSRV_PARAM_IN)
 				);
 	$execInsert = sqlsrv_query( $conn, $queryInsert, $parameterInsert) or die( print_r( sqlsrv_errors(), true));
 	if($execInsert){
@@ -43,7 +29,7 @@ if($action == 'insert'){
 					});  
 				},10); 
 					window.setTimeout(function(){ 
-						window.location.replace("index.php?page=branch");
+						window.location.replace("index.php?page=aro-priority");
 					} ,2000); 
 			  </script>';
 	}else{
