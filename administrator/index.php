@@ -102,7 +102,7 @@ $data = sqlsrv_fetch_array( $execGetLogin, SQLSRV_FETCH_ASSOC);
 				</a>
 			</li>
 			<li class="nav-item">
-				<a class="nav-link" href="#">
+				<a class="nav-link" href="index.php?page=visit-result">
 					<i class="fa fa-th-large"></i>
 					<span>Visit Result</span>
 				</a>

@@ -67,6 +67,14 @@ switch ($current_page) {
 	require_once('aro-priority.php');
 	break;
 	
+	case 'visit-result':
+	require_once('visit-result.php');
+	break;
+	
+	case 'result-detail':
+	require_once('result-detail.php');
+	break;
+	
 	default:
 	require_once('home.php');
 }
