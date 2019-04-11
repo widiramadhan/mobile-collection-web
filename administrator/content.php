@@ -43,6 +43,10 @@ switch ($current_page) {
 	require_once('customerlist.php');
 	break;
 	
+	case 'detail-customer':
+	require_once('detail-customer.php');
+	break;
+	
 	case 'detail-aro':
 	require_once('detail-aro.php');
 	break;

@@ -2,7 +2,7 @@
 require_once("../config/connection.php");
 $nik=$_GET['id'];
 
-$sql = "{call SP_GET_DETAIL_ARO(?,?)}";
+$sql = "{call SP_GET_CUSTOMER_DETAIL(?,?)}";
 $param = array(array($bid, SQLSRV_PARAM_IN),
 			   array($nik, SQLSRV_PARAM_IN));
 $ex = sqlsrv_query( $conn, $sql, $param) or die( print_r( sqlsrv_errors(), true));
@@ -10,7 +10,7 @@ $row = sqlsrv_fetch_array($ex);
 
 
 
-$callDKHC = "{call SP_GET_DKH(?,?)}"; 
+$callDKHC = "{call SP_GET_CUSTOMER_DETAIL(?,?)}"; 
 $options =  array( "Scrollable" => "buffered" );
 $paramsDKHC = array(array($bid, SQLSRV_PARAM_IN),array($nik, SQLSRV_PARAM_IN));  
 $execDKHC = sqlsrv_query( $conn, $callDKHC, $paramsDKHC, $options) or die( print_r( sqlsrv_errors(), true));
@@ -22,19 +22,7 @@ if($numrows == 0){
 	$disable="";
 }
 
-$callDKHC = "{call SP_GET_DKH(?,?)}"; 
-$options =  array( "Scrollable" => "buffered" );
-$paramsDKHC = array(array($bid, SQLSRV_PARAM_IN),array($nik, SQLSRV_PARAM_IN));  
-$execDKHC = sqlsrv_query( $conn, $callDKHC, $paramsDKHC, $options) or die( print_r( sqlsrv_errors(), true));
 
-$numrows=sqlsrv_num_rows($execDKHC);
-
-
-$sql1 = "{call SP_TOTAL_COLLECT(?,?)}";
-$param1 = array(array($bid, SQLSRV_PARAM_IN),
-				array($nik, SQLSRV_PARAM_IN));
-$ex1 = sqlsrv_query( $conn, $sql1, $param1) or die( print_r( sqlsrv_errors(), true));
-$row1 = sqlsrv_fetch_array($ex1);
 ?>
 <script src="vendor/jquery/jquery.min.js"></script>
 <link rel="stylesheet" href="vendor/sweetalert/sweetalert.min.css">
@@ -43,19 +31,19 @@ $row1 = sqlsrv_fetch_array($ex1);
 	<div class="col-md-3">
 		<div class="card shadow mb-12">
 			<div class="card-header py-3">
-				<h6 class="m-0 font-weight-bold text-primary">Profile AR Officer</h6>
+				<h6 class="m-0 font-weight-bold text-primary">Profile Customer</h6>
 			</div>
 			<div class="card-body">
 				<center>
 					<img src="assets/img/default-user.png" style="border-radius:50%;width:100px;height:100px;"><br><br>
-					<span style="color:#000;font-weight:bold;"><?php echo $row['EMP_NAME'];?></span><br>
-					AR Officer
+					<span style="color:#000;font-weight:bold;"><?php echo $row['NAMA_KOSTUMER'];?></span><br>
+					Customer
 				</center>
 				<hr>
-				<b>NIK :</b><br>
-				<label><?php echo $row['EMP_NO'];?></label><br>
-				<b>Username :</b><br>
-				<label><?php echo $row['USERNAME'];?></label><br>
+				<b>Contract Id :</b><br>
+				<label><?php echo $row['NOMOR_KONTRAK'];?></label><br>
+				<b>Customer Name :</b><br>
+				<label><?php echo $row['NAMA_KOSTUMER'];?></label><br>
 				<b>Branch :</b><br>
 				<label><?php echo $data['OFFICE_NAME'];?></label><br>
 			</div>
@@ -64,25 +52,25 @@ $row1 = sqlsrv_fetch_array($ex1);
 	<div class="col-md-9">
 		<div class="card shadow mb-12">
 			<div class="card-header py-3">
-				<h6 class="m-0 font-weight-bold text-primary">Ubah data profile</h6>
+				<h6 class="m-0 font-weight-bold text-primary">Ubah Data Profile</h6>
 			</div>
 			<div class="card-body">
 				<form method="post" action="">
 					<div class="form-group">
-						<label>NIK</label>
-						<input type="text" class="form-control" name="nik" disabled value="<?php echo $row['EMP_NO'];?>">
+						<label>Contract Id</label>
+						<input type="text" class="form-control" name="kontrak_id" disabled value="<?php echo $row['NOMOR_KONTRAK'];?>">
 					</div>
 					<div class="form-group">
-						<label>Username</label>
-						<input type="text" class="form-control" name="username" disabled value="<?php echo $row['USERNAME'];?>">
+						<label>Address</label>
+						<input type="text" class="form-control" name="address" disabled value="<?php echo $row['ALAMAT_KTP'];?>">
 					</div>
 					<div class="form-group">
-						<label>Branch</label>
-						<input type="text" class="form-control" name="username" disabled value="<?php echo $data['OFFICE_NAME'];?>">
+						<label>No. Handphone</label>
+						<input type="text" class="form-control" name="no-handphone" disabled value="<?php echo $row['NOMOR_HANDPHONE'];?>">
 					</div>
 					<div class="form-group">
 						<label>Nama Lengkap</label>
-						<input type="text" class="form-control" name="nama" value="<?php echo $row['EMP_NAME'];?>">
+						<input type="text" class="form-control" name="nama" value="<?php echo $row['NAMA_KOSTUMER'];?>">
 					</div>
 					<input type="submit" name="submit" value="Update" class="btn btn-primary" style="width:100%;">
 				</form>
