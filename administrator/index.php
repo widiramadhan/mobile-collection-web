@@ -90,6 +90,13 @@ $data = sqlsrv_fetch_array( $execGetLogin, SQLSRV_FETCH_ASSOC);
 					<span>Setting ARO Mapping Priority</span>
 				</a>
 			</li>
+			
+			<li class="nav-item">
+				<a class="nav-link" href="index.php?page=reasign-aro">
+					<i class="fa fa-random" aria-hidden="true"></i>
+					<span>Reasign ARO</span>
+				</a>
+			</li>
 		
 			<hr class="sidebar-divider">
 			<div class="sidebar-heading">

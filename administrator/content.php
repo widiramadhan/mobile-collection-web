@@ -83,6 +83,10 @@ switch ($current_page) {
 	require_once('result-detail.php');
 	break;
 	
+	case 'reasign-aro':
+	require_once('reasign-aro.php');
+	break;
+	
 	default:
 	require_once('home.php');
 }
