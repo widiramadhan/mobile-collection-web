@@ -7,14 +7,14 @@
 			<table class="table table-bordered" id="dataTables" width="100%" cellspacing="0" style="font-size:12px;">
 				<thead>
 					<tr>
-						<!--<th style="vertical-align:middle;text-align:center;padding-left:30px;" ><input type="checkbox" id="selectAll"></th>-->
+						<th style="vertical-align:middle;text-align:center;padding-left:30px;" ><input type="checkbox" id="selectAll"></th>
 						<th style="vertical-align:middle;text-align:center;">NO</th>
 						<th style="vertical-align:middle;text-align:center;">BRANCHID</th>
 						<th style="vertical-align:middle;text-align:center;">COLL_ID</th>
 						<th style="vertical-align:middle;text-align:center;">KECAMATAN</th>
 						<th style="vertical-align:middle;text-align:center;">KELURAHAN</th>			
 						<th style="vertical-align:middle;text-align:center;">DAYS</th>
-						<th style="vertical-align:middle;text-align:center;">ACTION</th>
+						
 					</tr>
 				</thead>
 				<tbody>
@@ -28,7 +28,7 @@
 					?>
 				
                     <tr>
-					  <!--<td style="vertical-align:middle;text-align:center;"><input type="checkbox" name="aro[]" value="<?php echo $data['M_AREA_COLL_ID'];?>">-->
+					  <td style="vertical-align:middle;text-align:center;"><input type="checkbox" name="aro[]" value="<?php echo $data['M_AREA_COLL_ID'];?>">
 					  <td style="vertical-align:middle;text-align:center;"><?php echo $no;?></td>
                       <td style="vertical-align:middle;"><?php echo $data['BRANCH_ID'];?></td>
 					  <td style="vertical-align:middle;"><?php echo $data['M_AREA_COLL_ID'];?></td>
@@ -52,16 +52,13 @@
 			
 				
 					  </td>
-					 <td>
-					<button type="submit" class="btn btn-primary" >Submit</button>		
-			  </form>
-					 </td>
-                    </tr>
-					<?php }?>					
+				<?php }?>	
+                    </tr>				
 				</tbody>
 				
 			</table>
-			 
+			 <button type="submit" class="btn btn-primary" >Submit</button>	
+			   </form>
 		</div>
 				
 	</div>

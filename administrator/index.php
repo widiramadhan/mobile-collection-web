@@ -39,7 +39,7 @@ $data = sqlsrv_fetch_array( $execGetLogin, SQLSRV_FETCH_ASSOC);
 <body id="page-top">
 	<div id="wrapper">
 		<ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
-			<a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+			<a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.php">
 				<div class="sidebar-brand-icon">
 					<i class="fa fa-user-circle"></i>
 				</div>

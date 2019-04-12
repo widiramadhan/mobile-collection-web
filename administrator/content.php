@@ -71,6 +71,10 @@ switch ($current_page) {
 	require_once('aro-priority.php');
 	break;
 	
+	case 'aro-priority1':
+	require_once('aro-priority1.php');
+	break;
+	
 	case 'visit-result':
 	require_once('visit-result.php');
 	break;

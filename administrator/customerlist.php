@@ -34,7 +34,7 @@
 					  <td style="vertical-align:middle;"><?php echo $data['NOMOR_HANDPHONE'];?></td>
 					  <td style="vertical-align:middle;"><?php echo $data['DailyCollectibility'];?></td>
 					  <td style="vertical-align:middle;">
-						<a href="index.php?page=detail-customer&id=<?php echo $data['NOMOR_KONTRAK'];?>" class="btn btn-primary btn-sm">Detail</a>
+						<a href="index.php?page=detail-customer&id=<?php echo $data['NOMOR_KONTRAK'];?>" class="btn btn-primary btn-sm"><i class="fa fa-search"></i> Detail</a>
 					  </td>
                     </tr>
 					<?php }?>										
