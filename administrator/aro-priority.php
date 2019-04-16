@@ -193,6 +193,8 @@ if(isset($_POST['submit'])){
 						<input type="hidden" name="branchID[<?php echo $j;?>]" value="<?php echo $data['BRANCH_ID'];?>">
 						<input type="hidden" name="mAreaColID[<?php echo $j;?>]" value="<?php echo $data['M_AREA_COLL_ID'];?>">
 						<input type="hidden" name="userID[<?php echo $j;?>]" value="<?php echo $sid;?>">
+						<input type="hidden" name="kecamatan[<?php echo $j;?>]" value="<?php echo $data['KECAMATAN'];?>">
+						<input type="hidden" name="kelurahan[<?php echo $j;?>]" value="<?php echo $data['KELURAHAN'];?>">
 								
 						<?php $j++; }?>					
 					</tbody>
