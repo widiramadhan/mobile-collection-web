@@ -1,37 +1,82 @@
 <?php
-if(isset($_POST{'branchID'])){
-	$branchID = $_POST['branchID'];
-	$m_coll_area_id = $_POST['mAreaColID'];
-	$hari = $_POST['days'];
+if(isset($_POST['submit'])){
+	//$total=$_POST['numrows'];
+	//$branchID = $_POST['branchID'];
+	//$m_coll_area_id = $_POST['mAreaColID'];
+	//$hari = $_POST['days'];
 	
-	if($hari == "1"){
-		$hari_desc="SENIN";
-	}else if($hari == "2"){
-		$hari_desc="SELASA";
-	}else if($hari == "3"){
-		$hari_desc="RABU";
-	}else if($hari == "4"){
-		$hari_desc="KAMIS";
-	}else if($hari == "5"){
-		$hari_desc="JUMAT";
-	}else if($hari == "6"){
-		$hari_desc="SABTU";
-	}
+	//echo $total;
 	
-	$callInsert = "{call SP_INSERT_DKH_PRIORITY_BY_DAYS(?,?,?,?,?)}";
-	$paramInsert = array(
-						array($branchID, SQLSRV_PARAM_IN),
-						array($m_coll_area_id, SQLSRV_PARAM_IN),
-						array($hari, SQLSRV_PARAM_IN),
-						array($hari_desc, SQLSRV_PARAM_IN),
-						array($sid, SQLSRV_PARAM_IN)
-					); 
-	$execInsert = sqlsrv_query( $conn, $callInsert, $paramInsert) or die( print_r( sqlsrv_errors(), true));
-	if($execInsert){
-		echo "success";
-	}else{
-		echo "failed";
+	
+	$no_array = 0;
+	foreach($_POST['branchID'] as $k){
+		if(!empty($k)){
+			$branchid = $_POST['branchID'][$no_array];
+			$colid = $_POST['mAreaColID'][$no_array];
+			
+
+			//$this->M_insert->insert_looping($branchid, $colid, $keca, $kelu, $days);
+			echo $branchid;
+		}
+		$no_array++;
 	}
+	/*for($i=1;$x<$selectedDays;$x++){
+		$hari_desc = '';
+		if($hari == "1"){
+			$hari_desc="SENIN";
+		}else if($hari == "2"){
+			$hari_desc="SELASA";
+		}else if($hari == "3"){
+			$hari_desc="RABU";
+		}else if($hari == "4"){
+			$hari_desc="KAMIS";
+		}else if($hari == "5"){
+			$hari_desc="JUMAT";
+		}else if($hari == "6"){
+			$hari_desc="SABTU";
+		}
+	
+		$callInsert = "{call SP_INSERT_DKH_PRIORITY_BY_DAYS(?,?,?,?,?)}";
+		$paramInsert = array(
+							array($branchID, SQLSRV_PARAM_IN),
+							array($m_coll_area_id, SQLSRV_PARAM_IN),
+							array($hari[$x], SQLSRV_PARAM_IN),
+							array($hari_desc, SQLSRV_PARAM_IN),
+							array($sid, SQLSRV_PARAM_IN)
+						); 
+		$execInsert = sqlsrv_query( $conn, $callInsert, $paramInsert) or die( print_r( sqlsrv_errors(), true));
+		if($execInsert){
+		echo '<script>
+					setTimeout(function() {
+						swal({
+							title : "Success",
+							text : "Successfully update data",
+							type: "success",
+							timer: 2000,
+							showConfirmButton: false
+						});  
+					},10); 
+						window.setTimeout(function(){ 
+							window.location.replace("index.php?page=aro-priority");
+						} ,2000); 
+				  </script>';
+		}else{
+			echo '<script>
+					setTimeout(function() {
+						swal({
+							title : "Error",
+							text : "Failed update data",
+							type: "error",
+							timer: 2000,
+							showConfirmButton: false
+						});  
+					},10); 
+						window.setTimeout(function(){ 
+							history.back();
+						} ,2000); 
+				  </script>';
+		 }
+	}*/
 }
 
 ?>
@@ -41,8 +86,8 @@ if(isset($_POST{'branchID'])){
 	</div>
 	<div class="card-body">
 		<div class="table-responsive">
-			<form action="" method="post">
-				<table class="table table-bordered" id="dataTables" width="100%" cellspacing="0" style="font-size:12px;">
+			<form action="aro-action.php?action=insertNew" method="post">
+				<table class="table table-bordered" id="dataTables2" width="100%" cellspacing="0" style="font-size:12px;">
 					<thead>
 						<tr>
 							<!--<th style="vertical-align:middle;text-align:center;padding-left:30px;" ><input type="checkbox" id="selectAll"></th>-->
@@ -58,9 +103,12 @@ if(isset($_POST{'branchID'])){
 					<tbody>
 						<?php
 							$query = "{call SP_GET_KELURAHAN_BY_CONTRACT_ID(?)}";
-							$params = array(array($bid, SQLSRV_PARAM_IN));  
-							$exec = sqlsrv_query( $conn, $query, $params) or die( print_r( sqlsrv_errors(), true));
+							$params = array(array($bid, SQLSRV_PARAM_IN));
+							$options =  array( "Scrollable" => "buffered" );
+							$exec = sqlsrv_query( $conn, $query, $params, $options) or die( print_r( sqlsrv_errors(), true));
+							$numrows = sqlsrv_num_rows($exec);
 							$no = 0;
+							$j = 0;
 							while($data = sqlsrv_fetch_array($exec)){
 								$no++;
 								if($data['PRIORITY_ID'] == NULL){
@@ -130,7 +178,7 @@ if(isset($_POST{'branchID'])){
 							<td style="vertical-align:middle;"><?php echo $data['KELURAHAN'];?></td>
 							<td style="vertical-align:middle;"><?php echo $data['PRIORITY_DESC'];?></td>
 							<td style="vertical-align:middle;">
-								<select class="form-control" name="days">
+								<select class="form-control" name="days[<?php echo $j;?>]">
 									<option value="" <?php echo $selected;?>>PILIH</option>
 									<option value="1" <?php echo $senin;?>>SENIN</option>
 									<option value="2" <?php echo $selasa;?>>SELASA</option>
@@ -141,14 +189,16 @@ if(isset($_POST{'branchID'])){
 								</select>
 							</td>
 						</tr>
-						<input type="hidden" name="branchID" value="<?php echo $data['BRANCH_ID'];?>">
-						<input type="hidden" name="mAreaColID" value="<?php echo $data['M_AREA_COLL_ID'];?>">
-						<input type="hidden" name="kecamatan" value="<?php echo $data['KECAMATAN'];?>">
-						<input type="hidden" name="kelurahan" value="<?php echo $data['KELURAHAN'];?>">
-						<?php }?>					
+						
+						<input type="hidden" name="branchID[<?php echo $j;?>]" value="<?php echo $data['BRANCH_ID'];?>">
+						<input type="hidden" name="mAreaColID[<?php echo $j;?>]" value="<?php echo $data['M_AREA_COLL_ID'];?>">
+						<input type="hidden" name="userID[<?php echo $j;?>]" value="<?php echo $sid;?>">
+								
+						<?php $j++; }?>					
 					</tbody>
 				</table>
 				<br>
+				<input type="hidden" name="numrows" value="<?php echo $numrows;?>">
 				<input type="submit" class="btn btn-primary" name="submit" value="UPDATE" style="width:100%;">
 			</form>
 		</div>

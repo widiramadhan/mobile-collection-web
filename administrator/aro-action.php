@@ -4,7 +4,63 @@
 <?php
 require_once("../config/connection.php");
 $action = $_GET['action'];
-if($action == 'save'){
+	if($action == 'insert'){
+	$branchID = $_POST['branchID'];
+	$userid = $_POST['userid'];
+	$m_coll_area_id = $_POST['mAreaColID'];
+	$selectedId = count($m_coll_area_id);
+	$hari = $_POST['days'];
+	$selectedDays = count($hari);
+	for($x=0;$x<$selectedDays;$x++){
+	for($y=0;$y<$selectedId;$y++){
+
+	
+	$callInsert = "{call SP_INSERT_DKH_PRIORITY_BY_DAYS(?,?,?,?)}";
+	$paramInsert = array(
+						array($branchID, SQLSRV_PARAM_IN),
+						array($m_coll_area_id[$y], SQLSRV_PARAM_IN),
+						array($hari[$x], SQLSRV_PARAM_IN),
+						array($userid, SQLSRV_PARAM_IN)
+					); 
+	$execInsert = sqlsrv_query( $conn, $callInsert, $paramInsert) or die( print_r( sqlsrv_errors(), true));
+	if($execInsert){
+	
+	echo '<script>
+				setTimeout(function() {
+					swal({
+						title : "Success",
+						text : "Successfully update data",
+						type: "success",
+						timer: 2000,
+						showConfirmButton: false
+					});  
+				},10); 
+					window.setTimeout(function(){ 
+						window.location.replace("index.php?page=aro-priority1");
+					} ,2000); 
+			  </script>';
+	}else{
+		echo '<script>
+				setTimeout(function() {
+					swal({
+						title : "Error",
+						text : "Failed update data",
+						type: "error",
+						timer: 2000,
+						showConfirmButton: false
+					});  
+				},10); 
+					window.setTimeout(function(){ 
+						history.back();
+					} ,2000); 
+			  </script>';
+		 }
+	}
+	}
+}
+
+
+else if($action == 'save'){
 	$branch = $_POST['branch'];
 	$coll_id = $_POST['coll_id'];
 	$days = $_POST['days'];
@@ -48,5 +104,59 @@ if($action == 'save'){
 					} ,2000); 
 			  </script>';
 	}	
+}else if($action == 'insertNew'){
+	$no_array = 0;
+	foreach($_POST['branchID'] as $k){
+		if(!empty($k)){
+			$branchid = $_POST['branchID'][$no_array];
+			$colid = $_POST['mAreaColID'][$no_array];
+			$days = $_POST['days'][$no_array];
+			$userid = $_POST['userID'][$no_array];
+			$callInsert = "{call SP_INSERT_DKH_PRIORITY_BY_DAYS(?,?,?,?)}";
+	$paramInsert = array(
+						array($branchid, SQLSRV_PARAM_IN),
+						array($colid, SQLSRV_PARAM_IN),
+						array($days, SQLSRV_PARAM_IN),
+						array($userid, SQLSRV_PARAM_IN)
+					); 
+	$execInsert = sqlsrv_query( $conn, $callInsert, $paramInsert) or die( print_r( sqlsrv_errors(), true));
+	if($execInsert){
+	
+	echo '<script>
+				setTimeout(function() {
+					swal({
+						title : "Success",
+						text : "Successfully update data",
+						type: "success",
+						timer: 2000,
+						showConfirmButton: false
+					});  
+				},10); 
+					window.setTimeout(function(){ 
+						window.location.replace("index.php?page=aro-priority");
+					} ,2000); 
+			  </script>';
+	}else{
+		echo '<script>
+				setTimeout(function() {
+					swal({
+						title : "Error",
+						text : "Failed update data",
+						type: "error",
+						timer: 2000,
+						showConfirmButton: false
+					});  
+				},10); 
+					window.setTimeout(function(){ 
+						history.back();
+					} ,2000); 
+			  </script>';
+		 }
+
+			//$this->M_insert->insert_looping($branchid, $colid, $keca, $kelu, $days);
+			//echo $branchid.", ".$colid.", ".$days."<br>";
+		}
+		$no_array++;
+	}
 }
 ?>
