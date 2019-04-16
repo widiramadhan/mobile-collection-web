@@ -66,7 +66,7 @@
 					</div>
 				</div>
 				<hr style="margin-bottom:10px;">
-				<a href="index.php?page=approval-dkh" style="font-size:12px;text-decoration:none;">Lihat Detail <i class="fa fa-arrow-alt-circle-right"></i></a>
+				<a href="index.php?page=collector-assignment" style="font-size:12px;text-decoration:none;">Lihat Detail <i class="fa fa-arrow-alt-circle-right"></i></a>
 			</div>
 		</div>
 	</div>

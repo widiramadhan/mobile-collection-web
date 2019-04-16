@@ -67,10 +67,11 @@ $row1 = sqlsrv_fetch_array($ex1);
 				<h6 class="m-0 font-weight-bold text-primary">Ubah data profile</h6>
 			</div>
 			<div class="card-body">
-				<form method="post" action="">
+				<form method="post" action="update-aro.php?action=update">
 					<div class="form-group">
 						<label>NIK</label>
 						<input type="text" class="form-control" name="nik" disabled value="<?php echo $row['EMP_NO'];?>">
+						<input type="hidden" class="form-control" name="emp_no"  value="<?php echo $row['EMP_NO'];?>">
 					</div>
 					<div class="form-group">
 						<label>Username</label>
@@ -78,7 +79,7 @@ $row1 = sqlsrv_fetch_array($ex1);
 					</div>
 					<div class="form-group">
 						<label>Branch</label>
-						<input type="text" class="form-control" name="username" disabled value="<?php echo $data['OFFICE_NAME'];?>">
+						<input type="text" class="form-control" name="branch" disabled value="<?php echo $data['OFFICE_NAME'];?>">
 					</div>
 					<div class="form-group">
 						<label>Nama Lengkap</label>

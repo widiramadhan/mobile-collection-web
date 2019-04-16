@@ -52,7 +52,7 @@ if($numrows == 0){
 	<div class="col-md-9">
 		<div class="card shadow mb-12">
 			<div class="card-header py-3">
-				<h6 class="m-0 font-weight-bold text-primary">Ubah Data Profile</h6>
+				<h6 class="m-0 font-weight-bold text-primary">Data Profile</h6>
 			</div>
 			<div class="card-body">
 				<form method="post" action="">
@@ -70,9 +70,9 @@ if($numrows == 0){
 					</div>
 					<div class="form-group">
 						<label>Nama Lengkap</label>
-						<input type="text" class="form-control" name="nama" value="<?php echo $row['NAMA_KOSTUMER'];?>">
+						<input type="text" class="form-control" name="nama" disabled value="<?php echo $row['NAMA_KOSTUMER'];?>">
 					</div>
-					<input type="submit" name="submit" value="Update" class="btn btn-primary" style="width:100%;">
+				
 				</form>
 			</div>
 		</div>
