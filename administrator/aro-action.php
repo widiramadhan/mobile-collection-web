@@ -114,30 +114,26 @@ else if($action == 'save'){
 			$kecamatan = $_POST['kecamatan'][$no_array];
 			$kelurahan = $_POST['kelurahan'][$no_array];
 			$userid = $_POST['userID'][$no_array];
+			$priorityid = $_POST['priorityID'][$no_array];
 			
-			
-			$call = "{call SP_GET_PRIORITY_DAYS_ROWS(?,?,?,?)}"; 
+			$call = "{call SP_GET_PRIORITY_NUM_ROWS(?,?)}"; 
 			$param = array(array($branchid, SQLSRV_PARAM_IN),
-						   array($colid, SQLSRV_PARAM_IN),
-						   array($kecamatan, SQLSRV_PARAM_IN),
-						   array($kelurahan, SQLSRV_PARAM_IN),
+						   array($colid, SQLSRV_PARAM_IN)
 						   );
 			$options =  array( "Scrollable" => "buffered" );
 			$ex = sqlsrv_query($conn, $call, $param, $options) or die( print_r( sqlsrv_errors(), true));
 					
 			$ketemu = sqlsrv_num_rows($ex);
-			if($ketemu == 0){
+			if($ketemu > 0){
 				
-						$callInsert = "{call SP_INSERT_DKH_PRIORITY_BY_DAYS(?,?,?,?)}";
-						$paramInsert = array(
-											array($branchid, SQLSRV_PARAM_IN),
-											array($colid, SQLSRV_PARAM_IN),
+						$callUpdate = "{call SP_UPDATE_DKH_PRIORITY_BY_DAYS(?,?)}";
+						$paramUpdate  = array(
 											array($days, SQLSRV_PARAM_IN),
-											array($userid, SQLSRV_PARAM_IN)
+											array($priorityid, SQLSRV_PARAM_IN)
 											); 
-						$execInsert = sqlsrv_query( $conn, $callInsert, $paramInsert, $options) or die( print_r( sqlsrv_errors(), true));
+						$execUpdate = sqlsrv_query( $conn, $callUpdate, $paramUpdate ) or die( print_r( sqlsrv_errors(), true));
 						
-						if($execInsert){
+						if($execUpdate){
 						
 						echo '<script>
 									setTimeout(function() {
@@ -170,12 +166,50 @@ else if($action == 'save'){
 								  </script>';
 							 }
 				
-		
-
-		
-		
+						
 				}else{
-							
+						$callInsert = "{call SP_INSERT_DKH_PRIORITY_BY_DAYS(?,?,?,?)}";
+						$paramInsert = array(
+											array($branchid, SQLSRV_PARAM_IN),
+											array($colid, SQLSRV_PARAM_IN),
+											array($days, SQLSRV_PARAM_IN),
+											array($userid, SQLSRV_PARAM_IN)
+											); 
+						$execInsert = sqlsrv_query( $conn, $callInsert, $paramInsert) or die( print_r( sqlsrv_errors(), true));
+						
+						if($execInsert){
+						
+						echo '<script>
+									setTimeout(function() {
+										swal({
+											title : "Success",
+											text : "Successfully insert data",
+											type: "success",
+											timer: 2000,
+											showConfirmButton: false
+										});  
+									},10); 
+										window.setTimeout(function(){ 
+											window.location.replace("index.php?page=aro-priority");
+										} ,2000); 
+								  </script>';
+						}else{
+							echo '<script>
+									setTimeout(function() {
+										swal({
+											title : "Error",
+											text : "Failed insert data",
+											type: "error",
+											timer: 2000,
+											showConfirmButton: false
+										});  
+									},10); 
+										window.setTimeout(function(){ 
+											history.back();
+										} ,2000); 
+								  </script>';
+							 }
+						
 							
 							
 							
@@ -192,6 +226,5 @@ else if($action == 'save'){
 				}
 				$no_array++;
 			}
-			
-}
+}	
 ?>

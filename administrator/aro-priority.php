@@ -101,6 +101,7 @@ if(isset($_POST['submit'])){
 						</tr>
 					</thead>
 					<tbody>
+						
 						<?php
 							$query = "{call SP_GET_KELURAHAN_BY_CONTRACT_ID(?)}";
 							$params = array(array($bid, SQLSRV_PARAM_IN));
@@ -189,7 +190,7 @@ if(isset($_POST['submit'])){
 								</select>
 							</td>
 						</tr>
-						
+						<input type="hidden" name="priorityID[<?php echo $j;?>]" value="<?php echo $data['M_AREA_COLL_PRIORITY_ID'];?>">
 						<input type="hidden" name="branchID[<?php echo $j;?>]" value="<?php echo $data['BRANCH_ID'];?>">
 						<input type="hidden" name="mAreaColID[<?php echo $j;?>]" value="<?php echo $data['M_AREA_COLL_ID'];?>">
 						<input type="hidden" name="userID[<?php echo $j;?>]" value="<?php echo $sid;?>">
@@ -200,7 +201,7 @@ if(isset($_POST['submit'])){
 					</tbody>
 				</table>
 				<br>
-				<input type="hidden" name="numrows" value="<?php echo $numrows;?>">
+				<input type="text" name="numrows" value="<?php echo $numrows;?>">
 				<input type="submit" class="btn btn-primary" name="submit" value="UPDATE" style="width:100%;">
 			</form>
 		</div>
