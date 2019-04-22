@@ -201,7 +201,7 @@ if(isset($_POST['submit'])){
 					</tbody>
 				</table>
 				<br>
-				<input type="text" name="numrows" value="<?php echo $numrows;?>">
+				<input type="hidden" name="numrows" value="<?php echo $numrows;?>">
 				<input type="submit" class="btn btn-primary" name="submit" value="UPDATE" style="width:100%;">
 			</form>
 		</div>
