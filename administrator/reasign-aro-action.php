@@ -12,7 +12,6 @@ if ($action == 'save'){
 	for($x=0;$x<$selectedAro;$x++){
 	$queryUpdate = "{call SP_UPDATE_RE_ASIGN_ARO(?,?,?)}"; 
 	$parameterUpdate = array(
-					
 					array($branchid, SQLSRV_PARAM_IN),
 					array($aro[$x], SQLSRV_PARAM_IN),
 					array($col, SQLSRV_PARAM_IN)
@@ -38,7 +37,7 @@ if ($action == 'save'){
 				setTimeout(function() {
 					swal({
 						title : "Error",
-						text : "Failed saved data",
+						text : "Please Select Your Check Box",
 						type: "error",
 						timer: 2000,
 						showConfirmButton: false
@@ -48,7 +47,8 @@ if ($action == 'save'){
 						history.back();
 					} ,2000); 
 			  </script>';
-		}	
+		}
+
 	}
 }
 

@@ -30,7 +30,7 @@
 					?>
                     <tr>
 					
-					  <td style="vertical-align:middle;text-align:center;"><input type="checkbox" name="aro[]" id="aro[]" value="<?php echo $data['AGING_COLLECTED_ID'];?>">
+					  <td style="vertical-align:middle;text-align:center;"><input type="checkbox" class="aroClass" name="aro[]" id="aro[]" value="<?php echo $data['AGING_COLLECTED_ID'];?>">
 					  <td style="vertical-align:middle;"><?php echo $data['EMP_ID'];?></td>
                       <td style="vertical-align:middle;"><?php echo $data['NOMOR_KONTRAK'];?></td>
 					  <td style="vertical-align:middle;"><?php echo $data['NAMA_KOSTUMER'];?></td>
@@ -62,7 +62,7 @@
 							?>
 				    </select><br>
 					<input type="hidden" name="branchid" id="branchid" value="<?php echo $bid;?>">
-					<button type="submit" class="btn btn-primary" style="width:50%;">Update</button>
+					<button type="submit" class="btn btn-primary"  id="submitaro" disabled="true" style="width:50%;">Update</button>
 			</form>
 			</div>
 		</div>
@@ -77,6 +77,21 @@ $(document).ready(function() {
     var table= $(e.target).closest('table');
     $('td input:checkbox',table).prop('checked',this.checked);
 	});
+	
+	
+	
+	$(function(){
+    var checkboxes = $(':checkbox:not(#aro)').click(function(event){
+        $('#submitaro').prop("disabled", checkboxes.filter(':checked').length == 0);
+    });
+    
+    $('#aro').click(function(event) {   
+        checkboxes.prop('checked', this.checked);
+        $('#submitaro').prop("disabled", !this.checked)
+    });
+});
+	
+
 	
 } );
 </script>
