@@ -86,7 +86,7 @@ $data = sqlsrv_fetch_array( $execGetLogin, SQLSRV_FETCH_ASSOC);
 			</li>
 			<li class="nav-item">
 				<a class="nav-link" href="index.php?page=aro-priority">
-					<i class="fa fa-edit"></i>
+					<i class="fa fa-cog"></i>
 					<span>Setting ARO Mapping Priority</span>
 				</a>
 			</li>

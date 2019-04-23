@@ -71,15 +71,7 @@
 <script src="vendor/jquery/jquery.min.js"></script>
 <script>
 $(document).ready(function() {
-	$('#dataTables').DataTable();
-	
-	$('#selectAll').click(function(e){
-    var table= $(e.target).closest('table');
-    $('td input:checkbox',table).prop('checked',this.checked);
-	});
-	
-	
-	
+
 	$(function(){
     var checkboxes = $(':checkbox:not(#aro)').click(function(event){
         $('#submitaro').prop("disabled", checkboxes.filter(':checked').length == 0);
@@ -90,6 +82,22 @@ $(document).ready(function() {
         $('#submitaro').prop("disabled", !this.checked)
     });
 });
+	oTableStaticFlow = $('#dataTables').DataTable({
+    "aoColumnDefs": [{
+        'bSortable': false,
+        'aTargets': [0]
+    }],
+});
+
+	$("#selectAll").click(function () {
+    var cells = oTableStaticFlow.column(0).nodes(), // Cells from 1st column
+        state = this.checked;
+
+    for (var i = 0; i < cells.length; i += 1) {
+        cells[i].querySelector("input[type='checkbox']").checked = state;
+    }
+});
+	
 	
 
 	
