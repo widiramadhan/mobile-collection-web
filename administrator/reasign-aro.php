@@ -97,6 +97,8 @@ $(document).ready(function() {
         cells[i].querySelector("input[type='checkbox']").checked = state;
     }
 });
+
+
 	
 	
 
