@@ -151,7 +151,7 @@ if(isset($_POST['submit_col'])){
 						<input type="hidden" id="branch" name="branch" value="<?php echo $branch; ?>" >
 						<input type="hidden" id="pic" name="pic" value="<?php echo $pic; ?>">
 						<input type="hidden" id="bm" name="bm" value="<?php echo $sid; ?>">
-						<button type="submit" class="btn btn-primary" style="width:100%;" <?php echo $disable;?>>ASSIGN</button>
+						<button type="submit" class="btn btn-primary" style="width:100%;" <?php echo $disable;?>>APPROVE</button>
 					</form>
 				</div>
 			</div>
