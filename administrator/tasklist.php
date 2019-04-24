@@ -137,6 +137,8 @@ if(isset($_POST['submit_col'])){
 								<th>Total Pembayaran</th>
 								<th>Tgl Janji Bayar</th>
 								<th>Status</th>
+								<th>Action
+								</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -221,6 +223,9 @@ if(isset($_POST['submit_col'])){
 										}
 									?>
 								</td>
+								  <td style="vertical-align:middle;text-align:center">
+								  <a href="index.php?page=approve&id=<?php echo $dataDKHC['NOMOR_KONTRAK'];?>" class="btn btn-primary btn-sm"><i class="fa fa-search"></i>Cancel Approve</a>
+								  </td>
 							</tr>
 							<?php } ?>
 						</tbody>

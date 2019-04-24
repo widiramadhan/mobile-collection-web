@@ -19,6 +19,8 @@ $paramsGetLogin = array(array($sid, SQLSRV_PARAM_IN),array($bid, SQLSRV_PARAM_IN
 $execGetLogin = sqlsrv_query( $conn, $callSPGetLogin, $paramsGetLogin) or die( print_r( sqlsrv_errors(), true)); 
 $data = sqlsrv_fetch_array( $execGetLogin, SQLSRV_FETCH_ASSOC);
 //===== END GET LOGIN =====//
+
+$branchType=substr($bid,0,2);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -62,6 +64,23 @@ $data = sqlsrv_fetch_array( $execGetLogin, SQLSRV_FETCH_ASSOC);
 					<span>Approval DKH</span>
 				</a>
 			</li>
+			<?php 
+			if ($branchType == "15"){
+				
+			?>
+			<li class="nav-item">
+				<a class="nav-link" href="index.php?page=aro-priority">
+					<i class="fa fa-cog"></i>
+					<span>ARO Priority</span>
+				</a>
+			</li>
+			<?php } ?>
+			<li class="nav-item">
+				<a class="nav-link" href="index.php?page=reasign-aro">
+					<i class="fa fa-random" aria-hidden="true"></i>
+					<span>Re-Approve ARO</span>
+				</a>
+			</li>
 			<hr class="sidebar-divider">
 			<div class="sidebar-heading">
 				AR Officer
@@ -82,19 +101,6 @@ $data = sqlsrv_fetch_array( $execGetLogin, SQLSRV_FETCH_ASSOC);
 				<a class="nav-link" href="index.php?page=tasklist">
 					<i class="fa fa-edit"></i>
 					<span>Tasklist ARO</span>
-				</a>
-			</li>
-			<li class="nav-item">
-				<a class="nav-link" href="index.php?page=aro-priority">
-					<i class="fa fa-cog"></i>
-					<span>Setting ARO Mapping Priority</span>
-				</a>
-			</li>
-			
-			<li class="nav-item">
-				<a class="nav-link" href="index.php?page=reasign-aro">
-					<i class="fa fa-random" aria-hidden="true"></i>
-					<span>Reasign ARO</span>
 				</a>
 			</li>
 		
