@@ -18,6 +18,12 @@ $callSPGetLogin = "{call SP_GET_USER_LOGIN(?,?)}";
 $paramsGetLogin = array(array($sid, SQLSRV_PARAM_IN),array($bid, SQLSRV_PARAM_IN));  
 $execGetLogin = sqlsrv_query( $conn, $callSPGetLogin, $paramsGetLogin) or die( print_r( sqlsrv_errors(), true)); 
 $data = sqlsrv_fetch_array( $execGetLogin, SQLSRV_FETCH_ASSOC);
+
+$query = "{call SP_GET_AGING_COLLECTED(?)}";
+$params = array(array($bid, SQLSRV_PARAM_IN),);  
+$execs = sqlsrv_query( $conn, $query, $params) or die( print_r( sqlsrv_errors(), true));
+$data1 = sqlsrv_fetch_array( $execs, SQLSRV_FETCH_ASSOC);
+
 //===== END GET LOGIN =====//
 
 $branchType=substr($bid,0,2);
@@ -112,6 +118,7 @@ $branchType=substr($bid,0,2);
 				<a class="nav-link" href="index.php?page=list-customer">
 					<i class="fa fa-users"></i>
 					<span>List Customer</span>
+					<input type="hidden" value="<?php echo $data1['PERIOD'];?>">
 				</a>
 			</li>
 			<li class="nav-item">

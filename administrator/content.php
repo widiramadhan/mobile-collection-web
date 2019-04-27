@@ -87,6 +87,14 @@ switch ($current_page) {
 	require_once('reasign-aro.php');
 	break;
 	
+	case 'tasklist1':
+	require_once('tasklist1.php');
+	break;
+	
+	case 'detail-tasklist':
+	require_once('detail-tasklist.php');
+	break;
+	
 	default:
 	require_once('home.php');
 }
