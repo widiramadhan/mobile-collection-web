@@ -13,26 +13,29 @@ if(isset($_POST['submit_col'])){
 					text: "Mohon pilih nama collector",
 					type: "error"
 				}, function() {
-					window.location.replace("index.php?page=collector-assignment");
+					window.location.replace("index.php?page=tasklist");
 				});
 			}, 0);
 		</script>';
 		$branch = $_POST['branch'];
 		$pic = $_POST['col'];
 		
-		$callDKHC = "{call SP_GET_DKH(?,?)}"; 
-		$paramsDKHC = array(array('', SQLSRV_PARAM_IN),array('', SQLSRV_PARAM_IN));  
+		$callDKHC = "{call DASHBOARD_COUNT_DATA_BY_ARO(?,?,?)}"; 
+		$paramsDKHC = array(array('', SQLSRV_PARAM_IN),array('', SQLSRV_PARAM_IN),array('', SQLSRV_PARAM_IN));  
 		$execDKHC = sqlsrv_query( $conn, $callDKHC, $paramsDKHC) or die( print_r( sqlsrv_errors(), true));
 		$disable="disabled";
 	}else{
 		$branch = $_POST['branch'];
 		$pic = $_POST['col'];
 		
-		$callDKHC = "{call SP_GET_DKH(?,?)}"; 
-		$options =  array( "Scrollable" => "buffered" );
-		$paramsDKHC = array(array($_POST['branch'], SQLSRV_PARAM_IN),array($_POST['col'], SQLSRV_PARAM_IN));  
-		$execDKHC = sqlsrv_query( $conn, $callDKHC, $paramsDKHC, $options) or die( print_r( sqlsrv_errors(), true));
-		
+		$callDKHC = "{call DASHBOARD_COUNT_DATA_BY_ARO(?,?,?)}"; 
+		$options =  array( "Scrollable" => "buffered" );	
+		$paramsDKHC = array(array($branchHistory, SQLSRV_PARAM_IN),
+							array($picHistory,SQLSRV_PARAM_IN),
+							array($data1['PERIOD'],SQLSRV_PARAM_IN));
+								
+		$execDKHC = sqlsrv_query( $conn, $callDKHC, $paramsDKHC,$options) or die( print_r( sqlsrv_errors(), true));
+			
 		$numrows=sqlsrv_num_rows($execDKHC);
 		if($numrows == 0){
 			$disable="disabled";
@@ -40,9 +43,10 @@ if(isset($_POST['submit_col'])){
 			$disable="";
 		}
 	}
+	
 }else{
-	$callDKHC = "{call SP_GET_DKH(?,?)}"; 
-	$paramsDKHC = array(array('', SQLSRV_PARAM_IN),array('', SQLSRV_PARAM_IN));  
+	$callDKHC = "{call DASHBOARD_COUNT_DATA_BY_ARO(?,?,?)}"; 
+	$paramsDKHC = array(array('', SQLSRV_PARAM_IN),array('', SQLSRV_PARAM_IN),array('', SQLSRV_PARAM_IN));  
 	$execDKHC = sqlsrv_query( $conn, $callDKHC, $paramsDKHC) or die( print_r( sqlsrv_errors(), true));	
 	
 	$branch = "";
@@ -99,8 +103,8 @@ if(isset($_POST['submit_col'])){
 													$execCol = sqlsrv_query( $conn, $callCol, $paramsCol) or die( print_r( sqlsrv_errors(), true));								
 													$dataCol = sqlsrv_fetch_array($execCol);
 										?>
-										<input type="text" id="col1" name="col1" disabled style="width:100%;" value="<?php echo $picHistory.' - '.strtoupper($dataCol['EMP_NAME']);?>"  >
-										<input type="hidden" id="col" name="col" disabled style="width:100%;" value="<?php echo $picHistory;?>"  >
+										<input type="text" id="col1" name="col1" disabled style="width:100%;" value="<?php echo $picHistory;?>"  >
+										<input type="hidden" id="col" name="col"  style="width:100%;" value="<?php echo $picHistory;?>"  >
 									</div>
 								</div>
 							 <div class="col-md-3">
@@ -167,85 +171,14 @@ if(isset($_POST['submit_col'])){
 								$no=0;
 								while($dataDKHC = sqlsrv_fetch_array($execDKHC)){
 									$no++;
-									$queryResult = "{call SP_GET_RESULT(?,?)}";
-									$paramsResult = array(array($bid, SQLSRV_PARAM_IN),array($dataDKHC['NOMOR_KONTRAK'], SQLSRV_PARAM_IN));  
-									$optionsResult =  array( "Scrollable" => "buffered" );
-									$execResult = sqlsrv_query( $conn, $queryResult, $paramsResult, $optionsResult) or die( print_r( sqlsrv_errors(), true));
-									$numrowsResult=sqlsrv_num_rows($execResult);
-									if($numrowsResult <>0){
-										while($dataresult = sqlsrv_fetch_array($execResult)){
-											$quest = $dataresult['QUESTION'];
-											if($quest == "MS_Q20190226172031880"){$meetup = $dataresult['ANSWER'];}
-											if($quest == "MS_Q20190226172302530"){$contactPerson = $dataresult['ANSWER'];}
-											if($quest == "MS_Q20190226172325360"){$hubunganKontak = $dataresult['ANSWER'];}
-											if($quest == "MS_Q20190226172343540"){$addres = $dataresult['ANSWER'];}
-											if($quest == "MS_Q20190226172405297"){$addresQuestion = $dataresult['ANSWER'];}
-											if($quest == "MS_Q20190226172432320"){$addresNew =$dataresult['ANSWER'];}
-											if($quest == "MS_Q20190226172447930"){$unit = $dataresult['ANSWER'];}
-											if($quest == "MS_Q20190226172517357"){$customerPay = $dataresult['ANSWER'];}
-											if($quest == "MS_Q20190226172558067"){$latPayLocation = $dataresult['ANSWER'];}
-											if($quest == "MS_Q20190226172603397"){$longPayLocation = $dataresult['ANSWER'];}
-											if($quest == "MS_Q20190226172624710"){$latLocationMeet = $dataresult['ANSWER'];}
-											if($quest == "MS_Q20190226172628683"){$longLocationMeet = $dataresult['ANSWER'];}
-											if($quest == "MS_Q20190226172644783"){$acceptAmount = $dataresult['ANSWER'];}
-											if($quest == "MS_Q20190226172753329"){$imagesPayLocation = $dataresult['ANSWER'];}
-											if($quest == "MS_Q20190226172753330"){$imagesPayMeet = $dataresult['ANSWER'];}
-											if($quest == "MS_Q20190226172810420"){$promiseDate = $dataresult['ANSWER'];}
-											if($quest == "MS_Q20190226172818070"){$result = $dataresult['ANSWER'];}
-										}	
-									}else{
-										$meetup="";
-										$customerPay="";
-										$acceptAmount="";
-										$promiseDate="";
-									}
+							
 							?>
 							<tr>
 								<td><?php echo $no;?></td>
-								<td><?php echo $dataDKHC['NOMOR_KONTRAK'];?></td>
-								<td style="text-align:left;"><?php echo $dataDKHC['NAMA_KOSTUMER'];?></td>
-								<td><?php  if(is_null($dataDKHC['TANGGAL_JATUH_TEMPO'])){echo"";} else if($dataDKHC['TANGGAL_JATUH_TEMPO']->format('Y-m-d')=='1970-01-01'){echo"";}else echo $dataDKHC['TANGGAL_JATUH_TEMPO']->format('Y-m-d');?></td>
-								<td style="text-align:right">Rp. <?php echo number_format($dataDKHC['TOTAL_TAGIHAN'],0,',','.');?></td>
+								
+								<td style="text-align:left;"><?php echo $dataDKHC['EMP_NAME'];?></td>
 								<td style="text-align:right"><?php if($acceptAmount <> "" || $acceptAmount <> NULL){ echo "Rp. ".number_format($acceptAmount,0,',','.');}?></td>
-								<td>
-									<?php 	
-										if($meetup == "Ya, bertemu dengan customer"){
-											if($promiseDate <> NULL || $promiseDate <> "" || date("Y-m-d", strtotime($promiseDate)) <> "1970-01-01"){
-												echo date("Y-m-d", strtotime($promiseDate));
-											}
-										}else if($meetup == "Tidak, bertemu dengan orang lain"){
-											if($promiseDate <> NULL || $promiseDate <> "" || date("Y-m-d", strtotime($promiseDate)) <> "1970-01-01"){
-												echo date("Y-m-d", strtotime($promiseDate));
-											}
-										}
-									?>
-								</td>
-								<td>
-									<?php
-										if($meetup == "Ya, bertemu dengan customer"){
-											if($promiseDate <> NULL || $promiseDate <> "" || date("Y-m-d", strtotime($promiseDate)) <> "1970-01-01"){
-												echo'<span class="badge badge-pill badge-success">Janji bayar</span>';
-											}else if($customerPay == "Ya"){
-												echo'<span class="badge badge-pill badge-primary">Customer membayar</span>';
-											}else{
-												echo"aaa";
-											}
-										}else if($meetup == "Tidak, bertemu dengan orang lain"){
-											if($promiseDate <> NULL || $promiseDate <> "" || date("Y-m-d", strtotime($promiseDate)) <> "1970-01-01"){
-												echo'<span class="badge badge-pill badge-success">Janji bayar</span>';
-											}else if($customerPay == "Ya"){
-												echo'<span class="badge badge-pill badge-primary">Customer membayar</span>';
-											}else{
-												echo"aaa";
-											}
-										}else{
-											echo'<span class="badge badge-pill badge-danger">Belum dikunjungi</span>';
-										}
-									?>
-								</td>
-								  <td style="vertical-align:middle;text-align:center">
-								  <a href="index.php?page=approve&id=<?php echo $dataDKHC['NOMOR_KONTRAK'];?>" class="btn btn-primary btn-sm"><i class="fa fa-times"></i> Cancel Approve</a>
-								  </td>
+								
 							</tr>
 							<?php } ?>
 						</tbody>

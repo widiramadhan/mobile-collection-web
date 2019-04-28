@@ -43,7 +43,8 @@ $branchType=substr($bid,0,2);
   <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
   <link rel="stylesheet" href="vendor/sweetalert/sweetalert.min.css">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/css/bootstrap-datepicker.min.css" rel="stylesheet"/>
-  
+  <link href="vendor/datepicker/css/bootstrap-datepicker">
+  <link href="vendor/datepicker/css/bootstrap-datepicker.min"></script>
 	<script src="vendor/jquery/jquery.min.js"></script>
 </head>
 
@@ -185,7 +186,8 @@ $branchType=substr($bid,0,2);
 <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
 <script src="assets/js/demo/datatables-demo.js"></script>
 <script src="vendor/sweetalert/sweetalert.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.min.js"></script>
+<script src="vendor/datepicker/js/bootstrap-datepicker.min"></script>
+
 </body>
 
 </html>
