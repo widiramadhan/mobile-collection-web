@@ -52,13 +52,16 @@
 					<div class="col mr-2">
 						<div class="text-xs font-weight-bold text-primary text-uppercase mb-1">AR Officer in Branch</div>
 						<div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $data2['TOTAL_ARO'];?> AR Officer</div>
+						&nbsp;</br>
+						&nbsp;</br>
+						&nbsp;</br>
 					</div>
 					<div class="col-auto">
 						<i class="fas fa-users fa-2x text-gray-300"></i>
 					</div>
 				</div>
-				<hr style="margin-bottom:60px;">
-				<a href="index.php?page=list-aro" style="font-size:12px;text-decoration:none;">Lihat Detail <i class="fa fa-arrow-alt-circle-right"></i></a>
+				<hr>
+				<a href="index.php?page=list-aro" style="font-size:12px;text-decoration:none;">See Detail <i class="fa fa-arrow-alt-circle-right"></i></a>
 			</div>
 		</div>
 	</div>
@@ -69,14 +72,16 @@
 					<div class="col mr-2">
 						<div class="text-xs font-weight-bold text-danger text-uppercase mb-1">Customer is Collectible in Branch</div>
 						<div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $data2['TOTAL_CUST_AVAIL_COLLECT'];?> / <?php echo $data2['TOTAL_CUST'];?> Customers</div>
-						<div style="font-size:12px;" class="font-weight-bold text-gray-600"><?php echo $data2['TOTAL_CUST_AVAIL_COLLECT'];?> Is Collectible</div>
+						<div style="font-size:12px;" class="font-weight-bold text-gray-600"><?php echo $data2['TOTAL_CUST'];?> Total Customer</div>
+						<div style="font-size:12px;" class="font-weight-bold text-gray-600"><?php echo $data2['TOTAL_CUST_AVAIL_COLLECT'];?> is Collectible</div>
+						<div style="font-size:12px;" class="font-weight-bold text-gray-600"><?php echo $data2['TOTAL_CUST']-$data2['TOTAL_CUST_AVAIL_COLLECT'];?> is Non-Collectible</div>
 					</div>
 					<div class="col-auto">
 						<i class="fas fa-user fa-2x text-gray-300"></i>
 					</div>
 				</div>
-				<hr style="margin-bottom:40px;">
-				<a href="index.php?page=list-customer" style="font-size:12px;text-decoration:none;">Lihat Detail <i class="fa fa-arrow-alt-circle-right"></i></a>
+				<hr>
+				<a href="index.php?page=list-customer" style="font-size:12px;text-decoration:none;">See Detail <i class="fa fa-arrow-alt-circle-right"></i></a>
 			</div>
 		</div>
 	</div>
@@ -85,17 +90,18 @@
 			<div class="card-body">
 				<div class="row no-gutters align-items-center">
 					<div class="col mr-2">
-						<div class="text-xs font-weight-bold text-success text-uppercase mb-1">DKH</div>
+						<div class="text-xs font-weight-bold text-success text-uppercase mb-1">Daftar Kunjungan Harian</div>
 						<div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $data2['TOTAL_DKH'];?> DKH</div>
 						<div style="font-size:12px;" class="font-weight-bold text-gray-600"><?php echo $data2['TOTAL_DKH_APV'];?> Approve</div>
-						<div style="font-size:12px;" class="font-weight-bold text-gray-600"><?php echo $data2['TOTAL_DKH_APV_YET'];?> Non Approve</div>
+						<div style="font-size:12px;" class="font-weight-bold text-gray-600"><?php echo $data2['TOTAL_DKH_APV_YET'];?> Not Approve Yet</div>
+						&nbsp;</br>
 					</div>
 					<div class="col-auto">
 						<i class="fas fa-edit fa-2x text-gray-300"></i>
 					</div>
 				</div>
-				<hr style="margin-bottom:20px;">
-				<a href="index.php?page=collector-assignment" style="font-size:12px;text-decoration:none;">Lihat Detail <i class="fa fa-arrow-alt-circle-right"></i></a>
+				<hr>
+				<a href="index.php?page=collector-assignment" style="font-size:12px;text-decoration:none;">See Detail <i class="fa fa-arrow-alt-circle-right"></i></a>
 			</div>
 		</div>
 	</div>
@@ -114,8 +120,8 @@
 						<i class="fas fa-th-large fa-2x text-gray-300"></i>
 					</div>
 				</div>
-				<hr style="margin-bottom:5px;">
-				<a href="index.php?page=visit-result" style="font-size:12px;text-decoration:none;">Lihat Detail <i class="fa fa-arrow-alt-circle-right"></i></a>
+				<hr>
+				<a href="index.php?page=visit-result" style="font-size:12px;text-decoration:none;">See Detail <i class="fa fa-arrow-alt-circle-right"></i></a>
 			</div>
 		</div>
 	</div>

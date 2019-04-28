@@ -24,19 +24,18 @@ if($numrows == 0){
 			</div>
 			<div class="card-body">
 				<div class="table-responsive">
-					<table class="table table-bordered dataTable" style="width:100%;" id="example" >
+					<table class="table table-bordered dataTable" style="width:100%;font-size:12px;" id="example" >
 						<thead>
 							<tr>
-								<th>No</th>
-								<th>No Kontrak</th>
-								<th>Nama Kostumer</th>
-								<th>Tgl Jatuh Tempo</th>
-								<th>Total Tagihan</th>
-								<th>Total Pembayaran</th>
-								<th>Tgl Janji Bayar</th>
-								<th>Status</th>
-								<th>Action
-								</th>
+								<th style="text-align:center;vertical-align:middle;">No</th>
+								<th style="text-align:center;vertical-align:middle;">No Kontrak</th>
+								<th style="text-align:center;vertical-align:middle;">Nama Kostumer</th>
+								<th style="text-align:center;vertical-align:middle;">Tgl Jatuh Tempo</th>
+								<th style="text-align:center;vertical-align:middle;">Total Tagihan</th>
+								<th style="text-align:center;vertical-align:middle;">Total Pembayaran</th>
+								<th style="text-align:center;vertical-align:middle;">Tgl Janji Bayar</th>
+								<th style="text-align:center;vertical-align:middle;">Status</th>
+								<th style="text-align:center;vertical-align:middle;">Action</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -79,13 +78,13 @@ if($numrows == 0){
 									}
 							?>
 							<tr>
-								<td><?php echo $no;?></td>
+								<td style="text-align:center;vertical-align:middle;"><?php echo $no;?></td>
 								<td><?php echo $dataDKHC['NOMOR_KONTRAK'];?></td>
 								<td style="text-align:left;"><?php echo $dataDKHC['NAMA_KOSTUMER'];?></td>
-								<td><?php  if(is_null($dataDKHC['TANGGAL_JATUH_TEMPO'])){echo"";} else if($dataDKHC['TANGGAL_JATUH_TEMPO']->format('Y-m-d')=='1970-01-01'){echo"";}else echo $dataDKHC['TANGGAL_JATUH_TEMPO']->format('Y-m-d');?></td>
+								<td style="text-align:center;vertical-align:middle;"><?php  if(is_null($dataDKHC['TANGGAL_JATUH_TEMPO'])){echo"";} else if($dataDKHC['TANGGAL_JATUH_TEMPO']->format('Y-m-d')=='1970-01-01'){echo"";}else echo $dataDKHC['TANGGAL_JATUH_TEMPO']->format('Y-m-d');?></td>
 								<td style="text-align:right">Rp. <?php echo number_format($dataDKHC['TOTAL_TAGIHAN'],0,',','.');?></td>
 								<td style="text-align:right"><?php if($acceptAmount <> "" || $acceptAmount <> NULL){ echo "Rp. ".number_format($acceptAmount,0,',','.');}?></td>
-								<td>
+								<td style="text-align:center;vertical-align:middle;">
 									<?php 	
 										if($meetup == "Ya, bertemu dengan customer"){
 											if($promiseDate <> NULL || $promiseDate <> "" || date("Y-m-d", strtotime($promiseDate)) <> "1970-01-01"){
@@ -98,7 +97,7 @@ if($numrows == 0){
 										}
 									?>
 								</td>
-								<td>
+								<td style="text-align:center;vertical-align:middle;">
 									<?php
 										if($meetup == "Ya, bertemu dengan customer"){
 											if($promiseDate <> NULL || $promiseDate <> "" || date("Y-m-d", strtotime($promiseDate)) <> "1970-01-01"){
@@ -121,9 +120,9 @@ if($numrows == 0){
 										}
 									?>
 								</td>
-								  <td style="vertical-align:middle;text-align:center">
-								  <a href="index.php?page=approve&id=<?php echo $dataDKHC['NOMOR_KONTRAK'];?>" class="btn btn-primary btn-sm"><i class="fa fa-times"></i> Cancel Approve</a>
-								  </td>
+								<td style="vertical-align:middle;text-align:center">
+									<a href="index.php?page=approve&id=<?php echo $dataDKHC['NOMOR_KONTRAK'];?>" class="btn btn-primary btn-sm"><i class="fa fa-times"></i> Cancel Approve</a>
+								</td>
 							</tr>
 							<?php } ?>
 						</tbody>
