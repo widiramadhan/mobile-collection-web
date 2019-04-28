@@ -136,7 +136,29 @@ if(isset($_POST['submit_col'])){
 			</div>
 		</div>
 	</div>
-	
+	<div class="col-md-12">
+		<div class="card shadow mb-4">
+			<div class="card-header py-3">
+				<h6 class="m-0 font-weight-bold text-primary">Summary TaskList AR OFficer</h6>
+			</div>
+			<div class="card-body">
+				<div class="table-responsive">
+					<table class="table table-bordered dataTable" style="width:100%;" id="example" >
+						<thead>
+							<tr>
+								<th>No</th>
+								<th>Collector Name</th>
+								<th>Total DKH</th>
+								<th>Total Visit</th>
+								<th>Bayar</th>
+								<th>Janji Bayar</th>
+								<th>Not Paid</th>
+								<th>Jarak</th>
+								<th>Period</th>
+								<th>Date</th>
+							</tr>
+						</thead>
+						<tbody>
 </div>
 <script src="vendor/jquery/jquery.min.js"></script>
 <script>
