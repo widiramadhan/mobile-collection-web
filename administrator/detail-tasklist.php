@@ -21,6 +21,9 @@ if($numrows == 0){
 		<div class="card shadow mb-4">
 			<div class="card-header py-3">
 				<h6 class="m-0 font-weight-bold text-primary">TaskList AR Officer</h6>
+				<div class="float-right">
+				<a href="index.php?page=aro-history&id=<?php echo $branch;?>&pic=<?php echo $pic;?>" class="btn btn-primary btn-sm"><i class="fa fa-search"></i> History</a>
+				</div>
 			</div>
 			<div class="card-body">
 				<div class="table-responsive">

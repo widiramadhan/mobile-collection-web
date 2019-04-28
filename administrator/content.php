@@ -95,6 +95,11 @@ switch ($current_page) {
 	require_once('detail-tasklist.php');
 	break;
 	
+	case 'aro-history':
+	require_once('aro-history.php');
+	break;
+	
+	
 	default:
 	require_once('home.php');
 }

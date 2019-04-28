@@ -2,6 +2,8 @@
 <link rel="stylesheet" href="vendor/sweetalert/sweetalert.min.css">
 <script src="vendor/sweetalert/sweetalert.min.js"></script>
 <?php
+$branchHistory = $_GET['id'];
+$picHistory = $_GET['pic'];
 if(isset($_POST['submit_col'])){
 	if($_POST['col'] == ""){
 		echo '<script>
@@ -73,25 +75,39 @@ if(isset($_POST['submit_col'])){
 					<div class="row">
 						<div class="col-md-12">
 							<div class="row">
-								<div class="col-md-4">
+								<div class="col-md-3">
 									<div class="form-group">
 										<label>Branch</label>
-										<select class="form-control" id="branch" name="branch">
-											<?php
-												if($data['LEVEL'] == 'SUPER ADMIN'){
-													
-												}else{
-													echo '<option value="'.$data['BRANCHID'].'" selected>'.$data['OFFICE_NAME'].'</option>';
-												}
-											?>
-										</select>
+										<?php
+											
+													$callCol = "{call SP_LOV_ARO_BY_BRANCH(?)}"; 
+													$paramsCol = array(array($data['BRANCHID'], SQLSRV_PARAM_IN));  
+													$execCol = sqlsrv_query( $conn, $callCol, $paramsCol) or die( print_r( sqlsrv_errors(), true));								
+													$dataCol = sqlsrv_fetch_array($execCol);
+										?>
+										<input type="text" id="branch1" name="branch1" disabled style="width:100%;" value="<?php echo $data['OFFICE_NAME'];?>"  >
+										<input type="hidden" id="branch" name="branch"  style="width:100%;" value="<?php echo $branchHistory;?>"  >
 									</div>
 								</div>
-								<div class="col-md-4">
+								<div class="col-md-3">
+									<div class="form-group">
+										<label>Collector Name</label><br>
+										<?php
+											
+													$callCol = "{call SP_LOV_ARO_BY_BRANCH(?)}"; 
+													$paramsCol = array(array($data['BRANCHID'], SQLSRV_PARAM_IN));  
+													$execCol = sqlsrv_query( $conn, $callCol, $paramsCol) or die( print_r( sqlsrv_errors(), true));								
+													$dataCol = sqlsrv_fetch_array($execCol);
+										?>
+										<input type="text" id="col1" name="col1" disabled style="width:100%;" value="<?php echo $picHistory.' - '.strtoupper($dataCol['EMP_NAME']);?>"  >
+										<input type="hidden" id="col" name="col" disabled style="width:100%;" value="<?php echo $picHistory;?>"  >
+									</div>
+								</div>
+							 <div class="col-md-3">
 									<div class="form-group">
 										<label>Collector Name</label>
-										<select class="form-control" id="col" name="col">
-											<option value="" selected>Pilih Collector</option>
+										<select class="form-control" id="period" name="period">
+											<option value="" selected>Period</option>
 											<?php
 												if($data['LEVEL'] == 'SUPER ADMIN'){
 													
@@ -109,7 +125,8 @@ if(isset($_POST['submit_col'])){
 										</select>
 									</div>
 								</div>
-								<div class="col-md-4">
+								
+								<div class="col-md-3">
 									<input type="submit" value="Submit" class="btn btn-primary" name="submit_col" style="margin-top:30px;">
 								</div>
 							</div>
@@ -131,13 +148,15 @@ if(isset($_POST['submit_col'])){
 						<thead>
 							<tr>
 								<th>No</th>
-								<th>No Kontrak</th>
-								<th>Nama Kostumer</th>
-								<th>Tgl Jatuh Tempo</th>
-								<th>Total Tagihan</th>
-								<th>Total Pembayaran</th>
-								<th>Tgl Janji Bayar</th>
-								<th>Status</th>
+								<th>Collector Name</th>
+								<th>Total DKH</th>
+								<th>Total Visit</th>
+								<th>Bayar</th>
+								<th>Janji Bayar</th>
+								<th>Tidak Bayar</th>
+								<th>Jarak</th>
+								<th>Period</th>
+								<th>Date</th>
 								<th>Action
 								</th>
 							</tr>

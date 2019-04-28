@@ -33,7 +33,7 @@
                       <td style="vertical-align:middle;"><?php echo $data['ALAMAT_KTP'];?></td>
 					  <td style="vertical-align:middle;"><?php echo $data['NOMOR_HANDPHONE'];?></td>
 					  <td style="vertical-align:middle;"><?php echo $data['DailyCollectibility'];?></td>
-					  <td style="vertical-align:middle;">
+					 <td style="vertical-align:middle;text-align:center">
 						<a href="index.php?page=detail-customer&id=<?php echo $data['NOMOR_KONTRAK'];?>" class="btn btn-primary btn-sm"><i class="fa fa-search"></i> Detail</a>
 					  </td>
                     </tr>
