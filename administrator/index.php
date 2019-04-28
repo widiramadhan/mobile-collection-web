@@ -42,6 +42,9 @@ $branchType=substr($bid,0,2);
   <link href="assets/css/sb-admin-2.min.css" rel="stylesheet">
   <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
   <link rel="stylesheet" href="vendor/sweetalert/sweetalert.min.css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/css/bootstrap-datepicker.min.css" rel="stylesheet"/>
+  
+	<script src="vendor/jquery/jquery.min.js"></script>
 </head>
 
 <body id="page-top">
@@ -172,7 +175,6 @@ $branchType=substr($bid,0,2);
 <a class="scroll-to-top rounded" href="#page-top">
     <i class="fas fa-angle-up"></i>
 </a>
-<script src="vendor/jquery/jquery.min.js"></script>
 <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
 <script src="assets/js/sb-admin-2.min.js"></script>
@@ -183,7 +185,7 @@ $branchType=substr($bid,0,2);
 <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
 <script src="assets/js/demo/datatables-demo.js"></script>
 <script src="vendor/sweetalert/sweetalert.min.js"></script>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.min.js"></script>
 </body>
 
 </html>
