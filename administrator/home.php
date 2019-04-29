@@ -39,6 +39,11 @@
 							   array($data1['PERIOD'], SQLSRV_PARAM_IN));  
 	$execTotalResult = sqlsrv_query( $conn, $queryTotalResult, $paramsTotalResult) or die( print_r( sqlsrv_errors(), true));
 	$data2 = sqlsrv_fetch_array( $execTotalResult, SQLSRV_FETCH_ASSOC);
+	
+	$queryAro = "{call SP_GET_TOTAL_TASKLIST_ARO(?)}";
+	$paramsAro = array(array($bid, SQLSRV_PARAM_IN));  
+	$execAro = sqlsrv_query( $conn, $queryAro, $paramsAro) or die( print_r( sqlsrv_errors(), true));
+	
 
 ?>
 <script src="vendor/highchart/jquery-3.1.1.min.js"></script>
@@ -134,6 +139,45 @@
 		</div>
 	</div>
 </div>
+<div class="row">
+	<div class="coll-md-6">
+	<div class="card shadow mb-4">
+			<div class="card-header py-3">
+				<h6 class="m-0 font-weight-bold text-primary">Aro Dashboard</h6>
+			</div>
+			<div class="card-body">
+				<div class="table-responsive">
+					<table class="table table-bordered dataTable" style="width:100%;font-size:12px;" id="dataTables" >
+						<thead>
+							<tr>
+								<th style="text-align:center;vertical-align:middle;">No</th>
+								<th style="text-align:center;vertical-align:middle;">Collector Name</th>
+								<th style="text-align:center;vertical-align:middle;">Total DKH</th>
+								<th style="text-align:center;vertical-align:middle;">Total Visit</th>
+								<th style="text-align:center;vertical-align:middle;">Total Amount</th>
+							</tr>
+						</thead>
+						<tbody>
+						<?php
+							$no=0;
+							while($dataAro = sqlsrv_fetch_array($execAro)){
+							$no++;
+						?>
+							<tr>
+								<td style="text-align:center;vertical-align:middle;"><?php echo $no;?></td>
+								<td style="text-align:center;vertical-align:middle;"><?php echo $dataAro['EMP_NAME'];?></td>
+								<td style="text-align:center;vertical-align:middle;"><?php echo $dataAro['TOTAL'];?></td>
+								<td style="text-align:center;vertical-align:middle;"><?php echo $dataAro['TOTAL_VISIT'];?></td>
+								<td style="text-align:center;vertical-align:middle;">Rp. <?php echo number_format($dataAro['TOTAL_TAGIHAN'],0,',','.');?></td>
+							</tr>
+							<?php } ?>
+					    </tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
 <!--
 <div class="row">
 	<div class="col-md-4">
@@ -175,6 +219,7 @@
 </div>-->
 <script type="text/javascript">
 $(document).ready(function() {	
+
 	var chart = Highcharts.chart('graphicResult', {
 		credits: {
 		 enabled: false
@@ -272,6 +317,12 @@ $(document).ready(function() {
 		}
 	});
 });
+</script>
+<script src="vendor/jquery/jquery.min.js"></script>
+<script>
+$(document).ready(function() {
+	$('#dataTables').DataTable();
+} );
 </script>
 
 

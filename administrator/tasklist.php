@@ -17,7 +17,7 @@ if(isset($_POST['submit_col'])){
 		</script>';
 		$branch = $_POST['branch'];
 		$pic = $_POST['col'];
-		
+		$date = $_POST['date'];
 		$callDKHC = "{call DASHBOARD_COUNT_DATA_BY_ARO(?,?,?)}"; 
 		$paramsDKHC = array(array('', SQLSRV_PARAM_IN),array('', SQLSRV_PARAM_IN),array('', SQLSRV_PARAM_IN));  
 		$execDKHC = sqlsrv_query( $conn, $callDKHC, $paramsDKHC) or die( print_r( sqlsrv_errors(), true));
@@ -25,6 +25,7 @@ if(isset($_POST['submit_col'])){
 	}else{
 		$branch = $_POST['branch'];
 		$pic = $_POST['col'];
+		$date = $_POST['date'];
 		
 		$callDKHC = "{call DASHBOARD_COUNT_DATA_BY_ARO(?,?,?)}"; 
 		$options =  array( "Scrollable" => "buffered" );	
@@ -50,6 +51,7 @@ if(isset($_POST['submit_col'])){
 	$branch = "";
 	$pic = "";
 	$disable="disabled";
+	$date = date("Y-m-d");
 }
 					
 ?>
@@ -106,8 +108,18 @@ if(isset($_POST['submit_col'])){
 									}
 								?>
 							</select>
-					</div>
+						</div>
+						<div class="form-group">
+							<label>Date </label>
+							<div class="input-group mb-3">
+								<input type="text" name="date" id="date" class="form-control" value="<?php echo $date;?>" autocomplete="off" readonly style="background-color:#FFF;cursor:pointer;">
+								<div class="input-group-append">
+									<span class="input-group-text" id="basic-addon2"><i class="fa fa-calendar"></i></span>
+								</div>
+							</div>
+						</div>
 					<div class="pull-right">
+						<input type="reset" value="Cancel" class="btn btn-danger">
 						<input type="submit" value="Submit" class="btn btn-primary" name="submit_col">
 					</div>
 				</form>
@@ -132,6 +144,7 @@ if(isset($_POST['submit_col'])){
 				<?php } ?>
 				<hr>
 				<button type="submit" class="btn btn-primary" <?php echo $disable;?> style="width:100%;">DETAIL</button>
+			
 				</form>
 			</div>
 		</div>
@@ -140,6 +153,11 @@ if(isset($_POST['submit_col'])){
 <script src="vendor/jquery/jquery.min.js"></script>
 <script>
 $(document).ready(function() {
+	$('#date').datepicker({
+		format: "yyyy-mm-dd",
+		autoclose: true,
+		endDate: new Date()
+	});
 	$('#example').DataTable({
 		"lengthMenu": [[5, 10, 25, 50, -1], [5, 10, 25, 50, "All"]],
 		"order": [[ 0, "asc" ]],
@@ -154,4 +172,6 @@ $('#selectAll').click(function(e){
     var table= $(e.target).closest('table');
     $('td input:checkbox',table).prop('checked',this.checked);
 });
+
+
 </script>
