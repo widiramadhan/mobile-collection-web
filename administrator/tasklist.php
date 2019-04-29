@@ -17,22 +17,23 @@ if(isset($_POST['submit_col'])){
 		</script>';
 		$branch = $_POST['branch'];
 		$pic = $_POST['col'];
-		$date = $_POST['date'];
-		$callDKHC = "{call DASHBOARD_COUNT_DATA_BY_ARO(?,?,?)}"; 
-		$paramsDKHC = array(array('', SQLSRV_PARAM_IN),array('', SQLSRV_PARAM_IN),array('', SQLSRV_PARAM_IN));  
+		$tgl = $_POST['tgl'];
+		
+		$callDKHC = "{call DASHBOARD_COUNT_DATA_BY_ARO_DATE(?,?,?,?)}"; 
+		$paramsDKHC = array(array('', SQLSRV_PARAM_IN),array('', SQLSRV_PARAM_IN),array('', SQLSRV_PARAM_IN),array('', SQLSRV_PARAM_IN));  
 		$execDKHC = sqlsrv_query( $conn, $callDKHC, $paramsDKHC) or die( print_r( sqlsrv_errors(), true));
 		$disable="disabled";
 	}else{
 		$branch = $_POST['branch'];
 		$pic = $_POST['col'];
-		$date = $_POST['date'];
+		$tgl = $_POST['tgl'];
 		
-		$callDKHC = "{call DASHBOARD_COUNT_DATA_BY_ARO(?,?,?)}"; 
+		$callDKHC = "{call DASHBOARD_COUNT_DATA_BY_ARO_DATE(?,?,?,?)}"; 
 		$options =  array( "Scrollable" => "buffered" );	
 		$paramsDKHC = array(array($_POST['branch'], SQLSRV_PARAM_IN),
 							array($_POST['col'],SQLSRV_PARAM_IN),
-							array($data1['PERIOD'],SQLSRV_PARAM_IN));
-								
+							array($data1['PERIOD'],SQLSRV_PARAM_IN),
+							array($tgl,SQLSRV_PARAM_IN));
 		$execDKHC = sqlsrv_query( $conn, $callDKHC, $paramsDKHC,$options) or die( print_r( sqlsrv_errors(), true));
 			
 		$numrows=sqlsrv_num_rows($execDKHC);
@@ -44,14 +45,14 @@ if(isset($_POST['submit_col'])){
 	}
 	
 }else{
-	$callDKHC = "{call DASHBOARD_COUNT_DATA_BY_ARO(?,?,?)}"; 
-	$paramsDKHC = array(array('', SQLSRV_PARAM_IN),array('', SQLSRV_PARAM_IN),array('', SQLSRV_PARAM_IN));  
+	$callDKHC = "{call DASHBOARD_COUNT_DATA_BY_ARO_DATE(?,?,?,?)}"; 
+	$paramsDKHC = array(array('', SQLSRV_PARAM_IN),array('', SQLSRV_PARAM_IN),array('', SQLSRV_PARAM_IN),array('', SQLSRV_PARAM_IN));  
 	$execDKHC = sqlsrv_query( $conn, $callDKHC, $paramsDKHC) or die( print_r( sqlsrv_errors(), true));	
 	
 	$branch = "";
 	$pic = "";
 	$disable="disabled";
-	$date = date("Y-m-d");
+	$tgl = date("Y-m-d");
 }
 					
 ?>
@@ -112,7 +113,7 @@ if(isset($_POST['submit_col'])){
 						<div class="form-group">
 							<label>Date </label>
 							<div class="input-group mb-3">
-								<input type="text" name="date" id="date" class="form-control" value="<?php echo $date;?>" autocomplete="off" readonly style="background-color:#FFF;cursor:pointer;">
+								<input type="text" name="tgl" id="tgl" class="form-control" value="<?php echo $tgl;?>" autocomplete="off" readonly style="background-color:#FFF;cursor:pointer;">
 								<div class="input-group-append">
 									<span class="input-group-text" id="basic-addon2"><i class="fa fa-calendar"></i></span>
 								</div>
@@ -153,7 +154,7 @@ if(isset($_POST['submit_col'])){
 <script src="vendor/jquery/jquery.min.js"></script>
 <script>
 $(document).ready(function() {
-	$('#date').datepicker({
+	$('#tgl').datepicker({
 		format: "yyyy-mm-dd",
 		autoclose: true,
 		endDate: new Date()

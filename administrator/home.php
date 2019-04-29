@@ -154,7 +154,7 @@
 								<th style="text-align:center;vertical-align:middle;">Collector Name</th>
 								<th style="text-align:center;vertical-align:middle;">Total DKH</th>
 								<th style="text-align:center;vertical-align:middle;">Total Visit</th>
-								<th style="text-align:center;vertical-align:middle;">Total Amount</th>
+								<th style="text-align:center;vertical-align:middle;">Total Tagihan</th>
 							</tr>
 						</thead>
 						<tbody>
