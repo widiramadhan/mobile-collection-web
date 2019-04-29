@@ -128,7 +128,45 @@ if(isset($_POST['submit_col'])){
 										<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d16327777.997882307!2d108.84189317670506!3d-2.4152622231444334!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2c4c07d7496404b7%3A0xe37b4de71badf485!2sIndonesia!5e0!3m2!1sid!2sid!4v1556436020418!5m2!1sid!2sid" width="100%" height="100%" frameborder="0" style="border:0" allowfullscreen></iframe>
 									</div>';
 							}else{
-								echo'<div id="map_tracking" style="width:100%;height:400px;"></div>';
+							?>
+								<div id="map_tracking" style="width:100%;height:400px;"></div>
+								<br>
+								<b>Detail Route</b>
+								<table class="table table-bordered">
+									<thead>
+										<tr>
+											<th>No</th>
+											<th>Contract ID</th>
+											<th>Result</th>
+											<th>Date</th>
+											<th>Action</th>
+										</tr>
+									</thead>
+									<tbody>
+										<?php
+											$query2 = "{call SP_GET_ROUTE_ARO_DETAIL(?,?)}";  
+											$params2 = array(array($pic, SQLSRV_PARAM_IN),array($date, SQLSRV_PARAM_IN));  
+											$options =  array( "Scrollable" => "buffered" );
+											$exec2 = sqlsrv_query( $conn, $query, $params, $options) or die( print_r( sqlsrv_errors(), true));
+											$no=0;
+											while($data2=sqlsrv_fetch_array($exec2)){
+												$no++;
+										?>
+										<tr>
+											<td><?php echo $no;?></td>
+											<td><?php echo $data2['CONTRACT_ID'];?></td>
+											<td><?php echo $status;?></td>
+											<td><?php echo $data2['CREATE_DATE']->format("d-m-Y H:i:s");?></td>
+											<td>
+												<a href="" class="btn btn-primary btn-sm"><i class="fa fa-eye"></i> Detail</a>
+											</td>
+										</tr>
+										<?php
+											}
+										?>
+									</tbody>
+								</table>
+							<?php
 							}
 						}
 					}else{
