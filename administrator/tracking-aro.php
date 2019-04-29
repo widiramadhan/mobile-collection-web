@@ -2,6 +2,7 @@
 <link rel="stylesheet" href="vendor/sweetalert/sweetalert.min.css">
 <script src="vendor/sweetalert/sweetalert.min.js"></script>
 <?php
+date_default_timezone_set('Asia/Jakarta');
 if(isset($_POST['submit_col'])){
 	if($_POST['col'] == ""){
 		echo '<script>

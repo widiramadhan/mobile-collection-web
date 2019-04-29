@@ -2,6 +2,7 @@
 	ini_set('memory_limit','256M'); // This also needs to be increased in some cases. Can be changed to a higher value as per need)
 	ini_set('sqlsrv.ClientBufferMaxKBSize','524288'); // Setting to 512M
 	ini_set('pdo_sqlsrv.client_buffer_max_kb_size','524288'); // Setting to 512M - for pdo_sqlsrv
+	date_default_timezone_set('Asia/Jakarta');
    /*
 	//total ARO
 	$queryARO = "{call SP_GET_ARO(?)}";
@@ -44,6 +45,13 @@
 <script src="vendor/highchart/highcharts.js"></script>
 <script src="vendor/highchart/highcharts-more.js"></script>
 <script src="vendor/highchart/modules/exporting.js"></script>
+<div class="row">
+	<div class="col-md-12">
+		<i style="float:right">* Data terakhir diupdate pada tanggal <?php echo date("d F Y - H:i:s");?></i>
+		<div style="clear:both;"></div>
+	</div>
+</div>
+<br>
 <div class="row">
 	<div class="col-xl-3 col-md-6 mb-4">
 		<div class="card border-left-primary shadow h-100 py-2">
