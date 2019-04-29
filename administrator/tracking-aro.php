@@ -131,7 +131,7 @@ if(isset($_POST['submit_col'])){
 							}else{
 							?>
 								<div id="map_tracking" style="width:100%;height:400px;"></div>
-								<br>
+								<!--<br>
 								<b>Detail Route</b>
 								<table class="table table-bordered">
 									<thead>
@@ -145,28 +145,28 @@ if(isset($_POST['submit_col'])){
 									</thead>
 									<tbody>
 										<?php
-											$query2 = "{call SP_GET_ROUTE_ARO_DETAIL(?,?)}";  
+											/*$query2 = "{call SP_GET_ROUTE_ARO_DETAIL(?,?)}";  
 											$params2 = array(array($pic, SQLSRV_PARAM_IN),array($date, SQLSRV_PARAM_IN));  
 											$options =  array( "Scrollable" => "buffered" );
 											$exec2 = sqlsrv_query( $conn, $query, $params, $options) or die( print_r( sqlsrv_errors(), true));
 											$no=0;
 											while($data2=sqlsrv_fetch_array($exec2)){
-												$no++;
+												$no++;*/
 										?>
 										<tr>
-											<td><?php echo $no;?></td>
-											<td><?php echo $data2['CONTRACT_ID'];?></td>
-											<td><?php echo $status;?></td>
-											<td><?php echo $data2['CREATE_DATE']->format("d-m-Y H:i:s");?></td>
+											<td><?php// echo $no;?></td>
+											<td><?php// echo $data2['CONTRACT_ID'];?></td>
+											<td><?php// echo $status;?></td>
+											<td><?php// echo $data2['CREATE_DATE']->format("d-m-Y H:i:s");?></td>
 											<td>
 												<a href="" class="btn btn-primary btn-sm"><i class="fa fa-eye"></i> Detail</a>
 											</td>
 										</tr>
 										<?php
-											}
+											//}
 										?>
 									</tbody>
-								</table>
+								</table>-->
 							<?php
 							}
 						}

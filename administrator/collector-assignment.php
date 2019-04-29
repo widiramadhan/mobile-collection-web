@@ -102,7 +102,7 @@ if(isset($_POST['submit_col'])){
 						</select>
 					</div>
 					<div class="pull-right">
-						<input type="reset" value="Cancel" class="btn btn-secondary" style="background-color:#AAA;border:none;">
+						<input type="reset" value="Cancel" class="btn btn-danger">
 						<input type="submit" value="Submit" class="btn btn-primary" name="submit_col">
 					</div>
 				</form>
