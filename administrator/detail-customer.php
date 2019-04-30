@@ -170,12 +170,12 @@ if($numrowsKostumer == 0){
 								</td>
 								<td style="text-align:center;vertical-align:middle;">
 									<?php
-										if($dataKostumer['STATUS']=='2'){
+										if($dataKostumer['STATUS']=="2"){
 											echo'<span class="badge badge-pill badge-success">Janji bayar</span>';
-											}else if($dataKostumer['STATUS'] == '1'){
+											}else if($dataKostumer['STATUS'] == "1"){
 												echo'<span class="badge badge-pill badge-primary">Customer membayar</span>';
 											}
-											else if($dataKostumer == "3"){
+											else if($dataKostumer['STATUS'] == "3"){
 												echo'<span class="badge badge-pill badge-warning">Customer tidak membayar</span>';
 											}else{
 												echo'<span class="badge badge-pill badge-danger">Belum dikunjungi</span>';

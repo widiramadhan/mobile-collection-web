@@ -13,7 +13,7 @@
 						<th style="vertical-align:middle;text-align:center;">ADDRESS</th>
 						<th style="vertical-align:middle;text-align:center;">PHONE NUMBER</th>
 						<th style="vertical-align:middle;text-align:center;">STATUS</th>
-						<th style="vertical-align:middle;text-align:center;">ACTION</th>
+						<th style="vertical-align:middle;text-align:center;width:100px;">ACTION</th>
 					</tr>
 				</thead>
 				<tbody>
