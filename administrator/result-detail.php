@@ -109,21 +109,21 @@
 						<?php echo $latPayLocation;?>, <?php echo $longPayLocation;?>
 						<hr>
 					</div>
-					<div id="fotoLokasiPembayaran">
+					<!--<div id="fotoLokasiPembayaran">
 						<b>Foto Lokasi Pembayaran</b><br>
-						<?php echo $meetup;?>
+						<?php //echo $meetup;?>
 						<hr>
-					</div>
+					</div>-->
 					<div id="lokasi">
 						<b>Lokasi</b><br>
 						<?php echo $latLocationMeet;?>, <?php echo $longLocationMeet;?>
 						<hr>
 					</div>
-					<div id="foto">
+					<!--<div id="foto">
 						<b>Foto Lokasi</b><br>
-						<?php echo $meetup;?>
+						<?php //echo $meetup;?>
 						<hr>
-					</div>
+					</div>-->
 					<div id="acceptAmount">
 						<b>Pembayaran yang diterima</b><br>
 						Rp. <?php echo number_format($acceptAmount,0,',','.');?>

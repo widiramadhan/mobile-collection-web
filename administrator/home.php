@@ -140,10 +140,10 @@
 	</div>
 </div>
 <div class="row">
-	<div class="coll-md-6">
-	<div class="card shadow mb-4">
+	<div class="col-md-12">
+		<div class="card shadow mb-4">
 			<div class="card-header py-3">
-				<h6 class="m-0 font-weight-bold text-primary">Aro Dashboard</h6>
+				<h6 class="m-0 font-weight-bold text-primary">Tasklist ARO Summary</h6>
 			</div>
 			<div class="card-body">
 				<div class="table-responsive">
@@ -153,8 +153,9 @@
 								<th style="text-align:center;vertical-align:middle;">No</th>
 								<th style="text-align:center;vertical-align:middle;">Collector Name</th>
 								<th style="text-align:center;vertical-align:middle;">Total DKH</th>
-								<th style="text-align:center;vertical-align:middle;">Total Visit</th>
-								<th style="text-align:center;vertical-align:middle;">Total Tagihan</th>
+								<th style="text-align:center;vertical-align:middle;">Total yang sudah dikunjungi</th>
+								<th style="text-align:center;vertical-align:middle;">Total target amount</th>
+								<th style="text-align:center;vertical-align:middle;">Total amount yang didapat</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -165,10 +166,11 @@
 						?>
 							<tr>
 								<td style="text-align:center;vertical-align:middle;"><?php echo $no;?></td>
-								<td style="text-align:center;vertical-align:middle;"><?php echo $dataAro['EMP_NAME'];?></td>
+								<td style="text-align:left;vertical-align:middle;"><?php echo $dataAro['EMP_NAME'];?></td>
 								<td style="text-align:center;vertical-align:middle;"><?php echo $dataAro['TOTAL'];?></td>
 								<td style="text-align:center;vertical-align:middle;"><?php echo $dataAro['TOTAL_VISIT'];?></td>
-								<td style="text-align:center;vertical-align:middle;">Rp. <?php echo number_format($dataAro['TOTAL_TAGIHAN'],0,',','.');?></td>
+								<td style="text-align:right;vertical-align:middle;">Rp. <?php echo number_format($dataAro['TOTAL_TAGIHAN'],0,',','.');?></td>
+								<td style="text-align:right;vertical-align:middle;">Rp. <?php echo number_format($dataAro['TOTAL_BAYAR'],0,',','.');?></td>
 							</tr>
 							<?php } ?>
 					    </tbody>
