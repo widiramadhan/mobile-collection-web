@@ -49,16 +49,10 @@ $branchType=substr($bid,0,2);
 <body id="page-top">
 	<div id="wrapper">
 		<ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
-			<a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.php">
-				<div class="sidebar-brand-text mx-3">Collection <sup>Administrator</sup></div>
-			</a>
-			<center>
-				<img src="assets/img/default-user.png" style="width:80px;height:80px;border-radius:50%;"><br><br>
-				<div class="sidebar-brand-text mx-3" style="color:#FFF;font-weight:bold;">
-					<sup><?php echo $data['FULLNAME'];?><br>
-					<?php echo $data['OFFICE_NAME'];?></sup>
-				</div>
-			</center>
+			<div class="sidebar-brand-text mx-3" style="color:#FFF;font-weight:bold;margin-top:30px;">
+				<sup><?php echo $data['FULLNAME'];?><br>
+				<?php echo $data['OFFICE_NAME'];?></sup>
+			</div>
 			<hr class="sidebar-divider my-0">	
 			<li class="nav-item">
 				<a class="nav-link" href="index.php">
@@ -142,9 +136,6 @@ $branchType=substr($bid,0,2);
 					<button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
 						<i class="fa fa-bars"></i>
 					</button>
-					<div class="input-group">
-							<?php echo $data['OFFICE_NAME'];?>
-					</div>
 					<ul class="navbar-nav ml-auto">
 						<li class="nav-item dropdown no-arrow">
 							<a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
