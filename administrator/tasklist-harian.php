@@ -35,7 +35,7 @@ if(isset($_POST['submit_col'])){
 		$options =  array( "Scrollable" => "buffered" );	
 		$paramsDKHC = array(array($_POST['branch'], SQLSRV_PARAM_IN),
 							array($_POST['col'],SQLSRV_PARAM_IN),
-							array(str_replace("-","", $_POST['tgl'])."01",SQLSRV_PARAM_IN));
+							array(str_replace("-","", $_POST['tgl']),SQLSRV_PARAM_IN));
 		$execDKHC = sqlsrv_query( $conn, $callDKHC, $paramsDKHC,$options) or die( print_r( sqlsrv_errors(), true));
 		$dataDKHC = sqlsrv_fetch_array($execDKHC);
 		$numrows = sqlsrv_num_rows($execDKHC);
@@ -212,9 +212,11 @@ if(isset($_POST['submit_col'])){
 					
 							<?php
 								$no=0;
-								$callDKHC = "{call SP_GET_DKH(?,?)}"; 
+								$callDKHC = "{call SP_GET_DKH(?,?,?)}"; 
 								$options =  array( "Scrollable" => "buffered" );
-								$paramsDKHC = array(array($branch, SQLSRV_PARAM_IN),array($pic, SQLSRV_PARAM_IN));  
+								$paramsDKHC = array(array($branch, SQLSRV_PARAM_IN),
+														 array($pic, SQLSRV_PARAM_IN),
+														  array(str_replace("-","", $tgl),SQLSRV_PARAM_IN));  
 								$execDKHC = sqlsrv_query( $conn, $callDKHC, $paramsDKHC, $options) or die( print_r( sqlsrv_errors(), true));
 								while($dataDKHC = sqlsrv_fetch_array($execDKHC)){
 									$no++;
