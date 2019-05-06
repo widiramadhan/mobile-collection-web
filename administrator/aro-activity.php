@@ -275,7 +275,7 @@ if(isset($_POST['submit_col'])){
 								<td style="text-align:left;"><?php echo $dataDKHC['KOTA'];?></td>
 								<td style="text-align:left;"><?php echo $dataDKHC['KECAMATAN'];?></td>
 								<td style="text-align:left;"><?php echo $dataDKHC['KELURAHAN'];?></td>
-								<td style="text-align:left;"><a href="index.php?page=get-area&id=<?php echo $dataDKHC['M_AREA_COLL_ID'];?>" class="btn btn-primary btn-sm"><i class="fa fa-search"></i> Detail</a>
+								<td style="text-align:left;"><a href="index.php?page=get-area&id=<?php echo $dataDKHC['M_AREA_COLL_ID'];?>&kt=<?php echo $dataDKHC['KOTA'];?>&kc=<?php echo $dataDKHC['KECAMATAN'];?>&kl=<?php echo $dataDKHC['KELURAHAN'];?>" class="btn btn-primary btn-sm"><i class="fa fa-search"></i> Detail</a>
 								</td>
 							</tr>
 								<?php } } ?>

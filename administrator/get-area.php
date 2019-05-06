@@ -3,6 +3,7 @@
 <script src="vendor/sweetalert/sweetalert.min.js"></script>
 <?php
 $id=$_GET['id'];
+$kt=$_GET['kt'];
 if(isset($_POST['submit_col'])){
 		$branch = $_POST['branch'];
 		$col1 = $_POST['col1'];
@@ -85,7 +86,7 @@ if(isset($_POST['submit_col'])){
 					</div>
 					<div class="form-group">
 						<label>Area / Wilayah</label><br>
-						<input type="text" name="area" id="area" value="<?php echo $id;?>">
+						<input type="text" name="area" id="area" value="<?php echo $id;?>" readonly>
 						<button type="button" class="btn-primary" data-toggle="modal" data-target="#modalsearch"><i class="fa fa-search"></i></button>
 						
 					</div>
