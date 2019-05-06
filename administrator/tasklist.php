@@ -46,8 +46,18 @@ if(isset($_POST['submit_col'])){
 			$total_not_meet = "0";
 			$total_amount = "Rp. 0";
 			$total_tagihan = "Rp. 0";
-			$total_jarak = "0 Km";
-		}else{
+			$total_jarak = "0 Km";	
+		}
+		else if ($dataDKHC['TOTAL_CUST_VISIT_JANJIBYR']== 0){
+			$total_paid = $dataDKHC['TOTAL_CUST_VISIT_BYR'];
+			$total_promise = $dataDKHC['TOTAL_CUST_VISIT_JANJIBYR'];
+			$total_not_meet = $dataDKHC['TOTAL_CUST_VISIT_NOTPAID'];
+			$total_amount = "Rp. ".number_format($dataDKHC['TOTAL_BAYAR'],0,',','.');
+			$total_tagihan = "Rp. 0";
+			$total_jarak = number_format((float)$dataDKHC['TOTAL_DISTANCE_LOC'],2,'.','')." Km";
+			
+		}
+		else{
 			$total_paid = $dataDKHC['TOTAL_CUST_VISIT_BYR'];
 			$total_promise = $dataDKHC['TOTAL_CUST_VISIT_JANJIBYR'];
 			$total_not_meet = $dataDKHC['TOTAL_CUST_VISIT_NOTPAID'];
