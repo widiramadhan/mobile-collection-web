@@ -49,10 +49,16 @@ $branchType=substr($bid,0,2);
 <body id="page-top">
 	<div id="wrapper">
 		<ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
-			<div class="sidebar-brand-text mx-3" style="color:#FFF;font-weight:bold;margin-top:30px;">
+			<a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.php">
+				<div class="sidebar-brand-icon">
+					<i class="fa fa-user-circle"></i>
+				</div>
+				<div class="sidebar-brand-text mx-3">Collection <sup>Administrator</sup></div>
+			</a>
+			<!--<div class="sidebar-brand-text mx-3" style="color:#FFF;font-weight:bold;margin-top:30px;">
 				<sup><?php echo $data['FULLNAME'];?><br>
 				<?php echo $data['OFFICE_NAME'];?></sup>
-			</div>
+			</div>-->
 			<hr class="sidebar-divider my-0">	
 			<li class="nav-item">
 				<a class="nav-link" href="index.php">
@@ -80,6 +86,12 @@ $branchType=substr($bid,0,2);
 					<span>ARO Priority</span>
 				</a>
 			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="index.php?page=aro-activity">
+					<i class="fa fa-location-arrow"></i>
+					<span>Mapping Aktvitas Aro</span>
+				</a>
+			</li>
 			<?php } ?>
 			<li class="nav-item">
 				<a class="nav-link" href="index.php?page=reasign-aro">
@@ -103,13 +115,21 @@ $branchType=substr($bid,0,2);
 					<span>Tracking ARO</span>
 				</a>
 			</li>
+			
 			<li class="nav-item">
-				<a class="nav-link" href="index.php?page=tasklist">
+				 <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
 					<i class="fa fa-edit"></i>
 					<span>Tasklist ARO</span>
 				</a>
+			<div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar" style="">
+				<div class="bg-white py-2 collapse-inner rounded">
+					<h6 class="collapse-header">Tasklist Aro :</h6>
+					<a class="collapse-item" href="index.php?page=tasklist">Tasklist Aro Per-Bulan</a>
+					<a class="collapse-item" href="index.php?page=tasklist-harian">Tasklist Aro Per-Hari</a>
+				</div>
+			</div>
 			</li>
-		
+	
 			<hr class="sidebar-divider">
 			<div class="sidebar-heading">
 				Customer
@@ -136,6 +156,9 @@ $branchType=substr($bid,0,2);
 					<button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
 						<i class="fa fa-bars"></i>
 					</button>
+					<div class="mr-2 d-none d-lg-inline text-gray-800 medium">
+					<?php echo $bid;?> - <?php echo $data['OFFICE_NAME'];?>
+					</div>
 					<ul class="navbar-nav ml-auto">
 						<li class="nav-item dropdown no-arrow">
 							<a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

@@ -8,7 +8,7 @@ $total_not_meet = "0";
 $total_amount = "Rp. 0";
 $total_tagihan = "Rp. 0";
 $total_jarak = "0 Km";
-$tgl = date("Y-m");
+$tgl = date("Y-m-d");
 $branch = "";
 $pic = "";
 
@@ -22,7 +22,7 @@ if(isset($_POST['submit_col'])){
 					text: "Mohon pilih nama collector",
 					type: "error"
 				}, function() {
-					window.location.replace("index.php?page=tasklist");
+					window.location.replace("index.php?page=tasklist-harian");
 				});
 			}, 0);
 		</script>';
@@ -64,7 +64,7 @@ if(isset($_POST['submit_col'])){
 	
 	$branch = "";
 	$pic = "";
-	$tgl = date("Y-m");
+	$tgl = date("Y-m-d");
 }
 					
 ?>
@@ -319,12 +319,12 @@ if(isset($_POST['submit_col'])){
 <script>
 $(document).ready(function() {
 	$('#tgl').datepicker({
-		format: "yyyy-mm",
+		format: "yyyy-mm-dd",
 		changeMonth: true,
         changeYear: true,
 		autoclose: true,
-		viewMode: "months", 
-		minViewMode: "months",
+		viewMode: "days", 
+		minViewMode: "days",
 		endDate: new Date()
 	});
 	$('#example').DataTable({

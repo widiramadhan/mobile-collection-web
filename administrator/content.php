@@ -99,7 +99,18 @@ switch ($current_page) {
 	require_once('aro-history.php');
 	break;
 	
+	case 'aro-activity':
+	require_once('aro-activity.php');
+	break;
 	
+	case 'get-area':
+	require_once('get-area.php');
+	break;
+	
+	case 'tasklist-harian':
+	require_once('tasklist-harian.php');
+	break;
+		
 	default:
 	require_once('home.php');
 }
