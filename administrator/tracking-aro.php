@@ -2,8 +2,9 @@
 <link rel="stylesheet" href="vendor/sweetalert/sweetalert.min.css">
 <script src="vendor/sweetalert/sweetalert.min.js"></script>
 <?php
-date_default_timezone_set('Asia/Jakarta');
+date_default_timezone_set('Asia/Jakarta'); 
 $date = date("Y-m-d");
+$tgl= substr($date,0,7);
 if(isset($_POST['submit_col'])){
 	if($_POST['col'] == ""){
 		echo '<script>
@@ -24,6 +25,7 @@ if(isset($_POST['submit_col'])){
 		$branch = $_POST['branch'];
 		$pic = $_POST['col'];
 		$date = $_POST['date'];
+		$tgl = substr($date,0,7);
 		
 		$query = "{call SP_GET_ROUTE_ARO(?,?)}";  
 		$params = array(array($pic, SQLSRV_PARAM_IN),array($date, SQLSRV_PARAM_IN));  
@@ -113,6 +115,7 @@ if(isset($_POST['submit_col'])){
 			<div class="card-header">
 				<h6 class="m-0 font-weight-bold text-primary">Tracking AR Officer</h6>
 			</div>
+			
 			<div class="card-body">
 				<?php
 					if(isset($_POST['submit_col'])){
@@ -211,7 +214,7 @@ if(isset($_POST['submit_col'])){
 								$paramsDKHC = array(array($branch, SQLSRV_PARAM_IN),
 														 array($pic, SQLSRV_PARAM_IN),
 														 array($date, SQLSRV_PARAM_IN), 
-														 array($data1['PERIOD'],SQLSRV_PARAM_IN));  
+														 array(str_replace("-","", $tgl)."01",SQLSRV_PARAM_IN));
 								$execDKHC = sqlsrv_query( $conn, $callDKHC, $paramsDKHC, $options) or die( print_r( sqlsrv_errors(), true));
 								while($dataDKHC = sqlsrv_fetch_array($execDKHC)){
 									$no++;
