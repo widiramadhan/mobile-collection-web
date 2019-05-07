@@ -4,12 +4,16 @@ require_once("../config/connection.php");
 $pic = $_POST["pic"];
 $lat = $_POST["lat"];
 $lng = $_POST["lng"];
+$contract_id = $_POST["contract_id"];
+$period = $_POST["period"];
 
-$callSp = "{call SP_INSERT_ROUTE_ARO(?,?,?)}";
+$callSp = "{call SP_INSERT_ROUTE_ARO_NEW(?,?,?,?,?)}";
 $params = array(			
 			array($pic,SQLSRV_PARAM_IN),
 			array($lat,SQLSRV_PARAM_IN),
-			array($lng,SQLSRV_PARAM_IN)			
+			array($lng,SQLSRV_PARAM_IN),
+			array($contract_id,SQLSRV_PARAM_IN),
+			array($period,SQLSRV_PARAM_IN)
 			);
 $exec = sqlsrv_query($conn,$callSp,$params) or die (print_r(sqlsrv_errors(),true));
 
