@@ -78,6 +78,15 @@ $(document).ready(function() {
         $('#submitaro').prop("disabled", checkboxes.filter(':checked').length == 0);
     });
     
+	 var counterChecked = 0;
+
+	$('body').on('change', 'input[type="checkbox"]', function() {
+
+			this.checked ? counterChecked++ : counterChecked--;
+		counterChecked > 0 ? $('#submitaro').prop("disabled", false): $('#submitaro').prop("disabled", true);
+
+	});
+	
     $('#aro').click(function(event) {   
         checkboxes.prop('checked', this.checked);
         $('#submitaro').prop("disabled", !this.checked)

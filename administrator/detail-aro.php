@@ -10,9 +10,10 @@ $row = sqlsrv_fetch_array($ex);
 
 
 
-$callDKHC = "{call SP_GET_DKH(?,?)}"; 
+$callDKHC = "{call SP_GET_DKH(?,?,?)}"; 
 $options =  array( "Scrollable" => "buffered" );
-$paramsDKHC = array(array($bid, SQLSRV_PARAM_IN),array($nik, SQLSRV_PARAM_IN));  
+$paramsDKHC = array(array($bid, SQLSRV_PARAM_IN),array($nik, SQLSRV_PARAM_IN),
+						  array($data1['PERIOD'], SQLSRV_PARAM_IN));  
 $execDKHC = sqlsrv_query( $conn, $callDKHC, $paramsDKHC, $options) or die( print_r( sqlsrv_errors(), true));
 
 $numrows=sqlsrv_num_rows($execDKHC);
@@ -22,9 +23,10 @@ if($numrows == 0){
 	$disable="";
 }
 
-$callDKHC = "{call SP_GET_DKH(?,?)}"; 
+$callDKHC = "{call SP_GET_DKH(?,?,?)}"; 
 $options =  array( "Scrollable" => "buffered" );
-$paramsDKHC = array(array($bid, SQLSRV_PARAM_IN),array($nik, SQLSRV_PARAM_IN));  
+$paramsDKHC = array(array($bid, SQLSRV_PARAM_IN),array($nik, SQLSRV_PARAM_IN),
+						array($data1['PERIOD'], SQLSRV_PARAM_IN));  
 $execDKHC = sqlsrv_query( $conn, $callDKHC, $paramsDKHC, $options) or die( print_r( sqlsrv_errors(), true));
 
 $numrows=sqlsrv_num_rows($execDKHC);
