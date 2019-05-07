@@ -11,7 +11,7 @@ $total_jarak = "0 Km";
 $tgl = date("Y-m-d");
 $branch = "";
 $pic = "";
-
+$date= substr($tgl,0,7);
 if(isset($_POST['submit_col'])){
 
 	if($_POST['col'] == ""){
@@ -30,12 +30,13 @@ if(isset($_POST['submit_col'])){
 		$branch = $_POST['branch'];
 		$pic = $_POST['col'];
 		$tgl = $_POST['tgl'];
-		
-		$callDKHC = "{call DASHBOARD_COUNT_DATA_BY_ARO(?,?,?)}"; 
+		$date= substr($tgl,0,7);
+		$callDKHC = "{call DASHBOARD_COUNT_DATA_BY_ARO_DATETIME(?,?,?,?)}"; 
 		$options =  array( "Scrollable" => "buffered" );	
 		$paramsDKHC = array(array($_POST['branch'], SQLSRV_PARAM_IN),
 							array($_POST['col'],SQLSRV_PARAM_IN),
-							array(str_replace("-","", $_POST['tgl']),SQLSRV_PARAM_IN));
+							array(str_replace("-","", $date)."01",SQLSRV_PARAM_IN),
+							array($_POST['tgl'],SQLSRV_PARAM_IN));
 		$execDKHC = sqlsrv_query( $conn, $callDKHC, $paramsDKHC,$options) or die( print_r( sqlsrv_errors(), true));
 		$dataDKHC = sqlsrv_fetch_array($execDKHC);
 		$numrows = sqlsrv_num_rows($execDKHC);
@@ -216,7 +217,7 @@ if(isset($_POST['submit_col'])){
 								$options =  array( "Scrollable" => "buffered" );
 								$paramsDKHC = array(array($branch, SQLSRV_PARAM_IN),
 														 array($pic, SQLSRV_PARAM_IN),
-														  array(str_replace("-","", $tgl),SQLSRV_PARAM_IN));  
+														 array(str_replace("-","", $date)."01",SQLSRV_PARAM_IN));
 								$execDKHC = sqlsrv_query( $conn, $callDKHC, $paramsDKHC, $options) or die( print_r( sqlsrv_errors(), true));
 								while($dataDKHC = sqlsrv_fetch_array($execDKHC)){
 									$no++;
