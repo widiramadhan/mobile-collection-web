@@ -110,10 +110,17 @@ $branchType=substr($bid,0,2);
 				</a>
 			</li>
 			<li class="nav-item">
-				<a class="nav-link" href="index.php?page=tracking-collector">
+			 <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseTwo1" aria-expanded="true" aria-controls="collapseTwo">
 					<i class="fa fa-map-marked-alt"></i>
 					<span>Tracking ARO</span>
 				</a>
+			<div id="collapseTwo1" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar" style="">
+				<div class="bg-white py-2 collapse-inner rounded">
+					<h6 class="collapse-header">Tracking Aro :</h6>
+					<a class="collapse-item" href="index.php?page=tracking-aro">Tracking Aro Route</a>
+					<a class="collapse-item" href="index.php?page=tracking-aro-status">Tracking Aro Location</a>
+				</div>
+			</div>
 			</li>
 			
 			<li class="nav-item">

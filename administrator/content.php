@@ -118,6 +118,10 @@ switch ($current_page) {
 	case 'detail-summary':
 	require_once('detail-summary.php');
 	break;
+	
+	case 'tracking-aro-status':
+	require_once('tracking-aro-status.php');
+	break;
 		
 	default:
 	require_once('home.php');
