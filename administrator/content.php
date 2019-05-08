@@ -111,6 +111,14 @@ switch ($current_page) {
 	require_once('tasklist-harian.php');
 	break;
 		
+	case 'tasklist-summary':
+	require_once('tasklist-summary.php');
+	break;
+	
+	case 'detail-summary':
+	require_once('detail-summary.php');
+	break;
+		
 	default:
 	require_once('home.php');
 }

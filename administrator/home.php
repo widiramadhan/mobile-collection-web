@@ -152,10 +152,10 @@
 							<tr>
 								<th style="text-align:center;vertical-align:middle;">No</th>
 								<th style="text-align:center;vertical-align:middle;">Collector Name</th>
-								<th style="text-align:center;vertical-align:middle;">Total DKH</th>
-								<th style="text-align:center;vertical-align:middle;">Total yang sudah dikunjungi</th>
-								<th style="text-align:center;vertical-align:middle;">Total target amount</th>
-								<th style="text-align:center;vertical-align:middle;">Total amount yang didapat</th>
+								<th style="text-align:center;vertical-align:middle;">Total Account</th>
+								<!--<th style="text-align:center;vertical-align:middle;">Total yang sudah dikunjungi</th>-->
+								<th style="text-align:center;vertical-align:middle;">Target</th>
+								<!--<th style="text-align:center;vertical-align:middle;">Total amount yang didapat</th>-->
 							</tr>
 						</thead>
 						<tbody>
@@ -168,9 +168,9 @@
 								<td style="text-align:center;vertical-align:middle;"><?php echo $no;?></td>
 								<td style="text-align:left;vertical-align:middle;"><?php echo $dataAro['EMP_NAME'];?></td>
 								<td style="text-align:center;vertical-align:middle;"><?php echo $dataAro['TOTAL'];?></td>
-								<td style="text-align:center;vertical-align:middle;"><?php echo $dataAro['TOTAL_VISIT'];?></td>
+								<!--<td style="text-align:center;vertical-align:middle;"><?php echo $dataAro['TOTAL_VISIT'];?></td>-->
 								<td style="text-align:right;vertical-align:middle;">Rp. <?php echo number_format($dataAro['TOTAL_TAGIHAN'],0,',','.');?></td>
-								<td style="text-align:right;vertical-align:middle;">Rp. <?php echo number_format($dataAro['TOTAL_BAYAR'],0,',','.');?></td>
+								<!--<td style="text-align:right;vertical-align:middle;">Rp. <?php echo number_format($dataAro['TOTAL_BAYAR'],0,',','.');?></td>-->
 							</tr>
 							<?php } ?>
 					    </tbody>

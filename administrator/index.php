@@ -124,6 +124,7 @@ $branchType=substr($bid,0,2);
 			<div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar" style="">
 				<div class="bg-white py-2 collapse-inner rounded">
 					<h6 class="collapse-header">Tasklist Aro :</h6>
+					<a class="collapse-item" href="index.php?page=tasklist-summary">Tasklist</a>
 					<a class="collapse-item" href="index.php?page=tasklist">Tasklist Aro Per-Bulan</a>
 					<a class="collapse-item" href="index.php?page=tasklist-harian">Tasklist Aro Per-Hari</a>
 				</div>
