@@ -38,6 +38,7 @@ error_reporting(0);
 							<div class="form-group">
 									<label>Status</label>
 									<select  id="status" name="status" width="100px">
+									<option value="" selected>--Pilih Status--</option>
 										<option value="1"  >Bayar</option>
 										<option value="2" >Janji Bayar</option>
 										<option value="3" >Tidak Bertemu</option>
@@ -57,12 +58,13 @@ error_reporting(0);
 								<th style="text-align:center;vertical-align:middle;">No</th>
 								<th style="text-align:center;vertical-align:middle;">No Kontrak</th>
 								<th style="text-align:center;vertical-align:middle;">Nama Kostumer</th>
-								<th style="text-align:center;vertical-align:middle;">Tgl Jatuh Tempo</th>
+								<th style="text-align:center;vertical-align:middle;width:80px">Tgl Jatuh Tempo</th>
 								<th style="text-align:center;vertical-align:middle;width:100px;">Total Tagihan</th>
-								<th style="text-align:center;vertical-align:middle;">Total Pembayaran</th>
-								<th style="text-align:center;vertical-align:middle;">Tgl Janji Bayar</th>
+								<th style="text-align:center;vertical-align:middle;width:100px">Total Pembayaran</th>
+								<th style="text-align:center;vertical-align:middle;width:100px">Rekonsiliasi</th>
+								<th style="text-align:center;vertical-align:middle;width:80px">Tgl Janji Bayar</th>
 								<th style="text-align:center;vertical-align:middle;">Status</th>
-								<th style="text-align:center;vertical-align:middle;width:200px;">Action</th>
+								<th style="text-align:center;vertical-align:middle;width:300px;">Action</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -118,6 +120,7 @@ error_reporting(0);
 								<td style="text-align:center;vertical-align:middle;"><?php  if(is_null($dataDKHC['TANGGAL_JATUH_TEMPO'])){echo"";} else if($dataDKHC['TANGGAL_JATUH_TEMPO']->format('Y-m-d')=='1970-01-01'){echo"";}else echo $dataDKHC['TANGGAL_JATUH_TEMPO']->format('Y-m-d');?></td>
 								<td style="text-align:right;vertical-align:middle;">Rp. <?php echo number_format($dataDKHC['TOTAL_TAGIHAN'],0,',','.');?></td>
 								<td style="text-align:right;vertical-align:middle;"><?php if($acceptAmount <> "" || $acceptAmount <> NULL){ echo "Rp. ".number_format($acceptAmount,0,',','.');}?></td>
+								<td style="text-align:right;vertical-align:middle;">Rp. <?php echo number_format($dataDKHC['TOTAL_RECON'],0,',','.');?></td>
 								<td style="text-align:center;vertical-align:middle;">
 									<?php 	
 										if($meetup == "Ya, bertemu dengan customer"){
