@@ -38,10 +38,10 @@ error_reporting(0);
 							<div class="form-group">
 									<label>Status</label>
 									<select  id="status" name="status" width="100px">
-										<option value="1" selected>Bayar</option>
-										<option value="2" selected>Janji Bayar</option>
-										<option value="3" selected>Tidak Bertemu</option>
-										<option value="ALL" selected>ALL</option>
+										<option value="1"  >Bayar</option>
+										<option value="2" >Janji Bayar</option>
+										<option value="3" >Tidak Bertemu</option>
+										<option value="ALL" >ALL</option>
 									</select>
 									<button type="submit" class="btn btn-primary" name="submit_col" onclick="showDiv()">
 										 <i class="fa fa-search"></i> 
@@ -204,6 +204,7 @@ $(document).ready(function() {
 		} ]
 	});	
 	
+	document.getElementById('status').value = "<?php echo $_POST['status'];?>";
 
 } );
 
