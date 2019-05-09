@@ -117,7 +117,7 @@ $branchType=substr($bid,0,2);
 			<div id="collapseTwo1" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar" style="">
 				<div class="bg-white py-2 collapse-inner rounded">
 					<h6 class="collapse-header">Tracking Aro :</h6>
-					<a class="collapse-item" href="index.php?page=tracking-aro">Tracking Aro Route</a>
+					<a class="collapse-item" href="index.php?page=tracking-collector">Tracking Aro Route</a>
 					<a class="collapse-item" href="index.php?page=tracking-aro-status">Tracking Aro Location</a>
 				</div>
 			</div>
