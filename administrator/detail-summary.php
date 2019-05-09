@@ -38,7 +38,7 @@ error_reporting(0);
 							<div class="form-group">
 									<label>Status</label>
 									<select  id="status" name="status" width="100px">
-									<option value="" selected>--Pilih Status--</option>
+									<option value="" disabled>--Pilih Status--</option>
 										<option value="1"  >Bayar</option>
 										<option value="2" >Janji Bayar</option>
 										<option value="3" >Tidak Bertemu</option>
