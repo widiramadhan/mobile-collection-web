@@ -251,12 +251,12 @@ if(isset($_POST['submit_col'])){
 				<tr>
 					<td style="width:100px">Kecamatan</td>
 					<td style="width:20px"> : </td>
-					<td><input type="text" id="kecamatan" name="kecamatan" placeholder="Nama Kecamatan" style="width:450px"></td>
+					<td><input type="text" id="kecamatan" name="kecamatan" placeholder="Nama Kecamatan" style="width:450px"  value="<?php if(isset($_POST['kecamatan'])){ echo $kecamatan; } ?>"></td>
 				</tr>
 				<tr>
 					<td style="width:100px">Kelurahan</td>
 					<td style="width:20px"> : </td>
-					<td><input type="text" id="kelurahan" name="kelurahan" placeholder="Nama Kelurahan" style="width:450px"> &nbsp;&nbsp;&nbsp; 
+					<td><input type="text" id="kelurahan" name="kelurahan" placeholder="Nama Kelurahan" style="width:450px"  value="<?php if(isset($_POST['kelurahan'])){ echo $kelurahan; } ?>"> &nbsp;&nbsp;&nbsp; 
 					<input type="hidden" value="LIST" name="areacolid" id="areacolid">
 					<input type="submit" class="btn btn-primary" value="Cari" name="submit_list" id="submit_list">
 					</td>
@@ -269,6 +269,7 @@ if(isset($_POST['submit_col'])){
 		
 			<div class="card-body">
 				<div class="table-responsive">
+				 <form action="" method="post" autocomplete="off">
 					<table class="table table-bordered dataTable" style="width:100%;" id="example" >
 						<thead>
 							<tr>
@@ -302,6 +303,7 @@ if(isset($_POST['submit_col'])){
 								<?php } } ?>
 						</tbody>
 					</table>
+					</form>
 					<br>
 				
 				</div>
