@@ -79,7 +79,7 @@ if(isset($_POST['submit_col'])){
 								if($data['LEVEL'] == 'SUPER ADMIN'){
 									
 								}else{
-									$callCol = "{call SP_GET_COLLECTOR_BY_BRANCH(?)}"; 
+									$callCol = "{call SP_GET_ARO(?)}"; 
 									$paramsCol = array(array($data['BRANCHID'], SQLSRV_PARAM_IN));  
 									$execCol = sqlsrv_query( $conn, $callCol, $paramsCol) or die( print_r( sqlsrv_errors(), true));								
 									while($dataCol = sqlsrv_fetch_array($execCol)){
@@ -324,7 +324,7 @@ if(isset($_POST['submit_col'])){
 		</div>
 	</div>
 </div>
-<!--<script src="https://maps.google.com/maps/api/js?key=AIzaSyDOC4niTnX8QwoxCeEZYjGpOPtKJN3BGQk"></script>-->
+<!--<script src="https://maps.google.com/maps/api/js?key=AIzaSyDOC4niTnX8QwoxCeEZYjGpOPtKJN3BGQk"></script>>-->
 <script src="https://maps.google.com/maps/api/js?key=AIzaSyDZqZCbzcSFzRMttT8L8g864uPwR4JnSRU"></script>
 <script>
 $( document ).ready(function() {   
