@@ -62,8 +62,9 @@ error_reporting(0);
 								<th style="text-align:center;vertical-align:middle;width:100px;">Total Tagihan</th>
 								<th style="text-align:center;vertical-align:middle;width:100px">Total Pembayaran</th>
 								<th style="text-align:center;vertical-align:middle;width:100px">Rekonsiliasi</th>
+								<th style="text-align:center;vertical-align:middle;width:100px">Selisih</th>
 								<th style="text-align:center;vertical-align:middle;width:60px">Tgl Janji Bayar</th>
-								<th style="text-align:center;vertical-align:middle;width:60px">Tgl Bertemu</th>
+								<th style="text-align:center;vertical-align:middle;width:20px">Tgl Bertemu</th>
 								<th style="text-align:center;vertical-align:middle;">Status</th>
 								<th style="text-align:center;vertical-align:middle;width:500px;">Action</th>
 							</tr>
@@ -113,6 +114,13 @@ error_reporting(0);
 										$acceptAmount="";
 										$promiseDate="";
 									}
+									 if($acceptAmount <> "" || $acceptAmount <> NULL){
+											$baru=$acceptAmount;
+									 }else{
+										 $baru = 0;
+									 }
+									 
+									 $kurang=$baru-$dataDKHC['TOTAL_RECON'];
 							?>
 							<tr>
 								<td style="text-align:center;vertical-align:middle;"><?php echo $no;?></td>
@@ -122,6 +130,7 @@ error_reporting(0);
 								<td style="text-align:right;vertical-align:middle;">Rp. <?php echo number_format($dataDKHC['TOTAL_TAGIHAN'],0,',','.');?></td>
 								<td style="text-align:right;vertical-align:middle;"><?php if($acceptAmount <> "" || $acceptAmount <> NULL){ echo "Rp. ".number_format($acceptAmount,0,',','.');}?></td>
 								<td style="text-align:right;vertical-align:middle;">Rp. <?php echo number_format($dataDKHC['TOTAL_RECON'],0,',','.');?></td>
+								<td style="text-align:right;vertical-align:middle;">Rp. <?php echo number_format($kurang,0,',','.');?></td>
 								<td style="text-align:center;vertical-align:middle;">
 									<?php 	
 										if($meetup == "Ya, bertemu dengan customer"){
@@ -168,12 +177,12 @@ error_reporting(0);
 										if($disabled == 0){
 									?>
 									<button type="button" class="btn btn-success btn-sm" disabled><i class="fa fa-eye"></i> Detail</button>
-									<a href="index.php?page=approve&id=<?php echo $dataDKHC['NOMOR_KONTRAK'];?>" class="btn btn-primary btn-sm"><i class="fa fa-times"></i> Cancel Approve</a>
+									<a href="index.php?page=approve&id=<?php echo $dataDKHC['NOMOR_KONTRAK'];?>" class="btn btn-primary btn-sm"><i class="fa fa-times"></i> Cancel</a>
 									<?php
 									}else{
 									?>
 									<a href="index.php?page=result-detail&contractID=<?php echo $dataDKHC['NOMOR_KONTRAK'];?>" class="btn btn-success btn-sm"><i class="fa fa-eye"></i> Detail</a>
-									<button type="button" class="btn btn-primary btn-sm" disabled><i class="fa fa-times"></i> Cancel Approve</button>
+									<button type="button" class="btn btn-primary btn-sm" disabled><i class="fa fa-times"></i> Cancel</button>
 									<?php
 										}
 									?>
