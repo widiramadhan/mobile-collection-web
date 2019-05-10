@@ -197,7 +197,7 @@ $(document).ready(function() {
 	});
 	
 	oTableStaticFlow = $('#example').DataTable({
-		"lengthMenu": [[20, 25, 50, -1], [20, 25, 50, "All"]],
+		"lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
 		"aoColumnDefs": [{
 			'bSortable': false,
 			'aTargets': [0]
