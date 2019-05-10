@@ -89,18 +89,13 @@ if(isset($_POST['submit_col'])){
 								if($data['LEVEL'] == 'SUPER ADMIN'){
 									
 								}else{
-									/*echo '<script>alert("'.$data['BRANCHID'].'")</script>';*/
 									$callCol = "{call SP_LOV_ARO_BY_BRANCH(?)}"; 
-									//$paramsCol = array(array($data['BRANCHID'], SQLSRV_PARAM_IN));  
-									$paramsCol = array(array("1502", SQLSRV_PARAM_IN));  
-									$execCol = sqlsrv_query( $conn, $callCol, $paramsCol) or die( print_r( sqlsrv_errors(), true));	
-									$numrowsResult=sqlsrv_num_rows($execCol);									
+									$paramsCol = array(array($data['BRANCHID'], SQLSRV_PARAM_IN));  
+									$execCol = sqlsrv_query( $conn, $callCol, $paramsCol) or die( print_r( sqlsrv_errors(), true));								
 									while($dataCol = sqlsrv_fetch_array($execCol)){
 									?>
 										<option value="<?php echo $dataCol['EMP_NO'];?>" <?php if($dataCol['EMP_NO'] == $pic){ echo"selected"; }?>><?php echo $dataCol['EMP_NO'].' - '.strtoupper($dataCol['EMP_NAME']);?></option>
 									<?php
-									
-							
 									}
 								}
 							?>
@@ -121,40 +116,40 @@ if(isset($_POST['submit_col'])){
 			</div>
 			<div class="card-body">
 				<div class="table-responsive">
+					<table class="table table-bordered dataTable" style="width:100%;" id="example" >
+						<thead>
+							<tr>
+								<th>No</th>
+								<th>No Kontrak</th>
+								<th>Nama Kostumer</th>
+								<th>Tgl Jatuh Tempo</th>
+								<th>Overdue Days</th>
+								<th>Total Tagihan</th>
+								<th>Tgl Janji Bayar</th>
+								<th>Periode</th>
+							</tr>
+						</thead>
+						<tbody>
+							<?php
+								$no=0;
+								while($dataDKHC = sqlsrv_fetch_array($execDKHC)){
+									$no++;
+							?>
+							<tr>
+								<td><?php echo $no;?></td>
+								<td><?php echo $dataDKHC['NOMOR_KONTRAK'];?></td>
+								<td style="text-align:left;"><?php echo $dataDKHC['NAMA_KOSTUMER'];?></td>
+								<td><?php echo $dataDKHC['TANGGAL_JATUH_TEMPO']->format('Y-m-d');?></td>
+								<td><?php echo $dataDKHC['OVERDUE_DAYS'];?></td>
+								<td>Rp. <?php echo number_format($dataDKHC['TOTAL_TAGIHAN'],0,',','.');?></td>
+								<td><?php if($dataDKHC['TANGGAL_JANJI_BAYAR']->format('Y-m-d')=='1900-01-01'){echo"";}else if($dataDKHC['TANGGAL_JANJI_BAYAR']==NULL){echo"";}else{echo $dataDKHC['TANGGAL_JANJI_BAYAR']->format('Y-m-d');}?></td>
+								<td><?php echo $dataDKHC['PERIOD'];?></td>
+							</tr>
+							<?php } ?>
+						</tbody>
+					</table>
+					<br>
 					<form action="assign.php?action=save" method="post" enctype="multipart/form-data" id="form">
-						<table class="table table-bordered dataTable" style="width:100%;" id="example" >
-							<thead>
-								<tr>
-									<th style="vertical-align:middle;text-align:center;padding-left:30px;" ><input type="checkbox" id="selectAll"></th>
-									<th>No Kontrak</th>
-									<th>Nama Kostumer</th>
-									<th>Tgl Jatuh Tempo</th>
-									<th>Overdue Days</th>
-									<th>Total Tagihan</th>
-									<th>Tgl Janji Bayar</th>
-									<th>Periode</th>
-								</tr>
-							</thead>
-							<tbody>
-								<?php
-									$no=0;
-									while($dataDKHC = sqlsrv_fetch_array($execDKHC)){
-										$no++;
-								?>
-								<tr>
-									 <td style="vertical-align:middle;text-align:center;"><input type="checkbox" class="aroClass" name="aro[]" id="aro[]" value="<?php echo $dataDKHC['AGING_COLLECTED_ID'];?>">
-									<td><?php echo $dataDKHC['NOMOR_KONTRAK'];?></td>
-									<td style="text-align:left;"><?php echo $dataDKHC['NAMA_KOSTUMER'];?></td>
-									<td><?php echo $dataDKHC['TANGGAL_JATUH_TEMPO']->format('Y-m-d');?></td>
-									<td><?php echo $dataDKHC['OVERDUE_DAYS'];?></td>
-									<td>Rp. <?php echo number_format($dataDKHC['TOTAL_TAGIHAN'],0,',','.');?></td>
-									<td><?php if($dataDKHC['TANGGAL_JANJI_BAYAR']->format('Y-m-d')=='1900-01-01'){echo"";}else if($dataDKHC['TANGGAL_JANJI_BAYAR']==NULL){echo"";}else{echo $dataDKHC['TANGGAL_JANJI_BAYAR']->format('Y-m-d');}?></td>
-									<td><?php echo $dataDKHC['PERIOD'];?></td>
-								</tr>
-								<?php } ?>
-							</tbody>
-						</table>
-						<br>
 						<input type="hidden" id="branch" name="branch" value="<?php echo $branch; ?>" >
 						<input type="hidden" id="pic" name="pic" value="<?php echo $pic; ?>">
 						<input type="hidden" id="bm" name="bm" value="<?php echo $sid; ?>">
@@ -167,7 +162,7 @@ if(isset($_POST['submit_col'])){
 </div>
 <script src="vendor/jquery/jquery.min.js"></script>
 <script>
-/*$(document).ready(function() {
+$(document).ready(function() {
 	$('#example').DataTable({
 		"lengthMenu": [[5, 10, 25, 50, -1], [5, 10, 25, 50, "All"]],
 		"order": [[ 0, "asc" ]],
@@ -176,40 +171,10 @@ if(isset($_POST['submit_col'])){
 			"orderable": true
 		} ]
 	});
-} );*/
-$(document).ready(function() {
-	$(function(){
-			var checkboxes = $(':checkbox:not(#aro)').click(function(event){
-			$('#submitaro').prop("disabled", checkboxes.filter(':checked').length == 0);
-		});
-
-		var counterChecked = 0;
-
-		$('body').on('change', 'input[type="checkbox"]', function() {
-			this.checked ? counterChecked++ : counterChecked--;
-			counterChecked > 0 ? $('#submitaro').prop("disabled", false): $('#submitaro').prop("disabled", true);
-		});
-
-		$('#aro').click(function(event) {   
-			checkboxes.prop('checked', this.checked);
-			$('#submitaro').prop("disabled", !this.checked)
-		});
-	});
-	oTableStaticFlow = $('#example').DataTable({
-		"lengthMenu": [[5, 10, 25, 50, -1], [5, 10, 25, 50, "All"]],
-		"aoColumnDefs": [{
-			'bSortable': false,
-			'aTargets': [0]
-		}],
-	});
-
-	$("#selectAll").click(function () {
-		var cells = oTableStaticFlow.column(0).nodes(), // Cells from 1st column
-			state = this.checked;
-
-		for (var i = 0; i < cells.length; i += 1) {
-			cells[i].querySelector("input[type='checkbox']").checked = state;
-		}
-	});
 } );
+
+$('#selectAll').click(function(e){
+    var table= $(e.target).closest('table');
+    $('td input:checkbox',table).prop('checked',this.checked);
+});
 </script>

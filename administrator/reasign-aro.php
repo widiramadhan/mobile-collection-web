@@ -74,39 +74,37 @@
 $(document).ready(function() {
 
 	$(function(){
-    var checkboxes = $(':checkbox:not(#aro)').click(function(event){
-        $('#submitaro').prop("disabled", checkboxes.filter(':checked').length == 0);
-    });
+		var checkboxes = $(':checkbox:not(#aro)').click(function(event){
+			$('#submitaro').prop("disabled", checkboxes.filter(':checked').length == 0);
+		});
     
-	 var counterChecked = 0;
+		var counterChecked = 0;
 
-	$('body').on('change', 'input[type="checkbox"]', function() {
-
+		$('body').on('change', 'input[type="checkbox"]', function() {
 			this.checked ? counterChecked++ : counterChecked--;
-		counterChecked > 0 ? $('#submitaro').prop("disabled", false): $('#submitaro').prop("disabled", true);
-
-	});
+			counterChecked > 0 ? $('#submitaro').prop("disabled", false): $('#submitaro').prop("disabled", true);
+		});
 	
-    $('#aro').click(function(event) {   
-        checkboxes.prop('checked', this.checked);
-        $('#submitaro').prop("disabled", !this.checked)
-    });
-});
+		$('#aro').click(function(event) {   
+			checkboxes.prop('checked', this.checked);
+			$('#submitaro').prop("disabled", !this.checked)
+		});
+	});
 	oTableStaticFlow = $('#dataTables').DataTable({
-    "aoColumnDefs": [{
-        'bSortable': false,
-        'aTargets': [0]
-    }],
-});
+		"aoColumnDefs": [{
+			'bSortable': false,
+			'aTargets': [0]
+		}],
+	});
 
 	$("#selectAll").click(function () {
-    var cells = oTableStaticFlow.column(0).nodes(), // Cells from 1st column
-        state = this.checked;
+		var cells = oTableStaticFlow.column(0).nodes(), // Cells from 1st column
+			state = this.checked;
 
-    for (var i = 0; i < cells.length; i += 1) {
-        cells[i].querySelector("input[type='checkbox']").checked = state;
-    }
-});
+		for (var i = 0; i < cells.length; i += 1) {
+			cells[i].querySelector("input[type='checkbox']").checked = state;
+		}
+	});
 
 
 	

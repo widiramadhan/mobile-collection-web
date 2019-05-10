@@ -8,12 +8,15 @@ if($action == 'save'){
 	$branch = $_POST['branch'];
 	$pic = $_POST['pic'];
 	$bm = $_POST['bm'];
-	
-	$queryInsertModel = "{call SP_INSERT_DKHC(?,?,?)}"; 
+	$aro = $_POST['aro'];
+	$selectedAro = count($aro);
+	for($x=0;$x<$selectedAro;$x++){
+	$queryInsertModel = "{call SP_INSERT_DKHC_NEW(?,?,?,?)}"; 
 	$parameterInsertModel = array(
 					array($branch, SQLSRV_PARAM_IN),
 					array($pic, SQLSRV_PARAM_IN),
-					array($bm, SQLSRV_PARAM_IN)
+					array($bm, SQLSRV_PARAM_IN),
+					array($aro[$x], SQLSRV_PARAM_IN)
 				);
 	$execInsertModel = sqlsrv_query( $conn, $queryInsertModel, $parameterInsertModel) or die( print_r( sqlsrv_errors(), true));
 	if($execInsertModel){
@@ -47,6 +50,7 @@ if($action == 'save'){
 						history.back();
 					} ,2000); 
 			  </script>';
+		}
 	}
 }
 else if($action == 'approve'){
