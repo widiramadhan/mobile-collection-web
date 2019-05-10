@@ -92,7 +92,7 @@ if(isset($_POST['submit_col'])){
 									/*echo '<script>alert("'.$data['BRANCHID'].'")</script>';*/
 									$callCol = "{call SP_LOV_ARO_BY_BRANCH(?)}"; 
 									//$paramsCol = array(array($data['BRANCHID'], SQLSRV_PARAM_IN));  
-									$paramsCol = array(array("1502", SQLSRV_PARAM_IN));  
+									$paramsCol = array(array($data['BRANCHID'], SQLSRV_PARAM_IN));  
 									$execCol = sqlsrv_query( $conn, $callCol, $paramsCol) or die( print_r( sqlsrv_errors(), true));	
 									$numrowsResult=sqlsrv_num_rows($execCol);									
 									while($dataCol = sqlsrv_fetch_array($execCol)){
@@ -195,13 +195,16 @@ $(document).ready(function() {
 			$('#submitaro').prop("disabled", !this.checked)
 		});
 	});
+	
 	oTableStaticFlow = $('#example').DataTable({
-		"lengthMenu": [[5, 10, 25, 50, -1], [5, 10, 25, 50, "All"]],
+		"lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
 		"aoColumnDefs": [{
 			'bSortable': false,
 			'aTargets': [0]
 		}],
 	});
+	
+	
 
 	$("#selectAll").click(function () {
 		var cells = oTableStaticFlow.column(0).nodes(), // Cells from 1st column
