@@ -62,7 +62,7 @@ if(isset($_POST['submit_col'])){
 	}
 </style>
 <div class="row">
-	<div class="col-md-4">
+	<div class="col-md-12">
 		<div class="card shadow mb-4">
 			<div class="card-header py-3">
 				<h6 class="m-0 font-weight-bold text-primary">Select AR Officer</h6>
@@ -114,7 +114,9 @@ if(isset($_POST['submit_col'])){
 			</div>
 		</div>
 	</div>
-	<div class="col-md-8">
+</div>
+<div class="row">
+<div class="col-md-12">
 		<div class="card shadow mb-4">
 			<div class="card-header py-3">
 				<h6 class="m-0 font-weight-bold text-primary">List DKH Approval</h6>
@@ -128,7 +130,8 @@ if(isset($_POST['submit_col'])){
 									<th style="vertical-align:middle;text-align:center;padding-left:30px;" ><input type="checkbox" id="selectAll"></th>
 									<th>No Kontrak</th>
 									<th>Nama Kostumer</th>
-									<th>Tgl Jatuh Tempo</th>
+									<th>Alamat</th>
+									<th style="text-align:center;vertical-align:middle;width:100px" >Tgl Jatuh Tempo</th>
 									<th>Overdue Days</th>
 									<th>Total Tagihan</th>
 									<th>Tgl Janji Bayar</th>
@@ -145,6 +148,7 @@ if(isset($_POST['submit_col'])){
 									 <td style="vertical-align:middle;text-align:center;"><input type="checkbox" class="aroClass" name="aro[]" id="aro[]" value="<?php echo $dataDKHC['AGING_COLLECTED_ID'];?>">
 									<td><?php echo $dataDKHC['NOMOR_KONTRAK'];?></td>
 									<td style="text-align:left;"><?php echo $dataDKHC['NAMA_KOSTUMER'];?></td>
+									<td style="text-align:left;"><?php echo $dataDKHC['ALAMAT_KTP'];?></td>
 									<td><?php echo $dataDKHC['TANGGAL_JATUH_TEMPO']->format('Y-m-d');?></td>
 									<td><?php echo $dataDKHC['OVERDUE_DAYS'];?></td>
 									<td>Rp. <?php echo number_format($dataDKHC['TOTAL_TAGIHAN'],0,',','.');?></td>
