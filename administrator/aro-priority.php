@@ -174,7 +174,7 @@ if(isset($_POST['submit'])){
 						<tr>
 							<td style="vertical-align:middle;text-align:center;"><?php echo $no;?></td>
 							<td style="vertical-align:middle;"><?php echo $data['BRANCH_ID'];?></td>
-							<td style="vertical-align:middle;"><?php echo $data['M_AREA_COLL_ID'];?></td>
+							<td style="vertical-align:middle;" ><a href="index.php?page=detail-mapping&id=<?php echo $data['M_AREA_COLL_ID'];?>&priority=<?php echo $data['M_AREA_COLL_PRIORITY_ID'];?>"><?php echo $data['M_AREA_COLL_ID'];?></td></a>
 							<td style="vertical-align:middle;"><?php echo $data['KECAMATAN'];?></td>
 							<td style="vertical-align:middle;"><?php echo $data['KELURAHAN'];?></td>
 							<td style="vertical-align:middle;"><?php echo $data['PRIORITY_DESC'];?></td>

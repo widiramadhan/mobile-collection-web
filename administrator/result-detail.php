@@ -28,6 +28,18 @@
 					<hr>
 					<b>Total Tagihan :</b><br>
 					<label>Rp. <?php echo number_format($row['TOTAL_TAGIHAN'],0,',','.');?></label>
+					<hr>
+					<b>Denda :</b><br>
+					<label>Rp. <?php echo number_format($row['DENDA'],0,',','.');?></label>
+					<hr>
+					<b>Titipan :</b><br>
+					<label>Rp. <?php echo number_format($row['TITIPAN'],0,',','.');?></label>
+					<hr>
+					<b>Angsuran Berjalan :</b><br>
+					<label>Rp. <?php echo number_format($row['ANGSURAN_BERJALAN'],0,',','.');?></label>
+					<hr>
+					<b>Angsuran Tertunggak :</b><br>
+					<label>Rp. <?php echo number_format($row['ANGSURAN_TERTUNGGAK'],0,',','.');?></label>
 				</div>
 			</div>
 		</div>

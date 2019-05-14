@@ -122,7 +122,11 @@ switch ($current_page) {
 	case 'tracking-aro-status':
 	require_once('tracking-aro-status.php');
 	break;
-		
+	
+	case 'detail-mapping':
+	require_once('detail-mapping.php');
+	break;	
+	
 	default:
 	require_once('home.php');
 }
