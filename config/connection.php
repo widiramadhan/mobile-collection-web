@@ -1,9 +1,15 @@
 <?php
 
-$config_serverName = '172.16.1.172';
+
+/*$config_serverName = '172.16.1.172';
 $config_db = 'MOBILE_COLLECTION';
 $config_uid = 'sa';
-$config_pwd = 'P@ssw0rd';
+$config_pwd = 'P@ssw0rd';*/
+
+$config_serverName = '172.16.0.233\SFI_DWH_INSTANCE';
+$config_db = 'MOBILE_COLLECTION';
+$config_uid = 'sa';
+$config_pwd = 'user.100';
 
 /*
 $config_serverName = '172.16.0.233\SFI_DWH_INSTANCE';

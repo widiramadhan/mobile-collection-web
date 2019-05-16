@@ -127,6 +127,14 @@ switch ($current_page) {
 	require_once('detail-mapping.php');
 	break;	
 	
+	case 'aro-mapping':
+	require_once('aro-mapping.php');
+	break;	
+	
+	case 'get-update-area':
+	require_once('get-update-area.php');
+	break;	
+	
 	default:
 	require_once('home.php');
 }

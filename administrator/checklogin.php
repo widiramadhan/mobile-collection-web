@@ -1,6 +1,6 @@
-<link rel="stylesheet" href="vendors/sweetalert/sweetalert.min.css">
-<script src="vendors/jquery/jquery.min.js"></script>
-<script src="vendors/sweetalert/sweetalert.min.js"></script>
+<script src="assets/js/jquery.min.js"></script>
+<link rel="stylesheet" href="vendor/sweetalert/sweetalert.min.css">
+<script src="vendor/sweetalert/sweetalert.min.js"></script>
 <?php
 session_start();
 require_once("../config/connection.php");

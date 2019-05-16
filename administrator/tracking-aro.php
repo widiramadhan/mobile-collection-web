@@ -31,6 +31,7 @@ if(isset($_POST['submit_col'])){
 		$params = array(array($pic, SQLSRV_PARAM_IN),array($date, SQLSRV_PARAM_IN));  
 		$options =  array( "Scrollable" => "buffered" );
 		$exec = sqlsrv_query( $conn, $query, $params, $options) or die( print_r( sqlsrv_errors(), true));
+		
 	}
 }else{
 	$branch = "";
@@ -115,7 +116,6 @@ if(isset($_POST['submit_col'])){
 			<div class="card-header">
 				<h6 class="m-0 font-weight-bold text-primary">Tracking AR Officer</h6>
 			</div>
-			
 			<div class="card-body">
 				<?php
 					if(isset($_POST['submit_col'])){
@@ -133,46 +133,10 @@ if(isset($_POST['submit_col'])){
 									<div style="height:400px;width:100%;">
 										<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d16327777.997882307!2d108.84189317670506!3d-2.4152622231444334!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2c4c07d7496404b7%3A0xe37b4de71badf485!2sIndonesia!5e0!3m2!1sid!2sid!4v1556436020418!5m2!1sid!2sid" width="100%" height="100%" frameborder="0" style="border:0" allowfullscreen></iframe>
 									</div>';
+							/*}else if($numrows == 1){
+								echo'<div id="map_tracking2" style="width:100%;height:400px;"></div>';*/
 							}else{
-							?>
-								<div id="map_tracking" style="width:100%;height:400px;"></div>
-								<!--<br>
-								<b>Detail Route</b>
-								<table class="table table-bordered">
-									<thead>
-										<tr>
-											<th>No</th>
-											<th>Contract ID</th>
-											<th>Result</th>
-											<th>Date</th>
-											<th>Action</th>
-										</tr>
-									</thead>
-									<tbody>
-										<?php
-											/*$query2 = "{call SP_GET_ROUTE_ARO_DETAIL(?,?)}";  
-											$params2 = array(array($pic, SQLSRV_PARAM_IN),array($date, SQLSRV_PARAM_IN));  
-											$options =  array( "Scrollable" => "buffered" );
-											$exec2 = sqlsrv_query( $conn, $query, $params, $options) or die( print_r( sqlsrv_errors(), true));
-											$no=0;
-											while($data2=sqlsrv_fetch_array($exec2)){
-												$no++;*/
-										?>
-										<tr>
-											<td><?php// echo $no;?></td>
-											<td><?php// echo $data2['CONTRACT_ID'];?></td>
-											<td><?php// echo $status;?></td>
-											<td><?php// echo $data2['CREATE_DATE']->format("d-m-Y H:i:s");?></td>
-											<td>
-												<a href="" class="btn btn-primary btn-sm"><i class="fa fa-eye"></i> Detail</a>
-											</td>
-										</tr>
-										<?php
-											//}
-										?>
-									</tbody>
-								</table>-->
-							<?php
+								echo'<div id="map_tracking" style="width:100%;height:400px;"></div>';
 							}
 						}
 					}else{
@@ -352,68 +316,76 @@ $( document ).ready(function() {
 if(isset($_POST['submit_col'])){
 	if(!$_POST['col'] == ""){
 		$numrows = sqlsrv_num_rows($exec);
-		if(!$numrows == 0){
+		if(!$numrows == 0 || !$numrows == 1){
 ?>
-var geocoder;
-var map;
-var directionsDisplay;
-var directionsService = new google.maps.DirectionsService();
-var locations = [
-<?php 
-	$no=0;
-	while($data = sqlsrv_fetch_array($exec)){
-		$no++;
-		
-?>
-	['Lokasi <?php echo $no;?>', <?php echo $data['LAT'];?>,  <?php echo $data['LNG'];?>, <?php echo $no;?>],
-<?php } ?>
-];
-<?php  } } } ?>
+			var geocoder;
+			var map;
+			var directionsDisplay;
+			var directionsService = new google.maps.DirectionsService();
+			var locations = [
+			<?php 
+				$no=0;
+				while($data = sqlsrv_fetch_array($exec)){
+					$no++;
+					
+			?>
+				['Lokasi <?php echo $no;?>', <?php echo $data['LAT'];?>,  <?php echo $data['LNG'];?>, <?php echo $no;?>],
+			<?php } ?>
+			];
+			function initialize() {
+			  directionsDisplay = new google.maps.DirectionsRenderer();
+			  var map = new google.maps.Map(document.getElementById('map_tracking'), {
+				zoom: 10,
+				center: new google.maps.LatLng(-33.92, 151.25),
+				mapTypeId: google.maps.MapTypeId.ROADMAP
+			  });
+			  directionsDisplay.setMap(map);
+			  var infowindow = new google.maps.InfoWindow();
+			  
+			  if(locations.length == 1){
+				  var marker;
+				  marker = new google.maps.Marker({
+					  position: new google.maps.LatLng(-33.92, 151.25),
+					  map: map,
+					});
+			  }else{
+				  var marker, i;
+				  var request = {
+					travelMode: google.maps.TravelMode.DRIVING
+				  };
+				  for (i = 0; i < locations.length; i++) {
+					marker = new google.maps.Marker({
+					  position: new google.maps.LatLng(locations[i][1], locations[i][2]),
+					});
 
-function initialize() {
-  directionsDisplay = new google.maps.DirectionsRenderer();
+					google.maps.event.addListener(marker, 'click', (function(marker, i) {
+					  return function() {
+						infowindow.setContent(locations[i][0]);
+						infowindow.open(map, marker);
+					  }
+					})(marker, i));
 
+					if (i == 0){
+						request.origin = marker.getPosition();
+					}else if (i == locations.length - 1) {
+						request.destination = marker.getPosition();
+					}else {
+					  if (!request.waypoints) request.waypoints = [];
+					  request.waypoints.push({
+						location: marker.getPosition(),
+						stopover: true
+					  });
+					}
 
-  var map = new google.maps.Map(document.getElementById('map_tracking'), {
-    zoom: 10,
-    center: new google.maps.LatLng(-33.92, 151.25),
-    mapTypeId: google.maps.MapTypeId.ROADMAP
-  });
-  directionsDisplay.setMap(map);
-  var infowindow = new google.maps.InfoWindow();
-
-  var marker, i;
-  var request = {
-    travelMode: google.maps.TravelMode.DRIVING
-  };
-  for (i = 0; i < locations.length; i++) {
-    marker = new google.maps.Marker({
-      position: new google.maps.LatLng(locations[i][1], locations[i][2]),
-    });
-
-    google.maps.event.addListener(marker, 'click', (function(marker, i) {
-      return function() {
-        infowindow.setContent(locations[i][0]);
-        infowindow.open(map, marker);
-      }
-    })(marker, i));
-
-    if (i == 0) request.origin = marker.getPosition();
-    else if (i == locations.length - 1) request.destination = marker.getPosition();
-    else {
-      if (!request.waypoints) request.waypoints = [];
-      request.waypoints.push({
-        location: marker.getPosition(),
-        stopover: true
-      });
-    }
-
-  }
-  directionsService.route(request, function(result, status) {
-    if (status == google.maps.DirectionsStatus.OK) {
-      directionsDisplay.setDirections(result);
-    }
-  });
-}
-google.maps.event.addDomListener(window, "load", initialize);
+				  }
+				  directionsService.route(request, function(result, status) {
+					if (status == google.maps.DirectionsStatus.OK) {
+					  directionsDisplay.setDirections(result);
+					}
+				  });
+			  }
+			}
+			google.maps.event.addDomListener(window, "load", initialize);
+<?php
+} } }?>
 </script>
