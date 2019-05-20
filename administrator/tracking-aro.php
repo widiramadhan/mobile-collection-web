@@ -32,6 +32,11 @@ if(isset($_POST['submit_col'])){
 		$options =  array( "Scrollable" => "buffered" );
 		$exec = sqlsrv_query( $conn, $query, $params, $options) or die( print_r( sqlsrv_errors(), true));
 		
+		$query1 = "{call SP_GET_ROUTE_ARO(?,?)}";  
+		$params1 = array(array($pic, SQLSRV_PARAM_IN),array($date, SQLSRV_PARAM_IN));  
+		$options1 =  array( "Scrollable" => "buffered" );
+		$exec1 = sqlsrv_query( $conn, $query1, $params1, $options1) or die( print_r( sqlsrv_errors(), true));
+		$dataExec = sqlsrv_fetch_array($exec1);
 	}
 }else{
 	$branch = "";
@@ -335,8 +340,8 @@ if(isset($_POST['submit_col'])){
 			function initialize() {
 			  directionsDisplay = new google.maps.DirectionsRenderer();
 			  var map = new google.maps.Map(document.getElementById('map_tracking'), {
-				zoom: 10,
-				center: new google.maps.LatLng(-33.92, 151.25),
+				zoom: 15,
+				center: new google.maps.LatLng("<?php echo $dataExec['LAT'];?>",  "<?php echo $dataExec['LNG'];?>"),
 				mapTypeId: google.maps.MapTypeId.ROADMAP
 			  });
 			  directionsDisplay.setMap(map);
@@ -345,7 +350,7 @@ if(isset($_POST['submit_col'])){
 			  if(locations.length == 1){
 				  var marker;
 				  marker = new google.maps.Marker({
-					  position: new google.maps.LatLng(-33.92, 151.25),
+					  position: new google.maps.LatLng("<?php echo $dataExec['LAT'];?>",  "<?php echo $dataExec['LNG'];?>"),
 					  map: map,
 					});
 			  }else{
