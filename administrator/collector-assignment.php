@@ -73,11 +73,11 @@ if(isset($_POST['submit_col'])){
 						<label>Branch</label>
 						<select class="form-control" id="branch" name="branch">
 							<?php
-								if($data['LEVEL'] == 'SUPER ADMIN'){
+								/*if($data['LEVEL'] == 'SUPER ADMIN'){
 									
-								}else{
+								}else{*/
 									echo '<option value="'.$data['BRANCHID'].'" selected>'.$data['OFFICE_NAME'].'</option>';
-								}
+								//}
 							?>
 						</select>
 					</div>
@@ -86,9 +86,9 @@ if(isset($_POST['submit_col'])){
 						<select class="form-control" id="col" name="col">
 							<option value="" selected>Pilih Collector</option>
 							<?php
-								if($data['LEVEL'] == 'SUPER ADMIN'){
+								/*if($data['LEVEL'] == 'SUPER ADMIN'){
 									
-								}else{
+								}else{*/
 									/*echo '<script>alert("'.$data['BRANCHID'].'")</script>';*/
 									$callCol = "{call SP_LOV_ARO_BY_BRANCH(?)}"; 
 									//$paramsCol = array(array($data['BRANCHID'], SQLSRV_PARAM_IN));  
@@ -102,7 +102,7 @@ if(isset($_POST['submit_col'])){
 									
 							
 									}
-								}
+								//}
 							?>
 						</select>
 					</div>
@@ -131,6 +131,10 @@ if(isset($_POST['submit_col'])){
 									<th>No Kontrak</th>
 									<th>Nama Kostumer</th>
 									<th>Alamat</th>
+									<th>Kota</th>
+									<th>Kelurahan</th>
+									<th>Kecamatan</th>
+									<th>Zipcode</th>
 									<th style="text-align:center;vertical-align:middle;width:100px" >Tgl Jatuh Tempo</th>
 									<th>Overdue Days</th>
 									<th>Total Tagihan</th>
@@ -149,6 +153,10 @@ if(isset($_POST['submit_col'])){
 									<td><?php echo $dataDKHC['NOMOR_KONTRAK'];?></td>
 									<td style="text-align:left;"><?php echo $dataDKHC['NAMA_KOSTUMER'];?></td>
 									<td style="text-align:left;"><?php echo $dataDKHC['ALAMAT_KTP'];?></td>
+									<td style="text-align:left;"><?php echo $dataDKHC['KOTA'];?></td>
+									<td style="text-align:left;"><?php echo $dataDKHC['KELURAHAN'];?></td>
+									<td style="text-align:left;"><?php echo $dataDKHC['KECAMATAN'];?></td>
+									<td style="text-align:left;"><?php echo $dataDKHC['ZIPCODE'];?></td>
 									<td><?php echo $dataDKHC['TANGGAL_JATUH_TEMPO']->format('Y-m-d');?></td>
 									<td><?php echo $dataDKHC['OVERDUE_DAYS'];?></td>
 									<td>Rp. <?php echo number_format($dataDKHC['TOTAL_TAGIHAN'],0,',','.');?></td>

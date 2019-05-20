@@ -69,11 +69,11 @@ if(isset($_POST['submit_col'])){
 						<label>Branch</label>
 						<select class="form-control" id="branch" name="branch">
 							<?php
-								if($data['LEVEL'] == 'SUPER ADMIN'){
+								/*if($data['LEVEL'] == 'SUPER ADMIN'){
 									
-								}else{
+								}else{*/
 									echo '<option value="'.$data['BRANCHID'].'" selected>'.$data['OFFICE_NAME'].'</option>';
-								}
+								//}
 							?>
 						</select>
 					</div>
@@ -82,9 +82,9 @@ if(isset($_POST['submit_col'])){
 						<select class="form-control" id="col" name="col">
 							<option value="" selected>Pilih Collector</option>
 							<?php
-								if($data['LEVEL'] == 'SUPER ADMIN'){
+								/*if($data['LEVEL'] == 'SUPER ADMIN'){
 									
-								}else{
+								}else{*/
 									$callCol = "{call SP_GET_ARO(?)}"; 
 									$paramsCol = array(array($data['BRANCHID'], SQLSRV_PARAM_IN));  
 									$execCol = sqlsrv_query( $conn, $callCol, $paramsCol) or die( print_r( sqlsrv_errors(), true));								
@@ -93,7 +93,7 @@ if(isset($_POST['submit_col'])){
 										<option value="<?php echo $dataCol['EMP_NO'];?>" <?php if($dataCol['EMP_NO'] == $pic){ echo"selected"; }?>><?php echo $dataCol['EMP_NO'].' - '.strtoupper($dataCol['EMP_NAME']);?></option>
 									<?php
 									}
-								}
+								//}
 							?>
 						</select>
 					</div>
@@ -293,8 +293,8 @@ if(isset($_POST['submit_col'])){
 		</div>
 	</div>
 </div>
-<!--<script src="https://maps.google.com/maps/api/js?key=AIzaSyDOC4niTnX8QwoxCeEZYjGpOPtKJN3BGQk"></script>>-->
-<script src="https://maps.google.com/maps/api/js?key=AIzaSyDZqZCbzcSFzRMttT8L8g864uPwR4JnSRU"></script>
+<script src="https://maps.google.com/maps/api/js?key=AIzaSyDOC4niTnX8QwoxCeEZYjGpOPtKJN3BGQk"></script>
+<!--<script src="https://maps.google.com/maps/api/js?key=AIzaSyDZqZCbzcSFzRMttT8L8g864uPwR4JnSRU"></script>-->
 <script>
 $( document ).ready(function() {   
 	$('#date').datepicker({
@@ -352,6 +352,7 @@ if(isset($_POST['submit_col'])){
 				  marker = new google.maps.Marker({
 					  position: new google.maps.LatLng("<?php echo $dataExec['LAT'];?>",  "<?php echo $dataExec['LNG'];?>"),
 					  map: map,
+					  title: '<?php echo $dataExec["CONTRACT_ID"];?>'
 					});
 			  }else{
 				  var marker, i;

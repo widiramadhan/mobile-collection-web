@@ -64,9 +64,9 @@ if(isset($_POST['submit_col'])){
 						<label>Branch</label>
 						<select class="form-control" id="branch" name="branch">
 							<?php
-								if($data['LEVEL'] == 'SUPER ADMIN'){
+								/*if($data['LEVEL'] == 'SUPER ADMIN'){
 									
-								}else{
+								}else{*/
 									echo '<option value="'.$data['BRANCHID'].'" selected>'.$data['OFFICE_NAME'].'</option>';
 								}
 							?>
@@ -77,9 +77,9 @@ if(isset($_POST['submit_col'])){
 						<select class="form-control" id="col" name="col">
 							<option value="" selected>Pilih Collector</option>
 							<?php
-								if($data['LEVEL'] == 'SUPER ADMIN'){
+								/*if($data['LEVEL'] == 'SUPER ADMIN'){
 									
-								}else{
+								}else{*/
 									$callCol = "{call SP_GET_ARO(?)}"; 
 									$paramsCol = array(array($data['BRANCHID'], SQLSRV_PARAM_IN));  
 									$execCol = sqlsrv_query( $conn, $callCol, $paramsCol) or die( print_r( sqlsrv_errors(), true));								
@@ -88,7 +88,7 @@ if(isset($_POST['submit_col'])){
 										<option value="<?php echo $dataCol['EMP_NO'];?>" <?php if($dataCol['EMP_NO'] == $pic){ echo"selected"; }?>><?php echo $dataCol['EMP_NO'].' - '.strtoupper($dataCol['EMP_NAME']);?></option>
 									<?php
 									}
-								}
+								//}
 							?>
 						</select>
 					</div>
