@@ -135,6 +135,10 @@ switch ($current_page) {
 	require_once('get-update-area.php');
 	break;	
 	
+	case 'aro-priority-contract':
+	require_once('aro-priority-kontrak.php');
+	break;	
+	
 	default:
 	require_once('home.php');
 }

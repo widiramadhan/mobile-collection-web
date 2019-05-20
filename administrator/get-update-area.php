@@ -82,11 +82,11 @@ if(isset($_POST['submit_col'])){
 						<label>Branch</label>
 						<select class="form-control" id="branch" name="branch">
 							<?php
-								if($data['LEVEL'] == 'SUPER ADMIN'){
+								/*if($data['LEVEL'] == 'SUPER ADMIN'){
 									
-								}else{
+								}else{*/
 									echo '<option value="'.$data['BRANCHID'].'" selected>'.$data['OFFICE_NAME'].'</option>';
-								}
+								//}
 							?>
 						</select>
 					</div>
@@ -100,11 +100,11 @@ if(isset($_POST['submit_col'])){
 					<div class="form-group">
 						<label>Collector Name</label>
 						<select class="form-control" id="col1" name="col1">
-							<option value="<?php echo $aro1;?>"<?php echo $aro1.' - '.strtoupper($execCol['EMP_NAME']);?> selected></option>
+							<option value="<?php echo $aro1;?>" selected><?php echo $aro1;?></option>
 							<?php
-								if($data['LEVEL'] == 'SUPER ADMIN'){
+								/*if($data['LEVEL'] == 'SUPER ADMIN'){
 									
-								}else{
+								}else{*/
 									$callCol = "{call SP_GET_COLLECTOR_BY_BRANCH(?)}"; 
 									$paramsCol = array(array($data['BRANCHID'], SQLSRV_PARAM_IN));  
 									$execCol = sqlsrv_query( $conn, $callCol, $paramsCol) or die( print_r( sqlsrv_errors(), true));								
@@ -113,7 +113,7 @@ if(isset($_POST['submit_col'])){
 										<option value="<?php echo $dataCol['EMP_NO'];?>"><?php echo $dataCol['EMP_NO'].' - '.strtoupper($dataCol['EMP_NAME']);?></option>
 									<?php
 									}
-								}
+								//}
 							?>
 						</select>
 					</div>
@@ -122,9 +122,9 @@ if(isset($_POST['submit_col'])){
 						<select class="form-control" id="col2" name="col2">
 							<option value="" selected>Pilih Collector 2</option>
 							<?php
-								if($data['LEVEL'] == 'SUPER ADMIN'){
+								/*if($data['LEVEL'] == 'SUPER ADMIN'){
 									
-								}else{
+								}else{*/
 									$callCol = "{call SP_GET_COLLECTOR_BY_BRANCH(?)}"; 
 									$paramsCol = array(array($data['BRANCHID'], SQLSRV_PARAM_IN));  
 									$execCol = sqlsrv_query( $conn, $callCol, $paramsCol) or die( print_r( sqlsrv_errors(), true));								
@@ -133,7 +133,7 @@ if(isset($_POST['submit_col'])){
 										<option value="<?php echo $dataCol['EMP_NO'];?>"><?php echo $dataCol['EMP_NO'].' - '.strtoupper($dataCol['EMP_NAME']);?></option>
 									<?php
 									}
-								}
+								//}
 							?>
 						</select>
 					</div>
@@ -142,9 +142,9 @@ if(isset($_POST['submit_col'])){
 						<select class="form-control" id="col3" name="col3">
 							<option value="" selected>Pilih Collector 3</option>
 							<?php
-								if($data['LEVEL'] == 'SUPER ADMIN'){
+								/*if($data['LEVEL'] == 'SUPER ADMIN'){
 									
-								}else{
+								}else{*/
 									$callCol = "{call SP_GET_COLLECTOR_BY_BRANCH(?)}"; 
 									$paramsCol = array(array($data['BRANCHID'], SQLSRV_PARAM_IN));  
 									$execCol = sqlsrv_query( $conn, $callCol, $paramsCol) or die( print_r( sqlsrv_errors(), true));								
@@ -153,7 +153,7 @@ if(isset($_POST['submit_col'])){
 										<option value="<?php echo $dataCol['EMP_NO'];?>"><?php echo $dataCol['EMP_NO'].' - '.strtoupper($dataCol['EMP_NAME']);?></option>
 									<?php
 									}
-								}
+								//}
 							?>
 						</select>
 					</div>
@@ -162,9 +162,9 @@ if(isset($_POST['submit_col'])){
 						<select class="form-control" id="col4" name="col4">
 							<option value="" selected>Pilih Collector 4</option>
 							<?php
-								if($data['LEVEL'] == 'SUPER ADMIN'){
+								/*if($data['LEVEL'] == 'SUPER ADMIN'){
 									
-								}else{
+								}else{*/
 									$callCol = "{call SP_GET_COLLECTOR_BY_BRANCH(?)}"; 
 									$paramsCol = array(array($data['BRANCHID'], SQLSRV_PARAM_IN));  
 									$execCol = sqlsrv_query( $conn, $callCol, $paramsCol) or die( print_r( sqlsrv_errors(), true));								
@@ -173,7 +173,7 @@ if(isset($_POST['submit_col'])){
 										<option value="<?php echo $dataCol['EMP_NO'];?>"><?php echo $dataCol['EMP_NO'].' - '.strtoupper($dataCol['EMP_NAME']);?></option>
 									<?php
 									}
-								}
+								//}
 							?>
 						</select>
 					</div>
@@ -182,9 +182,9 @@ if(isset($_POST['submit_col'])){
 						<select class="form-control" id="col5" name="col5">
 							<option value="" selected>Pilih Collector 5</option>
 							<?php
-								if($data['LEVEL'] == 'SUPER ADMIN'){
+								/*if($data['LEVEL'] == 'SUPER ADMIN'){
 									
-								}else{
+								}else{*/
 									$callCol = "{call SP_GET_COLLECTOR_BY_BRANCH(?)}"; 
 									$paramsCol = array(array($data['BRANCHID'], SQLSRV_PARAM_IN));  
 									$execCol = sqlsrv_query( $conn, $callCol, $paramsCol) or die( print_r( sqlsrv_errors(), true));								
@@ -193,7 +193,7 @@ if(isset($_POST['submit_col'])){
 										<option value="<?php echo $dataCol['EMP_NO'];?>"><?php echo $dataCol['EMP_NO'].' - '.strtoupper($dataCol['EMP_NAME']);?></option>
 									<?php
 									}
-								}
+								//}
 							?>
 						</select>
 					</div>

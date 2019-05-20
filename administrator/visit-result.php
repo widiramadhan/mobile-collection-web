@@ -9,6 +9,7 @@
 					<tr>
 						<th style="vertical-align:middle;text-align:center;">NO</th>
 						<th style="vertical-align:middle;text-align:center;">CONTRACT ID</th>
+						<th style="vertical-align:middle;text-align:center;">COLLECTOR NAME</th>
 						<th style="vertical-align:middle;text-align:center;">CUSTOMER NAME</th>
 						<th style="vertical-align:middle;text-align:center;">TOTAL TAGIHAN</th>
 						<th style="vertical-align:middle;text-align:center;">STATUS</th>
@@ -67,6 +68,7 @@
                     <tr>
 					  <td style="vertical-align:middle;text-align:center;"><?php echo $no;?></td>
                       <td style="vertical-align:middle;"><?php echo $data['CONTRACT_ID'];?></td>
+					  <td style="vertical-align:middle;"><?php echo $data['EMP_NAME'];?></td>
 					  <td style="vertical-align:middle;"><?php echo $data['NAMA_KOSTUMER'];?></td>
                       <td style="vertical-align:middle;text-align:right">Rp. <?php echo number_format($data['TOTAL_TAGIHAN'],0,',','.');?></td>
 					  <td style="vertical-align:middle;text-align:center">
