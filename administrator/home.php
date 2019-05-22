@@ -84,10 +84,14 @@
 				<div class="row no-gutters align-items-center">
 					<div class="col mr-2">
 						<div class="text-xs font-weight-bold text-danger text-uppercase mb-1">Customer is Collectible in Branch</div>
-						<div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $data2['TOTAL_CUST_AVAIL_COLLECT'];?> / <?php echo $data2['TOTAL_CUST'];?> Customers</div>
+						<div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $data2['TOTAL_STTS_COLLECTIBLE'];?> / <?php echo $data2['TOTAL_CUST'];?> Customers</div>
 						<div style="font-size:12px;" class="font-weight-bold text-gray-600"><?php echo $data2['TOTAL_CUST'];?> Total Customer</div>
-						<div style="font-size:12px;" class="font-weight-bold text-gray-600"><?php echo $data2['TOTAL_CUST_AVAIL_COLLECT'];?> is Collectible</div>
-						<div style="font-size:12px;" class="font-weight-bold text-gray-600"><?php echo $data2['TOTAL_CUST']-$data2['TOTAL_CUST_AVAIL_COLLECT'];?> is Non-Collectible</div>
+						<div style="font-size:12px;" class="font-weight-bold text-gray-600"><?php echo $data2['TOTAL_STTS_COLLECTIBLE'];?> is Collectible</div>
+						<div style="font-size:12px;" class="font-weight-bold text-gray-600"><?php echo $data2['TOTAL_INS_CLAIM'];?> Insurance Claim</div>
+						<div style="font-size:12px;" class="font-weight-bold text-gray-600"><?php echo $data2['TOTAL_NOTYET_DUE'];?> Not Yet Due</div>
+						<div style="font-size:12px;" class="font-weight-bold text-gray-600"><?php echo $data2['TOTAL_PU_WC'];?> PU-WC</div>
+						<div style="font-size:12px;" class="font-weight-bold text-gray-600"><?php echo $data2['TOTAL_CUST_AVAIL_COLLECT'];?> Coll-Harian</div>
+						<!--<div style="font-size:12px;" class="font-weight-bold text-gray-600"> is Non-Collectible</div>-->
 					</div>
 					<div class="col-auto">
 						<i class="fas fa-user fa-2x text-gray-300"></i>

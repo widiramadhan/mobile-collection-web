@@ -83,35 +83,14 @@ if(isset($_POST['submit_col'])){
 						</select>
 					</div>
 					<div class="form-group">
-						<label>Collector Name</label>
-						<select class="form-control" id="col" name="col">
-							<option value="" selected>Pilih Collector</option>
-							<?php
-								/*if($data['LEVEL'] == 'SUPER ADMIN'){
-									
-								}else{*/
-									/*echo '<script>alert("'.$data['BRANCHID'].'")</script>';*/
-									$callCol = "{call SP_LOV_ARO_BY_BRANCH(?)}"; 
-									//$paramsCol = array(array($data['BRANCHID'], SQLSRV_PARAM_IN));  
-									$paramsCol = array(array($data['BRANCHID'], SQLSRV_PARAM_IN));  
-									$execCol = sqlsrv_query( $conn, $callCol, $paramsCol) or die( print_r( sqlsrv_errors(), true));	
-									$numrowsResult=sqlsrv_num_rows($execCol);									
-									while($dataCol = sqlsrv_fetch_array($execCol)){
-									?>
-										<option value="<?php echo $dataCol['EMP_NO'];?>" <?php if($dataCol['EMP_NO'] == $pic){ echo"selected"; }?>><?php echo $dataCol['EMP_NO'].' - '.strtoupper($dataCol['EMP_NAME']);?></option>
-									<?php
-									
-							
-									}
-								//}
-							?>
-						</select>
+						<label>KECAMATAN</label>
+						<input type="text" class="form-control" id="kecamatan" name="kecamatan" >
 					</div>
 			</div>
 				<div class="col-md-6">
 				<form action="" method="post">
 					<div class="form-group">
-						<label>Branch</label>
+						<label>KELURAHAN</label>
 						<select class="form-control" id="branch" name="branch">
 							<?php
 								/*if($data['LEVEL'] == 'SUPER ADMIN'){
@@ -123,7 +102,7 @@ if(isset($_POST['submit_col'])){
 						</select>
 					</div>
 					<div class="form-group">
-						<label>Collector Name</label>
+						<label>COLLECTOR</label>
 						<select class="form-control" id="col" name="col">
 							<option value="" selected>Pilih Collector</option>
 							<?php
@@ -170,18 +149,12 @@ if(isset($_POST['submit_col'])){
 							<thead>
 								<tr>
 									<th style="vertical-align:middle;text-align:center;padding-left:30px;" ><input type="checkbox" id="selectAll"></th>
-									<th>No Kontrak</th>
-									<th>Nama Kostumer</th>
-									<th>Alamat</th>
-									<th>Kota</th>
-									<th>Kelurahan</th>
-									<th>Kecamatan</th>
-									<th>Zipcode</th>
-									<th style="text-align:center;vertical-align:middle;width:100px" >Tgl Jatuh Tempo</th>
-									<th>Overdue Days</th>
-									<th>Total Tagihan</th>
-									<th>Tgl Janji Bayar</th>
-									<th>Periode</th>
+									<th>CONTRACT ID</th>
+									<th>COLL ID</th>
+									<th>KECAMATAN</th>
+									<th>KELURAHAN</th>
+									<th>DAYS</th>
+									<th>ACTION</th>
 								</tr>
 							</thead>
 							<tbody>

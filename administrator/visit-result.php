@@ -9,7 +9,7 @@
 					<tr>
 						<th style="vertical-align:middle;text-align:center;">NO</th>
 						<th style="vertical-align:middle;text-align:center;">CONTRACT ID</th>
-						<th style="vertical-align:middle;text-align:center;">COLLECTOR NAME</th>
+						<th style="vertical-align:middle;text-align:center;width:80px;">COLLECTOR NAME</th>
 						<th style="vertical-align:middle;text-align:center;">CUSTOMER NAME</th>
 						<th style="vertical-align:middle;text-align:center;">TOTAL TAGIHAN</th>
 						<th style="vertical-align:middle;text-align:center;">STATUS</th>
