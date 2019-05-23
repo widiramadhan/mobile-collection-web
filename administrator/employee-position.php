@@ -15,7 +15,7 @@ if(isset($_SESSION['branch_cuser'])) {
 	$bid="";
 }
 if($sid && $bid){
-	echo"<script>window.location='index.php'</script>";
+	echo"<script>window.location='index.php?page=home'</script>";
 }else if($sid){
 	if(isset($_POST['btn_select'])){
 		$_SESSION['branch_cuser'] = $_POST['branchid'];
@@ -30,7 +30,7 @@ if($sid && $bid){
 				});  
 			},10); 
 				window.setTimeout(function(){ 
-					window.location.replace("index.php");
+					window.location.replace("index.php?page=home");
 				} ,3000); 
 		  </script>';
 	}

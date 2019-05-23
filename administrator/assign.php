@@ -93,4 +93,44 @@ else if($action == 'approve'){
 			  </script>';
 	}	
 }
+else if($action == 'reaprove'){
+	$id=$_GET['id'];
+
+	$queryUpdate = "{call SP_CANCEL_APPROVE(?)}"; 
+	$parameterUpdate = array(
+					array($id, SQLSRV_PARAM_IN),
+				);
+	$execUpdate = sqlsrv_query( $conn, $queryUpdate, $parameterUpdate) or die( print_r( sqlsrv_errors(), true));
+	if($execUpdate){
+		echo '<script>
+				setTimeout(function() {
+					swal({
+						title : "Success",
+						text : "Successfully saved data",
+						type: "success",
+						timer: 2000,
+						showConfirmButton: false
+					});  
+				},10); 
+					window.setTimeout(function(){ 
+						window.location.replace("index.php?page=tasklist");
+					} ,2000); 
+			  </script>';
+	}else{
+		echo '<script>
+				setTimeout(function() {
+					swal({
+						title : "Error",
+						text : "Failed saved data",
+						type: "error",
+						timer: 2000,
+						showConfirmButton: false
+					});  
+				},10); 
+					window.setTimeout(function(){ 
+						history.back();
+					} ,2000); 
+			  </script>';
+	}	
+}
 	?>

@@ -308,7 +308,7 @@ if(isset($_POST['submit_col'])){
 										if($disabled == 0){
 									?>
 									<button type="button" class="btn btn-success btn-sm" disabled><i class="fa fa-eye"></i> Detail</button>
-									<a href="index.php?page=approve&id=<?php echo $dataDKHC['NOMOR_KONTRAK'];?>" class="btn btn-primary btn-sm"><i class="fa fa-times"></i> Cancel Approve</a>
+									<a href="assign.php?action=reaprove&id=<?php echo $dataDKHC['NOMOR_KONTRAK'];?>" class="btn btn-primary btn-sm" onclick="return confirm('Anda yakin ingin re-approve kontrak ini?');"><i class="fa fa-times"></i> Cancel Approve</a>
 									<?php
 									}else{
 									?>
