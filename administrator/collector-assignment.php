@@ -139,7 +139,7 @@ if(isset($_POST['submit_col'])){
 									<th>Overdue Days</th>
 									<th>Total Tagihan</th>
 									<th>Tgl Janji Bayar</th>
-									<th>Periode</th>
+									<!--<th>Periode</th>-->
 								</tr>
 							</thead>
 							<tbody>
@@ -161,7 +161,7 @@ if(isset($_POST['submit_col'])){
 									<td><?php echo $dataDKHC['OVERDUE_DAYS'];?></td>
 									<td>Rp. <?php echo number_format($dataDKHC['TOTAL_TAGIHAN'],0,',','.');?></td>
 									<td><?php if($dataDKHC['TANGGAL_JANJI_BAYAR']->format('Y-m-d')=='1900-01-01'){echo"";}else if($dataDKHC['TANGGAL_JANJI_BAYAR']==NULL){echo"";}else{echo $dataDKHC['TANGGAL_JANJI_BAYAR']->format('Y-m-d');}?></td>
-									<td><?php echo $dataDKHC['PERIOD'];?></td>
+									<!--<td><?php /* echo $dataDKHC['PERIOD'];*/?></td>-->
 								</tr>
 								<?php } ?>
 							</tbody>

@@ -84,12 +84,21 @@ $branchType=substr($bid,0,2);
 			if ($branchType == "15"){
 				
 			?>
+			
 			<li class="nav-item">
-				<a class="nav-link" href="index.php?page=aro-priority">
+			 <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseTwo2" aria-expanded="true" aria-controls="collapseTwo">
 					<i class="fa fa-cog"></i>
 					<span>ARO Priority</span>
 				</a>
+			<div id="collapseTwo2" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar" style="">
+				<div class="bg-white py-2 collapse-inner rounded">
+					<h6 class="collapse-header">ARO Priority :</h6>
+					<a class="collapse-item" href="index.php?page=aro-priority-contract">ARO Priority Per-Kontrak</a>
+					<a class="collapse-item" href="index.php?page=aro-priority">ARO Priority Area</a>
+				</div>
+			</div>
 			</li>
+			
 			<li class="nav-item">
 				<a class="nav-link" href="index.php?page=aro-activity">
 					<i class="fa fa-location-arrow"></i>

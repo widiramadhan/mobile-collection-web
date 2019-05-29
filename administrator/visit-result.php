@@ -25,7 +25,7 @@
 							$acceptAmount="";
 							$promiseDate="";
 							
-							$query = "{call SP_GET_VISIT_RESULT(?)}";
+							$query = "{call SP_GET_VISIT_RESULT_NEW(?)}";
 							$params = array(array($bid, SQLSRV_PARAM_IN));  
 							$exec = sqlsrv_query( $conn, $query, $params) or die( print_r( sqlsrv_errors(), true));
 							$no = 0;
@@ -94,8 +94,8 @@
 								}
 							?>
 					  </td>
-					  <td style="vertical-align:middle;text-align:center"><?php echo $data['CREATE_DATE'];?></td>
-					  <td style="vertical-align:middle;text-align:center"><?php echo $data['UPLOAD_DATE'];?></td>
+					  <td style="vertical-align:middle;text-align:center"><?php echo $data['CREATE_DATE']->format('Y-m-d H:i:s');?></td>
+					  <td style="vertical-align:middle;text-align:center"><?php echo  $data['UPLOAD_DATE']->format('Y-m-d H:i:s');?></td>
 					  <td style="vertical-align:middle;text-align:center">
 						<a href="index.php?page=result-detail&contractID=<?php echo $data['CONTRACT_ID'];?>" class="btn btn-primary btn-sm"><i class="fa fa-search"></i> Detail</a>
 					  </td>

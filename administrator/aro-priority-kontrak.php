@@ -8,9 +8,9 @@ if(isset($_POST['submit_col'])){
 		$kelurahan = $_POST['kelurahan'];
 		$kecamatan = $_POST['kecamatan'];
 
-		$callDKHC = "{call SP_GET_CONTRACT_PRIORITY(?,?,?)}"; 
+		$callDKHC = "{call SP_GET_CONTRACT_PRIORITY(?,?,?,?)}"; 
 		$options =  array( "Scrollable" => "buffered" );
-		$paramsDKHC = array(array($kecamatan, SQLSRV_PARAM_IN),array($kelurahan, SQLSRV_PARAM_IN),array($pic, SQLSRV_PARAM_IN));  
+		$paramsDKHC = array(array($branch, SQLSRV_PARAM_IN),array($kecamatan, SQLSRV_PARAM_IN),array($kelurahan, SQLSRV_PARAM_IN),array($pic, SQLSRV_PARAM_IN));  
 		$execDKHC = sqlsrv_query( $conn, $callDKHC, $paramsDKHC, $options) or die( print_r( sqlsrv_errors(), true));
 
 		$numrows=sqlsrv_num_rows($execDKHC);
@@ -21,8 +21,8 @@ if(isset($_POST['submit_col'])){
 		}
 
 }else{
-	$callDKHC = "{call SP_GET_CONTRACT_PRIORITY(?,?,?)}"; 
-	$paramsDKHC = array(array('null', SQLSRV_PARAM_IN),array('null', SQLSRV_PARAM_IN),array('null', SQLSRV_PARAM_IN));  
+	$callDKHC = "{call SP_GET_CONTRACT_PRIORITY(?,?,?,?)}"; 
+	$paramsDKHC = array(array('null', SQLSRV_PARAM_IN),array('null', SQLSRV_PARAM_IN),array('null', SQLSRV_PARAM_IN),array('null', SQLSRV_PARAM_IN));  
 	$execDKHC = sqlsrv_query( $conn, $callDKHC, $paramsDKHC) or die( print_r( sqlsrv_errors(), true));	
 
 	$branch = "";
@@ -150,18 +150,19 @@ if(isset($_POST['submit_col'])){
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
-                        <form action="assign.php?action=save" method="post" enctype="multipart/form-data" id="form">
+                        <form action="priority-days.php?action=insert" method="POST" enctype="multipart/form-data" id="form">
                             <table class="table table-bordered dataTable" style="width:100%;" id="example">
                                 <thead>
                                     <tr>
                                         <th style="vertical-align:middle;text-align:center;padding-left:30px;">
                                             <input type="checkbox" id="selectAll">
                                         </th>
-                                        <th>CONTRACT ID</th>
-                                        <th>COLL ID</th>
-                                        <th>KECAMATAN</th>
-                                        <th>KELURAHAN</th>
-                                        <th>DAYS</th>
+                                        <th style="vertical-align:middle;text-align:center;">CONTRACT ID</th>
+										<th style="vertical-align:middle;text-align:center;">NAMA CUSTOMER</th>
+                                        <th style="vertical-align:middle;text-align:center;">COLL ID</th>
+                                        <th style="vertical-align:middle;text-align:center;">KECAMATAN</th>
+                                        <th style="vertical-align:middle;text-align:center;">KELURAHAN</th>
+                                        <th style="vertical-align:middle;text-align:center;">DAYS</th>
                                         <th>ACTION</th>
                                     </tr>
                                 </thead>
@@ -233,24 +234,29 @@ if(isset($_POST['submit_col'])){
 								
                                         <tr>
                                             <td style="vertical-align:middle;text-align:center;">
-                                                <input type="checkbox" class="aroClass" name="aro[]" id="aro[]" value="<?php echo $dataDKHC['NOMOR_KONTRAK'];?>">
-                                                <td>
+                                                <input type="checkbox" class="aroClass" name="contract[]" id="contract[]" value="<?php echo $dataDKHC['NOMOR_KONTRAK'];?>">
+												<td style="vertical-align:middle;text-align:left;">
                                                     <?php echo $dataDKHC['NOMOR_KONTRAK'];?>
                                                 </td>
-                                                <td style="text-align:left;">
+												
+												<td style="vertical-align:middle;text-align:left;">
+                                                    <?php echo $dataDKHC['NAMA_KOSTUMER'];?>
+                                                </td>
+												
+                                                <td style="vertical-align:middle;text-align:left;">
                                                     <?php echo $dataDKHC['EMP_ID'];?>
                                                 </td>
-                                                <td style="text-align:left;">
+                                                <td style="vertical-align:middle;text-align:left;">
                                                     <?php echo $dataDKHC['KECAMATAN'];?>
                                                 </td>
-                                                <td style="text-align:left;">
+                                               <td style="vertical-align:middle;text-align:left;">
                                                     <?php echo $dataDKHC['KELURAHAN'];?>
                                                 </td>
-                                                <td style="text-align:left;">
+                                               <td style="vertical-align:middle;text-align:left;">	
                                                     <?php echo $dataDKHC['PRIORITY_DESC'];?>
                                                 </td>
                                                 <td style="vertical-align:middle;">
-													<select class="form-control" name="days[<?php echo $j;?>]">
+													<select class="form-control" name="days[]">
 														<option value="" <?php echo $selected;?>>PILIH</option>
 														<option value="1" <?php echo $senin;?>>SENIN</option>
 														<option value="2" <?php echo $selasa;?>>SELASA</option>
@@ -261,13 +267,14 @@ if(isset($_POST['submit_col'])){
 													</select>
 												</td>
                                         </tr>
-                                        <?php } ?>
+										
+                                        <?php $j++; } ?>
                                 </tbody>
                             </table>
                             <br>
-                            <input type="hidden" id="branch" name="branch" value="<?php echo $branch; ?>">
-                            <input type="hidden" id="pic" name="pic" value="<?php echo $pic; ?>">
-                            <input type="hidden" id="bm" name="bm" value="<?php echo $sid; ?>">
+							<input type="hidden" id="branch" name="branch" value="<?php echo $branch; ?>" >
+                 
+							
                             <button type="submit" class="btn btn-primary"  <?php echo $disable;?>>Submit</button>
                         </form>
                     </div>
