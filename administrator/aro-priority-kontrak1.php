@@ -150,7 +150,7 @@ if(isset($_POST['submit_col'])){
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
-                        <form action="priority-days.php?action=insert" method="POST" enctype="multipart/form-data" id="form">
+                        <form action="priority-days.php?action=insert1" method="POST" enctype="multipart/form-data" id="form">
                             <table class="table table-bordered dataTable" style="width:100%;" id="example">
                                 <thead>
                                     <tr>
@@ -163,7 +163,7 @@ if(isset($_POST['submit_col'])){
                                         <th style="vertical-align:middle;text-align:center;">KECAMATAN</th>
                                         <th style="vertical-align:middle;text-align:center;">KELURAHAN</th>
                                         <th style="vertical-align:middle;text-align:center;">DAYS</th>
-                                        <th>ACTION</th>
+                                       
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -255,27 +255,28 @@ if(isset($_POST['submit_col'])){
                                                <td style="vertical-align:middle;text-align:left;">
                                                     <?php echo $dataDKHC['PRIORITY_DESC'];?>
                                                 </td>
-                                                <td style="vertical-align:middle;">
-													<select class="form-control" name="days[]">
-														<option value="" <?php echo $selected;?>>PILIH</option>
-														<option value="1" <?php echo $senin;?>>SENIN</option>
-														<option value="2" <?php echo $selasa;?>>SELASA</option>
-														<option value="3" <?php echo $rabu;?>>RABU</option>
-														<option value="4" <?php echo $kamis;?>>KAMIS</option>
-														<option value="5" <?php echo $jumat;?>>JUMAT</option>
-														<option value="6" <?php echo $sabtu;?>>SABTU</option>
-													</select>
-												</td>
+                                              
                                         </tr>
 										
                                         <?php $j++; } ?>
                                 </tbody>
                             </table>
-                            <br>
-							
-                 
+             
+							<div class="col-md-3">
+                 		<select class="form-control" name="days[]">
+							<option value="">PILIH</option>
+							<option value="1">SENIN</option>
+							<option value="2">SELASA</option>
+							<option value="3">RABU</option>
+							<option value="4">KAMIS</option>
+							<option value="5">JUMAT</option>
+							<option value="6">SABTU</option>
+							</select>
+							<br>
 							<input type="hidden" id="branch" name="branch" value="<?php echo $branch; ?>" >
                             <button type="submit" class="btn btn-primary"  <?php echo $disable;?>>Submit</button>
+						</div>
+							
                         </form>
                     </div>
                 </div>
@@ -333,4 +334,4 @@ if(isset($_POST['submit_col'])){
                 }
             });
         });
-    </script>
+    </script> 

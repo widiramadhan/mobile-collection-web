@@ -137,6 +137,10 @@ switch ($current_page) {
 	
 	case 'aro-priority-contract':
 	require_once('aro-priority-kontrak.php');
+	break;
+
+	case 'aro-priority-contract1':
+	require_once('aro-priority-kontrak1.php');
 	break;	
 	
 	default:
