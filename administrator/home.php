@@ -34,9 +34,8 @@
 	
 	*/
 	
-	$queryTotalResult = "{call DASHBOARD_COUNT_DATA(?,?)}";
-	$paramsTotalResult = array(array($bid, SQLSRV_PARAM_IN),
-							   array($data1['PERIOD'], SQLSRV_PARAM_IN));  
+	$queryTotalResult = "{call DASHBOARD_COUNT_DATA_PERIOD(?)}";
+	$paramsTotalResult = array(array($bid, SQLSRV_PARAM_IN));  
 	$execTotalResult = sqlsrv_query( $conn, $queryTotalResult, $paramsTotalResult) or die( print_r( sqlsrv_errors(), true));
 	$data2 = sqlsrv_fetch_array( $execTotalResult, SQLSRV_FETCH_ASSOC);
 	

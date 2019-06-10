@@ -174,60 +174,140 @@ if(isset($_POST['submit_col'])){
 										$no++;
 										if($dataDKHC['PRIORITY_ID'] == NULL){
 									$selected = "selected";
-									$senin = "";
-									$selasa = "";
-									$rabu = "";
-									$kamis = "";
-									$jumat = "";
-									$sabtu = "";
+									$satu = "";
+									$dua = "";
+									$tiga = "";
+									$empat = "";
+									$lima = "";
+									$enam = "";
+									$tujuh = "";
+									$delapan = "";
+									$sembilan = "";
+									$sepuluh = "";
 								}else if($dataDKHC['PRIORITY_ID'] == "1"){
 									$selected = "";
-									$senin = "selected";
-									$selasa = "";
-									$rabu = "";
-									$kamis = "";
-									$jumat = "";
-									$sabtu = "";
+									$satu = "selected";
+									$dua = "";
+									$tiga = "";
+									$empat = "";
+									$lima = "";
+									$enam = "";
+									$tujuh = "";
+									$delapan = "";
+									$sembilan = "";
+									$sepuluh = "";
 								}else if($dataDKHC['PRIORITY_ID'] == "2"){
 									$selected = "";
-									$senin = "";
-									$selasa = "selected";
-									$rabu = "";
-									$kamis = "";
-									$jumat = "";
-									$sabtu = "";
+									$satu = "";
+									$dua = "selected";
+									$tiga = "";
+									$empat = "";
+									$lima = "";
+									$enam = "";
+									$tujuh = "";
+									$delapan = "";
+									$sembilan = "";
+									$sepuluh = "";
 								}else if($dataDKHC['PRIORITY_ID'] == "3"){
 									$selected = "";
-									$senin = "";
-									$selasa = "";
-									$rabu = "selected";
-									$kamis = "";
-									$jumat = "";
-									$sabtu = "";
+									$satu = "";
+									$dua = "";
+									$tiga = "selected";
+									$empat = "";
+									$lima = "";
+									$enam = "";
+									$tujuh = "";
+									$delapan = "";
+									$sembilan = "";
+									$sepuluh = "";
 								}else if($dataDKHC['PRIORITY_ID'] == "4"){
 									$selected = "";
-									$senin = "";
-									$selasa = "";
-									$rabu = "";
-									$kamis = "selected";
-									$jumat = "";
-									$sabtu = "";
+									$satu = "";
+									$dua = "";
+									$tiga = "";
+									$empat = "selected";
+									$lima = "";
+									$enam = "";
+									$tujuh = "";
+									$delapan = "";
+									$sembilan = "";
+									$sepuluh = "";
 								}else if($dataDKHC['PRIORITY_ID'] == "5"){
 									$selected = "";
-									$senin = "";
-									$selasa = "";
-									$rabu = "";
-									$kamis = "";
-									$jumat = "selected";
-									$sabtu = "";
+									$satu = "";
+									$dua = "";
+									$tiga = "";
+									$empat = "";
+									$lima = "selected";
+									$enam = "";
+									$tujuh = "";
+									$delapan = "";
+									$sembilan = "";
+									$sepuluh = "";
 								}else if($dataDKHC['PRIORITY_ID'] == "6"){
 									$selected = "";
-									$senin = "";
-									$selasa = "";
-									$rabu = "";
-									$kamis = "";
-									$jumat = "";
-									$sabtu = "selected";
+									$satu = "";
+									$dua = "";
+									$tiga = "";
+									$empat = "";
+									$lima = "";
+									$enam = "selected";
+									$tujuh = "";
+									$delapan = "";
+									$sembilan = "";
+									$sepuluh = "";
+								}
+								else if($dataDKHC['PRIORITY_ID'] == "7"){
+									$selected = "";
+									$satu = "";
+									$dua = "";
+									$tiga = "";
+									$empat = "";
+									$lima = "";
+									$enam = "";
+									$tujuh = "selected";
+									$delapan = "";
+									$sembilan = "";
+									$sepuluh = "";
+								}
+								else if($dataDKHC['PRIORITY_ID'] == "8"){
+									$selected = "";
+									$satu = "";
+									$dua = "";
+									$tiga = "";
+									$empat = "";
+									$lima = "";
+									$enam = "";
+									$tujuh = "";
+									$delapan = "selected";
+									$sembilan = "";
+									$sepuluh = "";
+								}
+								else if($dataDKHC['PRIORITY_ID'] == "9"){
+									$selected = "";
+									$satu = "";
+									$dua = "";
+									$tiga = "";
+									$empat = "";
+									$lima = "";
+									$enam = "";
+									$tujuh = "";
+									$delapan = "";
+									$sembilan = "selected";
+									$sepuluh = "";
+								}
+								else if($dataDKHC['PRIORITY_ID'] == "10"){
+									$selected = "";
+									$satu = "";
+									$dua = "";
+									$tiga = "";
+									$empat = "";
+									$lima = "";
+									$enam = "";
+									$tujuh = "";
+									$delapan = "";
+									$sembilan = "";
+									$sepuluh = "selected";
 								}
 								
 						?>
@@ -257,13 +337,18 @@ if(isset($_POST['submit_col'])){
                                                 </td>
                                                 <td style="vertical-align:middle;">
 													<select class="form-control" name="days[]">
-														<option value="" <?php echo $selected;?>>PILIH</option>
-														<option value="1" <?php echo $senin;?>>SENIN</option>
-														<option value="2" <?php echo $selasa;?>>SELASA</option>
-														<option value="3" <?php echo $rabu;?>>RABU</option>
-														<option value="4" <?php echo $kamis;?>>KAMIS</option>
-														<option value="5" <?php echo $jumat;?>>JUMAT</option>
-														<option value="6" <?php echo $sabtu;?>>SABTU</option>
+														<option value="" <?php echo $selected;?>></option>
+														<option value="1" <?php echo $satu;?>>1</option>
+														<option value="2" <?php echo $dua;?>>2</option>
+														<option value="3" <?php echo $tiga;?>>3</option>
+														<option value="4" <?php echo $empat;?>>4</option>
+														<option value="5" <?php echo $lima;?>>5</option>
+														<option value="6" <?php echo $enam;?>>6</option>
+														<option value="7" <?php echo $tujuh;?>>7</option>
+														<option value="8" <?php echo $delapan;?>>8</option>
+														<option value="9" <?php echo $sembilan;?>>9</option>
+														<option value="10" <?php echo $sepuluh;?>>10</option>
+														
 													</select>
 												</td>
                                         </tr>

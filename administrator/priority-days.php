@@ -5,12 +5,18 @@
 require_once("../config/connection.php");
 $action = $_GET['action'];
 	if($action == 'insert'){
-	$counter = count($_POST['contract']); /* COUNT THE PASSED ON NAME */
+		$counter = count($_POST['contract']); /* COUNT THE PASSED ON NAME */
+	$counter1 = count($_POST['days']); /* COUNT THE PASSED ON NAME */
 	for($x=0;$x<=$counter; $x++){
 		if(!empty($_POST['contract'][$x])){		
-				$contracts = $_POST['contract'][$x];
-				$branchid = $_POST['branch'];
-				$days = $_POST['days'][$x];	
+			$counter1 = count($_POST['days']); /* COUNT THE PASSED ON NAME */
+					for($a=0;$a<=$counter1; $a++){
+						if(!empty($_POST['days'][$a])){		
+			$contracts = $_POST['contract'][$x];	
+			$days = $_POST['days'][$a];
+			$branchid = $_POST['branch'];
+			
+			
 		
 			
 			$call = "{call SP_GET_COLL_PRIORITY_NUM_ROWS(?,?)}"; 
@@ -23,7 +29,7 @@ $action = $_GET['action'];
 			$ketemu = sqlsrv_num_rows($ex);
 			if($ketemu > 0){
 				
-						$callUpdate = "{call SP_UPDATE_PRIORITY_CONTRACT(?,?)}";
+						$callUpdate = "{call SP_UPDATE_PRIORITY_CONTRACT_NUMBER(?,?)}";
 						$paramUpdate  = array(
 											array($days, SQLSRV_PARAM_IN),
 											array($contracts, SQLSRV_PARAM_IN)
@@ -65,7 +71,7 @@ $action = $_GET['action'];
 				
 						
 				}else{
-						$callInsert = "{call SP_INSERT_CONTRACT_PRIORITY(?,?,?)}";
+						$callInsert = "{call SP_INSERT_CONTRACT_PRIORITY_NUMBER(?,?,?)}";
 						$paramInsert = array(
 											array($branchid, SQLSRV_PARAM_IN),
 											array($contracts, SQLSRV_PARAM_IN),
@@ -116,6 +122,9 @@ $action = $_GET['action'];
 				
 		}
 	}
+	}
+	}
+	
 else if($action == 'insert1'){
 	$counter = count($_POST['contract']); /* COUNT THE PASSED ON NAME */
 	$counter1 = count($_POST['days']); /* COUNT THE PASSED ON NAME */
@@ -140,7 +149,7 @@ else if($action == 'insert1'){
 			$ketemu = sqlsrv_num_rows($ex);
 			if($ketemu > 0){
 				
-						$callUpdate = "{call SP_UPDATE_PRIORITY_CONTRACT(?,?)}";
+						$callUpdate = "{call SP_UPDATE_PRIORITY_CONTRACT_NUMBER(?,?)}";
 						$paramUpdate  = array(
 											array($days, SQLSRV_PARAM_IN),
 											array($contracts, SQLSRV_PARAM_IN)
@@ -182,7 +191,7 @@ else if($action == 'insert1'){
 				
 						
 				}else{
-						$callInsert = "{call SP_INSERT_CONTRACT_PRIORITY(?,?,?)}";
+						$callInsert = "{call SP_INSERT_CONTRACT_PRIORITY_NUMBER(?,?,?)}";
 						$paramInsert = array(
 											array($branchid, SQLSRV_PARAM_IN),
 											array($contracts, SQLSRV_PARAM_IN),
