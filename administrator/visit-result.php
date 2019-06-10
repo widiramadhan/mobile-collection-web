@@ -1,8 +1,50 @@
+<?php
+$tgl = date("Y-m");
+if(isset($_POST['submit_col'])){
+		$tgl = $_POST['tgl'];
+		
+		$queryAro = "{call SP_GET_VISIT_RESULT_PERIOD(?,?)}"; 
+		$options =  array( "Scrollable" => "buffered" );	
+		$paramsAro = array(array($bid, SQLSRV_PARAM_IN),
+							array(str_replace("-","", $_POST['tgl'])."01",SQLSRV_PARAM_IN));
+		$execAro = sqlsrv_query( $conn, $queryAro, $paramsAro,$options) or die( print_r( sqlsrv_errors(), true));
+	
+}else{
+	$queryAro = "{call SP_GET_VISIT_RESULT_PERIOD(?,?)}";
+	$paramsAro = array(array($bid, SQLSRV_PARAM_IN),
+				 array(str_replace("-","", $tgl)."01",SQLSRV_PARAM_IN)); 
+	$execAro = sqlsrv_query( $conn, $queryAro, $paramsAro) or die( print_r( sqlsrv_errors(), true));
+	
+	$tgl = date("Y-m");
+}		
+		$queryAro = "{call SP_GET_VISIT_RESULT_PERIOD(?,?)}"; 
+		$options =  array( "Scrollable" => "buffered" );	
+		$paramsAro = array(array($bid, SQLSRV_PARAM_IN),
+							array(str_replace("-","", $tgl)."01",SQLSRV_PARAM_IN));
+		$execAro = sqlsrv_query( $conn, $queryAro, $paramsAro,$options) or die( print_r( sqlsrv_errors(), true));				
+
+
+
+?>
 <div class="card shadow mb-4">
 	<div class="card-header py-3">
 		<h6 class="m-0 font-weight-bold text-primary">Visit Result</h6>
 	</div>
 	<div class="card-body">
+		<div class="col-md-3">
+				<form action="" method="post">
+							<div class="form-group">
+									<label>Period </label>
+									<div class="input-group mb-3">
+										<input type="text" name="tgl" id="tgl" class="form-control" value="<?php echo $tgl;?>" autocomplete="off" readonly style="background-color:#FFF;cursor:pointer;">
+										<div class="input-group-append">
+										<span class="input-group-text" id="basic-addon2"><i class="fa fa-calendar"></i></span>&nbsp;
+										<button type="submit" class="btn btn-primary" name="submit_col">
+										 <i class="fa fa-search"></i> Search
+									</div>
+							</div>
+				</div>
+			</div>
 		<div class="table-responsive">
 			<table class="table table-bordered" id="dataTables" width="100%" cellspacing="0" style="font-size:12px;">
 				<thead>
@@ -29,7 +71,7 @@
 							$params = array(array($bid, SQLSRV_PARAM_IN));  
 							$exec = sqlsrv_query( $conn, $query, $params) or die( print_r( sqlsrv_errors(), true));
 							$no = 0;
-							while($data = sqlsrv_fetch_array($exec)){
+							while($data = sqlsrv_fetch_array($execAro)){
 								$no++;
 								$queryResult = "{call SP_GET_RESULT(?,?)}";
 								$paramsResult = array(array($bid, SQLSRV_PARAM_IN),array($data['CONTRACT_ID'], SQLSRV_PARAM_IN));  
@@ -111,6 +153,20 @@
 $(document).ready(function() {
 	$('#dataTables').DataTable();
 } );
+
+$(document).ready(function() {
+	$('#dataTables').DataTable();
+	$('#tgl').datepicker({
+		format: "yyyy-mm",
+		changeMonth: true,
+        changeYear: true,
+		autoclose: true,
+		viewMode: "months", 
+		minViewMode: "months",
+		endDate: new Date()
+	});
+} );
+
 </script>
  
 	

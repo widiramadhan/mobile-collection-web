@@ -6,7 +6,6 @@ require_once("../config/connection.php");
 $action = $_GET['action'];
 	if($action == 'insert'){
 		$counter = count($_POST['contract']); /* COUNT THE PASSED ON NAME */
-	$counter1 = count($_POST['days']); /* COUNT THE PASSED ON NAME */
 	for($x=0;$x<=$counter; $x++){
 		if(!empty($_POST['contract'][$x])){		
 			$counter1 = count($_POST['days']); /* COUNT THE PASSED ON NAME */
