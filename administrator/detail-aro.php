@@ -42,7 +42,7 @@ $row1 = sqlsrv_fetch_array($ex1);
 <link rel="stylesheet" href="vendor/sweetalert/sweetalert.min.css">
 <script src="vendor/sweetalert/sweetalert.min.js"></script>
 <div class="row">
-	<div class="col-md-3">
+	<!--<div class="col-md-3">
 		<div class="card shadow mb-12">
 			<div class="card-header py-3">
 				<h6 class="m-0 font-weight-bold text-primary">Profile AR Officer</h6>
@@ -62,15 +62,68 @@ $row1 = sqlsrv_fetch_array($ex1);
 				<label><?php echo $data['OFFICE_NAME'];?></label><br>
 			</div>
 		</div>
-	</div>
-	<div class="col-md-9">
+	</div>-->
+	<div class="col-md-12">
 		<div class="card shadow mb-12">
 			<div class="card-header py-3">
 				<h6 class="m-0 font-weight-bold text-primary">Ubah data profile</h6>
 			</div>
 			<div class="card-body">
 				<form method="post" action="update-aro.php?action=update">
-					<div class="form-group">
+					<div class="row">
+							<div class="col-md-6">
+								<div class="form-group">
+									<div class="row">
+										<div class="col-md-3">
+											<label>NIK</label>
+										</div>
+										<div class="col-md-6">
+											<input type="text" class="form-control" name="nik" disabled value="<?php echo $row['EMP_NO'];?>">
+											<input type="hidden" class="form-control" name="emp_no"  value="<?php echo $row['EMP_NO'];?>">
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="form-group">
+									<div class="row">
+										<div class="col-md-3">
+											<label>Username</label>
+										</div>
+										<div class="col-md-6">
+									<input type="text" class="form-control" name="username" disabled value="<?php echo $row['USERNAME'];?>">
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+							<div class="col-md-6">
+								<div class="form-group">
+									<div class="row">
+										<div class="col-md-3">
+											<label>Branch</label>
+										</div>
+										<div class="col-md-6">
+										<input type="text" class="form-control" name="branch" disabled value="<?php echo $data['OFFICE_NAME'];?>">
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="form-group">
+									<div class="row">
+										<div class="col-md-3">
+											<label>Nama Lengkap</label>
+										</div>
+										<div class="col-md-6">
+										<input type="text" class="form-control" name="nama" value="<?php echo $row['EMP_NAME'];?>">
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!--<div class="form-group">
 						<label>NIK</label>
 						<input type="text" class="form-control" name="nik" disabled value="<?php echo $row['EMP_NO'];?>">
 						<input type="hidden" class="form-control" name="emp_no"  value="<?php echo $row['EMP_NO'];?>">
@@ -86,8 +139,8 @@ $row1 = sqlsrv_fetch_array($ex1);
 					<div class="form-group">
 						<label>Nama Lengkap</label>
 						<input type="text" class="form-control" name="nama" value="<?php echo $row['EMP_NAME'];?>">
-					</div>
-					<input type="submit" name="submit" value="Update" class="btn btn-primary" style="width:100%;">
+					</div>-->
+					<input type="submit" name="submit" value="Update" class="btn btn-primary" >
 				</form>
 			</div>
 		</div>

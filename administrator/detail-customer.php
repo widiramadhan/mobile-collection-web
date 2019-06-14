@@ -38,7 +38,7 @@ if($numrowsKostumer == 0){
 <link rel="stylesheet" href="vendor/sweetalert/sweetalert.min.css">
 <script src="vendor/sweetalert/sweetalert.min.js"></script>
 <div class="row">
-	<div class="col-md-3">
+	<!--<div class="col-md-3">
 		<div class="card shadow mb-12">
 			<div class="card-header py-3">
 				<h6 class="m-0 font-weight-bold text-primary">Profile Customer</h6>
@@ -58,30 +58,95 @@ if($numrowsKostumer == 0){
 				<label><?php echo $data['OFFICE_NAME'];?></label><br>
 			</div>
 		</div>
-	</div>
-	<div class="col-md-9">
+	</div>-->
+	<div class="col-md-12">
 		<div class="card shadow mb-12">
 			<div class="card-header py-3">
 				<h6 class="m-0 font-weight-bold text-primary">Data Profile</h6>
 			</div>
 			<div class="card-body">
-				<form method="post" action="">
-					<div class="form-group">
-						<label>Contract Id</label>
-						<input type="text" class="form-control" name="kontrak_id" disabled value="<?php echo $row['NOMOR_KONTRAK'];?>">
+			<form method="post" action="">
+				<div class="row">
+							<div class="col-md-6">
+								<div class="form-group">
+									<div class="row">
+										<div class="col-md-3">
+											<label>Nama Lengkap</label>
+										</div>
+										<div class="col-md-6">
+											<input type="text" class="form-control" name="nama" disabled value="<?php echo $row['NAMA_KOSTUMER'];?>">
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="form-group">
+									<div class="row">
+										<div class="col-md-3">
+											<label>No. Handphone</label>
+										</div>
+										<div class="col-md-6">
+									<input type="text" class="form-control" name="no-handphone" disabled value="<?php echo $row['NOMOR_HANDPHONE'];?>">
+									</div>
+								</div>
+							</div>
+						</div>
 					</div>
+				<div class="row">
+							<div class="col-md-6">
+								<div class="form-group">
+									<div class="row">
+										<div class="col-md-3">
+											<label>Contract Id</label>
+										</div>
+										<div class="col-md-6">
+											<input type="text" class="form-control" name="nama" disabled value="<?php echo $row['NOMOR_KONTRAK'];?>">
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="form-group">
+									<div class="row">
+										<div class="col-md-3">
+											<label>Address</label>
+										</div>
+										<div class="col-md-6">
+									<input type="text" class="form-control" name="no-handphone" disabled value="<?php echo $row['ALAMAT_KTP'];?>">
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+
+			
+			
+			
+				<!--<form method="post" action="">
 					<div class="form-group">
-						<label>Address</label>
-						<input type="text" class="form-control" name="address" disabled value="<?php echo $row['ALAMAT_KTP'];?>">
+						<label>Nama Lengkap</label>
+						<input type="text" class="form-control" name="nama" disabled value="<?php echo $row['NAMA_KOSTUMER'];?>">
 					</div>
 					<div class="form-group">
 						<label>No. Handphone</label>
 						<input type="text" class="form-control" name="no-handphone" disabled value="<?php echo $row['NOMOR_HANDPHONE'];?>">
 					</div>
 					<div class="form-group">
-						<label>Nama Lengkap</label>
-						<input type="text" class="form-control" name="nama" disabled value="<?php echo $row['NAMA_KOSTUMER'];?>">
+						<label>Contract Id</label>
+						<input type="text" class="form-control" name="kontrak_id" disabled value="<?php echo $row['NOMOR_KONTRAK'];?>">
 					</div>
+					<div class="form-group">
+						<label>Branch</label>
+						<input type="text" class="form-control" name="address" disabled value="<?php echo $data['OFFICE_NAME'];?>">
+					</div>
+					<div class="form-group">
+						<label>Address</label>
+						<input type="text" class="form-control" name="address" disabled value="<?php echo $row['ALAMAT_KTP'];?>">
+					</div>-->
+					
+					
+				
 				
 				</form>
 			</div>
@@ -101,8 +166,8 @@ if($numrowsKostumer == 0){
 							<tr>
 								<th style="text-align:center;vertical-align:middle;">No</th>
 								<th style="text-align:center;vertical-align:middle;">Nama Kolektor</th>
-								<th style="text-align:center;vertical-align:middle;">Nomor Kontrak</th>
-								<th style="text-align:center;vertical-align:middle;">Nama Kostumer</th>
+								<!--<th style="text-align:center;vertical-align:middle;">Nomor Kontrak</th>
+								<th style="text-align:center;vertical-align:middle;">Nama Kostumer</th>-->
 								<th style="text-align:center;vertical-align:middle;">Tanggal Visit</th>
 								<th style="text-align:center;vertical-align:middle;">Total Pembayaran</th>
 								<th style="text-align:center;vertical-align:middle;">Tgl Janji Bayar</th>
@@ -151,8 +216,8 @@ if($numrowsKostumer == 0){
 							<tr>
 								<td style="text-align:center;vertical-align:middle;"><?php echo $no;?></td>
 								<td style="text-align:center;vertical-align:middle;" ><?php echo $dataKostumer['EMP_NAME'];?></td>
-								<td style="text-align:center;vertical-align:middle;"><?php echo $dataKostumer['NOMOR_KONTRAK'];?></td>
-								<td style="text-align:center;vertical-align:middle;"><?php echo $dataKostumer['NAMA_KOSTUMER'];?></td>
+								<!--<td style="text-align:center;vertical-align:middle;"><?php echo $dataKostumer['NOMOR_KONTRAK'];?></td>
+								<td style="text-align:center;vertical-align:middle;"><?php echo $dataKostumer['NAMA_KOSTUMER'];?></td>-->
 								<td style="text-align:center;vertical-align:middle;"><?php  if(is_null($dataKostumer['CREATE_DATE'])){echo"";} else if($dataKostumer['CREATE_DATE']->format('Y-m-d')=='1970-01-01'){echo"";}else echo $dataKostumer['CREATE_DATE']->format('Y-m-d');?></td>
 								<td style="text-align:right"><?php if($acceptAmount <> "" || $acceptAmount <> NULL){ echo "Rp. ".number_format($acceptAmount,0,',','.');}?></td>
 								<td style="text-align:center;vertical-align:middle;">

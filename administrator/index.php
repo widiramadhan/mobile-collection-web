@@ -114,24 +114,24 @@ $branchType=substr($bid,0,2);
 			</li>
 			<hr class="sidebar-divider">
 			<div class="sidebar-heading">
-				AR Officer
+				Officer
 			</div>
 			<li class="nav-item">
 				<a class="nav-link" href="index.php?page=list-aro">
 					<i class="fa fa-users"></i>
-					<span>List ARO</span>
+					<span>List Officer</span>
 				</a>
 			</li>
 			<li class="nav-item">
 			 <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseTwo1" aria-expanded="true" aria-controls="collapseTwo">
 					<i class="fa fa-map-marked-alt"></i>
-					<span>Tracking ARO</span>
+					<span>Tracking Officer</span>
 				</a>
 			<div id="collapseTwo1" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar" style="">
 				<div class="bg-white py-2 collapse-inner rounded">
-					<h6 class="collapse-header">Tracking Aro :</h6>
-					<a class="collapse-item" href="index.php?page=tracking-collector">Tracking ARO to Customer</a>
-					<a class="collapse-item" href="index.php?page=tracking-aro-status">Tracking ARO Location</a>
+					<h6 class="collapse-header">Tracking Officer :</h6>
+					<a class="collapse-item" href="index.php?page=tracking-collector">Tracking to Customer</a>
+					<a class="collapse-item" href="index.php?page=tracking-aro-status">Tracking Officer Location</a>
 				</div>
 			</div>
 			</li>
@@ -139,14 +139,14 @@ $branchType=substr($bid,0,2);
 			<li class="nav-item">
 				 <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
 					<i class="fa fa-edit"></i>
-					<span>Tasklist ARO</span>
+					<span>Tasklist Officer</span>
 				</a>
 			<div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar" style="">
 				<div class="bg-white py-2 collapse-inner rounded">
-					<h6 class="collapse-header">Tasklist Aro :</h6>
+					<h6 class="collapse-header">Tasklist Officer :</h6>
 					<a class="collapse-item" href="index.php?page=tasklist-summary">Tasklist</a>
-					<a class="collapse-item" href="index.php?page=tasklist">Tasklist Aro Per-Bulan</a>
-					<a class="collapse-item" href="index.php?page=tasklist-harian">Tasklist Aro Per-Hari</a>
+					<a class="collapse-item" href="index.php?page=tasklist">Tasklist Officer Per-Bulan</a>
+					<a class="collapse-item" href="index.php?page=tasklist-harian">Tasklist Officer Per-Hari</a>
 				</div>
 			</div>
 			</li>

@@ -1,6 +1,6 @@
 <?php
 	$contractID=$_GET['contractID'];
-	$queryCust = "{call SP_GET_DETAIL_CUSTOMER_RESULT(?)}";
+	$queryCust = "{call SP_GET_DETAIL_CUSTOMER_RESULT_NEW(?)}";
 	$paramsCust = array(array($contractID, SQLSRV_PARAM_IN)); 
 	$execCust = sqlsrv_query( $conn, $queryCust, $paramsCust) or die( print_r( sqlsrv_errors(), true));
 	$row = sqlsrv_fetch_array($execCust);
@@ -15,10 +15,15 @@
 				</div>
 				<div class="card-body">
 					<center>
-						<img src="assets/img/default-user.png" style="border-radius:50%;width:100px;height:100px;"><br><br>
+						<!--<img src="assets/img/default-user.png" style="border-radius:50%;width:100px;height:100px;"><br><br>
 						<span style="color:#000;font-weight:bold;"><?php echo $row['NAMA_KOSTUMER'];?></span><br>
-						<?php echo $contractID;?>
+						<?php echo $contractID;?>-->
 					</center>
+					<b>Nama customer :</b><br>
+					<label><?php echo $row['NAMA_KOSTUMER'];?></label>
+					<hr>
+					<b>No. Kontrak :</b><br>
+					<label><?php echo $contractID;?></label>
 					<hr>
 					<b>Address :</b><br>
 					<label><?php echo $row['ALAMAT_KTP'];?></label>
@@ -119,6 +124,7 @@
 					<div id="lokasiPembayaran">
 						<b>Lokasi Pembayaran</b><br>
 						<?php echo $latPayLocation;?>, <?php echo $longPayLocation;?>
+						
 						<hr>
 					</div>
 					<!--<div id="fotoLokasiPembayaran">
@@ -127,8 +133,16 @@
 						<hr>
 					</div>-->
 					<div id="lokasi">
+						<b>Lokasi Awal</b><br>
+						<label>Lat : </label> <?php echo $row['LATITUDE'];?>, <label>Long : </label> <?php echo $row['LONGITUDE'];?>
+						 <button onclick="window.location.href = 'https://www.google.com/maps/search/?api=1&query=<?php echo $row['LATITUDE'];?>,<?php echo $row['LONGITUDE'];?>';">Lihat Lokasi</button>
+						<hr>
+					</div>
+					
+					<div id="lokasi">
 						<b>Lokasi</b><br>
 						<?php echo $latLocationMeet;?>, <?php echo $longLocationMeet;?>
+						 <button onclick="window.location.href = 'https://www.google.com/maps/search/?api=1&query=<?php echo $row['LAT'];?>,<?php echo $row['LNG'];?>';">Lihat Lokasi</button>
 						<hr>
 					</div>
 					<!--<div id="foto">

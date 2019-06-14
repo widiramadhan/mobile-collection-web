@@ -7,10 +7,12 @@ if(isset($_POST['submit_col'])){
 		$pic = $_POST['col'];
 		$kelurahan = $_POST['kelurahan'];
 		$kecamatan = $_POST['kecamatan'];
+		$no_kontrak = $_POST['no_kontrak'];
+		$priority_id = $_POST['priority_id'];
 
-		$callDKHC = "{call SP_GET_CONTRACT_PRIORITY(?,?,?,?)}"; 
+		$callDKHC = "{call SP_GET_CONTRACT_PRIORITY(?,?,?,?,?,?)}"; 
 		$options =  array( "Scrollable" => "buffered" );
-		$paramsDKHC = array(array($branch, SQLSRV_PARAM_IN),array($kecamatan, SQLSRV_PARAM_IN),array($kelurahan, SQLSRV_PARAM_IN),array($pic, SQLSRV_PARAM_IN));  
+		$paramsDKHC = array(array($branch, SQLSRV_PARAM_IN),array($kecamatan, SQLSRV_PARAM_IN),array($kelurahan, SQLSRV_PARAM_IN),array($pic, SQLSRV_PARAM_IN),array($no_kontrak, SQLSRV_PARAM_IN),array($priority_id, SQLSRV_PARAM_IN));  
 		$execDKHC = sqlsrv_query( $conn, $callDKHC, $paramsDKHC, $options) or die( print_r( sqlsrv_errors(), true));
 
 		$numrows=sqlsrv_num_rows($execDKHC);
@@ -21,15 +23,84 @@ if(isset($_POST['submit_col'])){
 		}
 
 }else{
-	$callDKHC = "{call SP_GET_CONTRACT_PRIORITY(?,?,?,?)}"; 
-	$paramsDKHC = array(array('null', SQLSRV_PARAM_IN),array('null', SQLSRV_PARAM_IN),array('null', SQLSRV_PARAM_IN),array('null', SQLSRV_PARAM_IN));  
+	$callDKHC = "{call SP_GET_CONTRACT_PRIORITY(?,?,?,?,?,?)}"; 
+	$paramsDKHC = array(array('null', SQLSRV_PARAM_IN),array('null', SQLSRV_PARAM_IN),array('null', SQLSRV_PARAM_IN),array('null', SQLSRV_PARAM_IN),array('null', SQLSRV_PARAM_IN),array('null', SQLSRV_PARAM_IN));  
 	$execDKHC = sqlsrv_query( $conn, $callDKHC, $paramsDKHC) or die( print_r( sqlsrv_errors(), true));	
 
 	$branch = "";
 	$pic = "";
 	$disable="disabled";
 }
-
+if(isset($_POST['priority_id'])){
+	if($_POST['priority_id']=="1"){
+		$selected1 = "selected";
+		$selected2 = "";
+		$selected3 = "";
+		$selected4 = "";
+		$selected5 = "";
+		$selected6 = "";
+		$selectedALL = "";
+	}else if($_POST['priority_id']=="2"){
+		$selected1 = "";
+		$selected2 = "selected";
+		$selected3 = "";
+		$selected4 = "";
+		$selected5 = "";
+		$selected6 = "";
+		$selectedALL = "";
+	}else if($_POST['priority_id']=="3"){
+		$selected1 = "";
+		$selected2 = "";
+		$selected3 = "selected";
+		$selected4 = "";
+		$selected5 = "";
+		$selected6 = "";
+		$selectedALL = "";
+	}
+	else if($_POST['priority_id']=="4"){
+		$selected1 = "";
+		$selected2 = "";
+		$selected3 = "";
+		$selected4 = "selected";
+		$selected5 = "";
+		$selected6 = "";
+		$selectedALL = "";
+	}
+	else if($_POST['priority_id']=="5"){
+		$selected1 = "";
+		$selected2 = "";
+		$selected3 = "";
+		$selected4 = "";
+		$selected5 = "selected";
+		$selected6 = "";
+		$selectedALL = "";
+	}
+	else if($_POST['priority_id']=="6"){
+		$selected1 = "";
+		$selected2 = "";
+		$selected3 = "";
+		$selected4 = "";
+		$selected5 = "";
+		$selected6 = "selected";
+		$selectedALL = "";
+	}else{
+		$selected1 = "";
+		$selected2 = "";
+		$selected3 = "";
+		$selected4 = "";
+		$selected5 = "";
+		$selected6 = "";
+		$selectedALL = "selected";
+	}
+}else{
+		$selected1 = "";
+		$selected2 = "";
+		$selected3 = "";
+		$selected4 = "";
+		$selected5 = "";
+		$selected6 = "";
+		$selectedALL = "selected";
+}
 ?>
     <style>
         th {
@@ -56,10 +127,10 @@ if(isset($_POST['submit_col'])){
 							<div class="col-md-6">
 								<div class="form-group">
 									<div class="row">
-										<div class="col-md-2">
+										<div class="col-md-3">
 											<label>Branch</label>
 										</div>
-										<div class="col-md-5">
+										<div class="col-md-6">
 											<select class="form-control" id="branch" name="branch">
 											<?php
 											/*if($data['LEVEL'] == 'SUPER ADMIN'){
@@ -76,10 +147,10 @@ if(isset($_POST['submit_col'])){
 							<div class="col-md-6">
 								<div class="form-group">
 									<div class="row">
-										<div class="col-md-2">
+										<div class="col-md-3">
 											<label>KELURAHAN</label>
 										</div>
-										<div class="col-md-5">
+										<div class="col-md-6">
 									<input type="text" class="form-control" id="kelurahan" name="kelurahan" value="">
 									</div>
 								</div>
@@ -90,10 +161,10 @@ if(isset($_POST['submit_col'])){
 							<div class="col-md-6">
 								<div class="form-group">
 									<div class="row">
-										<div class="col-md-2">
+										<div class="col-md-3">
 											<label>KECAMATAN</label>
 										</div>
-										<div class="col-md-5">
+										<div class="col-md-6">
 									<input type="text" class="form-control" id="kecamatan" name="kecamatan" value="">
 								</div>
 								</div>
@@ -102,10 +173,10 @@ if(isset($_POST['submit_col'])){
 							<div class="col-md-6">
 								<div class="form-group">
 									<div class="row">
-										<div class="col-md-2">
+										<div class="col-md-3">
 									<label>COLLECTOR</label>
 									</div>
-									<div class="col-md-5">
+									<div class="col-md-6">
 									<select class="form-control" id="col" name="col">
 										<option value="" selected>Pilih Collector</option>
 										<?php
@@ -133,10 +204,44 @@ if(isset($_POST['submit_col'])){
 								</div>
 							</div>
 						</div>
+					</div>
+					<div class="row">
+							<div class="col-md-6">
+								<div class="form-group">
+									<div class="row">
+										<div class="col-md-3">
+											<label>CONTRACT ID</label>
+										</div>
+										<div class="col-md-6">
+									<input type="text" class="form-control" id="no_kontrak" name="no_kontrak" value="">
+								</div>
+								</div>
+							</div>
+						</div>
+							<div class="col-md-6">
+								<div class="form-group">
+									<div class="row">
+										<div class="col-md-3">
+									<label>PRIORITY ID</label>
+									</div>
+									<div class="col-md-6">
+									<select class="form-control" id="priority_id" name="priority_id" selected>
+										<option value="" <?php echo $selectedALL;?>>All</option>
+										<option value="1" <?php echo $selected1;?>>1</option>
+										<option value="2" <?php echo $selected2;?>>2</option>
+										<option value="3" <?php echo $selected3;?>>3</option>
+										<option value="4" <?php echo $selected4;?>>4</option>
+										<option value="5" <?php echo $selected5;?>>5</option>
+										<option value="6" <?php echo $selected6;?>>6</option>
+									</select>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
 						<div class="pull-right">
 							<input type="submit" value="Search" class="btn btn-primary" name="submit_col">
 						</div>
-					</div>
 				</div>
 			</div>
 		</div>
@@ -257,6 +362,7 @@ if(isset($_POST['submit_col'])){
 									$sembilan = "";
 									$sepuluh = "";
 								}
+								/*
 								else if($dataDKHC['PRIORITY_ID'] == "7"){
 									$selected = "";
 									$satu = "";
@@ -309,7 +415,7 @@ if(isset($_POST['submit_col'])){
 									$sembilan = "";
 									$sepuluh = "selected";
 								}
-								
+								*/
 						?>
 								
                                         <tr>
@@ -351,10 +457,6 @@ if(isset($_POST['submit_col'])){
 							<option value="4">4</option>
 							<option value="5">5</option>
 							<option value="6">6</option>
-							<option value="7">7</option>
-							<option value="8">8</option>
-							<option value="9">9</option>
-							<option value="10">10</option>
 							</select>
 							<br>
 							<input type="hidden" id="branch" name="branch" value="<?php echo $branch; ?>" >
