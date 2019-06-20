@@ -143,6 +143,19 @@ switch ($current_page) {
 	require_once('aro-priority-kontrak1.php');
 	break;	
 	
+	case 'collector-assignment-4w':
+	require_once('collector-assignment-4w.php');
+	break;
+	
+	
+	case 'report_aro':
+	require_once('report_aro.php');
+	break;
+	
+	case 'report_transaksi':
+	require_once('report_transaksi.php');
+	break;
+	
 	default:
 	require_once('home.php');
 }

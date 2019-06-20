@@ -133,4 +133,55 @@ else if($action == 'reaprove'){
 			  </script>';
 	}	
 }
+else if($action == 'save1'){
+	$branch = $_POST['branch'];
+	$pic = $_POST['pic'];
+	$bm = $_POST['bm'];
+	$aro = $_POST['aro'];
+	$selectedAro = count($aro);
+	$tgl= $_POST['tgl'];
+	for($x=0;$x<$selectedAro;$x++){
+	$queryInsertModel = "{call SP_INSERT_APPROVAL_DKH(?,?,?,?,?)}"; 
+	$parameterInsertModel = array(
+					array($branch, SQLSRV_PARAM_IN),
+					array($pic, SQLSRV_PARAM_IN),
+					array($bm, SQLSRV_PARAM_IN),
+					array($aro[$x], SQLSRV_PARAM_IN),
+					array($tgl, SQLSRV_PARAM_IN)
+				);
+	$execInsertModel = sqlsrv_query( $conn, $queryInsertModel, $parameterInsertModel) or die( print_r( sqlsrv_errors(), true));
+	if($execInsertModel){
+
+		echo '<script>
+				setTimeout(function() {
+					swal({
+						title : "Success",
+						text : "Successfully to Assign",
+						type: "success",
+						timer: 2000,
+						showConfirmButton: false
+					});  
+				},10); 
+					window.setTimeout(function(){ 
+						window.location.replace("index.php?page=collector-assignment");
+					} ,2000); 
+			  </script>';
+	}else{
+		echo '<script>
+				setTimeout(function() {
+					swal({
+						title : "Error",
+						text : "Failed to Assign",
+						type: "error",
+						timer: 2000,
+						showConfirmButton: false
+					});  
+				},10); 
+					window.setTimeout(function(){ 
+						history.back();
+					} ,2000); 
+			  </script>';
+		}
+	}
+}
 	?>

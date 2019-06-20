@@ -124,7 +124,7 @@
 					<div id="lokasiPembayaran">
 						<b>Lokasi Pembayaran</b><br>
 						<?php echo $latPayLocation;?>, <?php echo $longPayLocation;?>
-						
+						 <button onclick="window.location.href = 'https://www.google.com/maps/search/?api=1&query=<?php echo $row['LAT'];?>,<?php echo $row['LNG'];?>';">Lihat Lokasi</button>
 						<hr>
 					</div>
 					<!--<div id="fotoLokasiPembayaran">
@@ -134,14 +134,14 @@
 					</div>-->
 					<div id="lokasi">
 						<b>Lokasi Awal</b><br>
-						<label>Lat : </label> <?php echo $row['LATITUDE'];?>, <label>Long : </label> <?php echo $row['LONGITUDE'];?>
+						<label>Lat : </label> <?php echo $row['LATITUDE'];?>, <label>Long : </label> <?php echo $row['LONGITUDE'];?><br>
 						 <button onclick="window.location.href = 'https://www.google.com/maps/search/?api=1&query=<?php echo $row['LATITUDE'];?>,<?php echo $row['LONGITUDE'];?>';">Lihat Lokasi</button>
 						<hr>
 					</div>
 					
 					<div id="lokasi">
-						<b>Lokasi</b><br>
-						<?php echo $latLocationMeet;?>, <?php echo $longLocationMeet;?>
+						<b>Lokasi Kunjungan Terakhir</b><br>
+						<?php echo $latLocationMeet;?>, <?php echo $longLocationMeet;?><br>
 						 <button onclick="window.location.href = 'https://www.google.com/maps/search/?api=1&query=<?php echo $row['LAT'];?>,<?php echo $row['LNG'];?>';">Lihat Lokasi</button>
 						<hr>
 					</div>

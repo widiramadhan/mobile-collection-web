@@ -88,13 +88,13 @@ $branchType=substr($bid,0,2);
 			<li class="nav-item">
 			 <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseTwo2" aria-expanded="true" aria-controls="collapseTwo">
 					<i class="fa fa-cog"></i>
-					<span>ARO Priority</span>
+					<span>Officer Priority</span>
 				</a>
 			<div id="collapseTwo2" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar" style="">
 				<div class="bg-white py-2 collapse-inner rounded">
-					<h6 class="collapse-header">ARO Priority :</h6>
-					<a class="collapse-item" href="index.php?page=aro-priority-contract">ARO Priority Per-Kontrak</a>
-					<a class="collapse-item" href="index.php?page=aro-priority">ARO Priority Area</a>
+					<h6 class="collapse-header">Officer Priority :</h6>
+					<a class="collapse-item" href="index.php?page=aro-priority-contract1">Officer Priority Per-Kontrak</a>
+					<a class="collapse-item" href="index.php?page=aro-priority">Officer Priority Area</a>
 				</div>
 			</div>
 			</li>
@@ -102,14 +102,14 @@ $branchType=substr($bid,0,2);
 			<li class="nav-item">
 				<a class="nav-link" href="index.php?page=aro-activity">
 					<i class="fa fa-location-arrow"></i>
-					<span>Mapping Aktvitas Aro</span>
+					<span>Mapping Aktvitas Officer</span>
 				</a>
 			</li>
 			<?php } ?>
 			<li class="nav-item">
 				<a class="nav-link" href="index.php?page=reasign-aro">
 					<i class="fa fa-random" aria-hidden="true"></i>
-					<span>Re-Approve ARO</span>
+					<span>Re-Approve Officer</span>
 				</a>
 			</li>
 			<hr class="sidebar-divider">
@@ -169,6 +169,24 @@ $branchType=substr($bid,0,2);
 				</a>
 			</li>
 			<hr class="sidebar-divider d-none d-md-block">
+			<div class="sidebar-heading">
+				Report
+			</div>
+		
+			<li class="nav-item">
+			 <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseTwo3" aria-expanded="true" aria-controls="collapseTwo">
+					<i class="fa fa-flag"></i>
+					<span>Report</span>
+				</a>
+			<div id="collapseTwo3" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar" style="">
+				<div class="bg-white py-2 collapse-inner rounded">
+					<h6 class="collapse-header">Report:</h6>
+					<a class="collapse-item" href="index.php?page=report_aro">Report Officer</a>
+					<a class="collapse-item" href="index.php?page=report_transaksi">Report Transaction</a>
+				</div>
+			</div>
+			</li>
+			
 		</ul>
 		
 		<div id="content-wrapper" class="d-flex flex-column">
